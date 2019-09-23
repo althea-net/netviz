@@ -15,6 +15,7 @@
   let nodes = [];
   let graph;
   let el;
+  let zooming = false;
 
   const resize = () => {
     graph.width(el.offsetWidth).refresh();
@@ -61,7 +62,7 @@
     const NODE_REL_SIZE = 4;
     el = document.getElementById("graph");
 
-    graph = ForceGraph()
+    let config = ForceGraph()
       .width(el.offsetWidth)
       .dagMode("radialout")
       .dagLevelDistance(100)
@@ -73,8 +74,14 @@
       .nodeLabel("id")
       .nodeAutoColorBy("module")
       .onNodeClick(node => {
+        zooming = false;
+        graph.centerAt(node.x, node.y);
         selected = node.id;
         if (node.el) node.el.focus();
+      })
+      .onNodeHover((node, prevNode) => {
+        el.style.cursor = "pointer";
+        if (!node) el.style.cursor = "auto";
       })
       .linkWidth(link => link.value * 0.5)
       .linkCurvature("curvature")
@@ -82,10 +89,20 @@
       .linkDirectionalParticleWidth(2)
       .linkColor("color")
       .linkDirectionalParticleColor("white")
+      .d3Force("charge", d3.forceManyBody().strength(-2000))
+      // Deactivate existing forces
+      // Add collision and bounding box forces
       .nodeCanvasObject(({ x, y, label, img, id }, ctx, globalScale) => {
         const size = 36;
         const fontSize = 16 / globalScale;
         ctx.font = `${id === selected ? "bold" : ""} ${fontSize}px Sans-Serif`;
+
+        if (id === selected && !zooming) {
+          zooming = true;
+          graph.centerAt(x, y, 300);
+          graph.zoom(4, 600);
+        }
+
         const text = label || id;
         const textWidth = ctx.measureText(text).width;
         const bckgDimensions = [textWidth, fontSize].map(
@@ -109,7 +126,7 @@
         ctx.drawImage(img, x - size / 2, y - size / 2, 36, 48);
       });
 
-    graph = graph(el).graphData({ nodes, links });
+    graph = config(el).graphData({ nodes, links });
   });
 </script>
 
@@ -123,10 +140,15 @@
   <script src="//unpkg.com/force-graph">
 
   </script>
+  <script src="//unpkg.com/d3-quadtree">
+
+  </script>
+  <script src="//unpkg.com/d3-force">
+
+  </script>
 </svelte:head>
 
 <svelte:window on:resize={resize} />
-
 <div class="flex w-100">
   <div class="w-1/2">
     <div class="rounded shadow-lg px-6 py-4 m-4">
@@ -138,7 +160,7 @@
       {#each nodes as n (n.id)}
         <div class="flex justify-between mb-2">
           <div
-            on:click={() => (selected = n.id)}
+            on:click={() => (selected = n.id) && (zooming = false)}
             class={`my-auto w-1/2 cursor-pointer ${n.id === selected ? 'font-bold' : ''}`}>
             {n.id}
           </div>
