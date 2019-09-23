@@ -10,6 +10,15 @@
 <script>
   import { onMount } from "svelte";
 
+  const select = n => {
+    console.log(n);
+    selected = n.id;
+    zooming = false;
+    if (n.el) n.el.focus();
+  };
+
+  const zoomOut = () => graph.zoom(1, 100);
+
   export let neighbors = [];
   let selected;
   let nodes = [];
@@ -63,7 +72,6 @@
     el = document.getElementById("graph");
 
     let config = ForceGraph()
-      .width(el.offsetWidth)
       .dagMode("radialout")
       .dagLevelDistance(100)
       .backgroundColor("#F5EFD3")
@@ -127,8 +135,20 @@
       });
 
     graph = config(el).graphData({ nodes, links });
+    graph.width(el.offsetWidth);
   });
 </script>
+
+<style>
+  .full-screen {
+    position: absolute;
+    width: 20px;
+    top: 40px;
+    right: 40px;
+    z-index: 1;
+    cursor: pointer;
+  }
+</style>
 
 <svelte:head>
   <script src="//unpkg.com/three">
@@ -149,24 +169,30 @@
 </svelte:head>
 
 <svelte:window on:resize={resize} />
-<div class="flex w-100">
-  <div class="w-1/2">
-    <div class="rounded shadow-lg px-6 py-4 m-4">
+<div class="flex flex-wrap w-100">
+  <div class="w-full md:w-1/2">
+    <div class="relative rounded shadow-lg px-4 py-4 m-4">
+      <img
+        src="screen-full.svg"
+        class="full-screen"
+        on:click={zoomOut}
+        alt="Zoom Out" />
       <div id="graph" />
     </div>
   </div>
-  <div class="w-1/2">
+  <div class="w-full md:w-1/2">
     <div class="rounded shadow-lg px-6 py-4 m-4">
       {#each nodes as n (n.id)}
-        <div class="flex justify-between mb-2">
+        <div
+          class="flex flex-wrap justify-between mb-2"
+          on:click={e => select(n)}>
           <div
-            on:click={() => (selected = n.id) && (zooming = false)}
-            class={`my-auto w-1/2 cursor-pointer ${n.id === selected ? 'font-bold' : ''}`}>
+            class={`my-auto w-full lg:w-1/2 cursor-pointer ${n.id === selected ? 'font-bold' : ''}`}>
             {n.id}
           </div>
           <input
             bind:value={n.label}
-            class="border p-2 w-1/2"
+            class="border p-2 w-full lg:w-1/2"
             bind:this={n.el} />
         </div>
       {/each}
