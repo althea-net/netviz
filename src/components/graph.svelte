@@ -5,8 +5,7 @@
   let el;
 
   const click = node => {
-    $zooming = false;
-    $graph.centerAt(node.x, node.y);
+    $graph.centerAt(node.x, node.y, 300);
     $selected = node.id;
     if (node.el) node.el.focus();
   };
