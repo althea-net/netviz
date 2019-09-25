@@ -78,7 +78,6 @@
       });
 
     const graphData = { nodes: $nodes, links: $links };
-    console.log(graphData);
     $graph = config(el).graphData(graphData);
     $graph.width(el.offsetWidth);
   });
