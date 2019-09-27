@@ -1,14 +1,13 @@
 <script context="module">
-  import data from "../data";
-
   export async function preload(page, session) {
-    const res = await this.fetch("installed.json");
+    const res = await this.fetch("neighbors.json");
     const neighbors = await res.json();
     return { neighbors };
   }
 </script>
 
 <script>
+  import data from "../data";
   import Graph from "../components/graph.svelte";
   import { links, nodes, selected, zooming } from "../store";
 
@@ -32,6 +31,16 @@
   .node.selected {
     @apply font-bold;
   }
+
+  input {
+    @apply border p-2 w-full;
+  }
+
+  @screen lg {
+    input {
+      @apply w-1/2;
+    }
+  }
 </style>
 
 <div class="flex flex-wrap w-100">
@@ -47,10 +56,7 @@
           <div class="node w-full lg:w-1/2" class:selected={n.id === $selected}>
             {n.id}
           </div>
-          <input
-            bind:value={n.label}
-            class="border p-2 w-full lg:w-1/2"
-            bind:this={n.el} />
+          <input bind:value={n.label} bind:this={n.el} />
         </div>
       {/each}
     </div>

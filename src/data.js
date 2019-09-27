@@ -2,11 +2,11 @@ export default neighbors => {
   const ids = [];
 
   let nodes = neighbors.map(n => {
-    if (ids.includes(n.neigh_ip)) return undefined;
-    ids.push(n.neigh_ip);
+    if (ids.includes(n.address)) return undefined;
+    ids.push(n.address);
     let level = Math.ceil(Math.random() * 4);
     let group = 1;
-    let id = n.neigh_ip;
+    let id = n.address;
 
     return { id, group, level };
   });
