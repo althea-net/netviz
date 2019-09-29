@@ -36,26 +36,33 @@
     @apply border p-2 w-full;
   }
 
+  .list {
+    @apply rounded shadow-lg px-6 py-4 m-4 max-h-screen overflow-y-scroll;
+  }
+
+  .col {
+    @apply w-full;
+  }
+
   @screen lg {
-    input {
+    input,
+    .col {
       @apply w-1/2;
     }
   }
 </style>
 
 <div class="flex flex-wrap w-100">
-  <div class="w-full md:w-1/2">
+  <div class="col">
     <Graph />
   </div>
-  <div class="w-full md:w-1/2">
-    <div class="rounded shadow-lg px-6 py-4 m-4 max-h-screen overflow-y-scroll">
+  <div class="col">
+    <div class="list">
       {#each $nodes as n (n.id)}
         <div
           class="flex flex-wrap justify-between mb-2"
           on:click={e => select(n)}>
-          <div class="node w-full lg:w-1/2" class:selected={n.id === $selected}>
-            {n.id}
-          </div>
+          <div class="node col" class:selected={n.id === $selected}>{n.id}</div>
           <input bind:value={n.label} bind:this={n.el} />
         </div>
       {/each}

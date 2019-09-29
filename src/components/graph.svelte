@@ -45,7 +45,7 @@
       .nodeCanvasObject(({ x, y, label, img, id }, ctx, globalScale) => {
         const size = 36;
         const fontSize = 16 / globalScale;
-        ctx.font = `${id === selected ? "bold" : ""} ${fontSize}px Sans-Serif`;
+        ctx.font = `${id === $selected ? "bold" : ""} ${fontSize}px Sans-Serif`;
 
         if (id === $selected && !$zooming) {
           $zooming = true;
