@@ -1,3 +1,13 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+  .col {
+    @apply w-full;
+  }
+
+  @screen lg {
+    .col {
+      @apply w-1/2;
+    }
+  }
