@@ -16,6 +16,17 @@
   const res = data(neighbors);
   $links = res.links;
   $nodes = res.nodes;
+
+  let labelled;
+
+  if (!labelled && typeof window !== "undefined") {
+    labelled = $nodes.map(n => ({
+      label: window.localStorage.getItem(n.id),
+      ...n
+    }));
+
+    $nodes = labelled;
+  }
 </script>
 
 <div class="flex flex-wrap w-100">

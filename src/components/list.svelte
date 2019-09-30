@@ -1,10 +1,10 @@
 <script>
   import { links, nodes, selected, zooming } from "../store";
 
-  const select = ({ id, el }) => {
+  const persist = n => window.localStorage.setItem(n.id, n.label);
+  const select = ({ id }) => {
     $selected = id;
     $zooming = false;
-    if (el) el.focus();
   };
 </script>
 
@@ -13,7 +13,7 @@
     @apply flex flex-wrap justify-between mb-2;
   }
 
-  .node div {
+  .node label {
     @apply my-auto cursor-pointer;
   }
 
@@ -33,8 +33,12 @@
 <div class="list">
   {#each $nodes || [] as n (n.id)}
     <div class="node" on:click={e => select(n)}>
-      <div class:selected={n.id === $selected}>{n.id}</div>
-      <input bind:value={n.label} bind:this={n.el} />
+      <label for={n.id} class:selected={n.id === $selected}>{n.id}</label>
+      <input
+        id={n.id}
+        bind:value={n.label}
+        bind:this={n.el}
+        on:change={e => persist(n)} />
     </div>
   {/each}
 </div>
