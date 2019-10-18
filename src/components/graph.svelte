@@ -82,7 +82,7 @@
   });
 
   const resize = () => {
-    $graph.width(el.offsetWidth).refresh();
+    $graph.width(el.offsetWidth).d3ReheatSimulation();
   };
 
   const zoomOut = () => $graph.zoom(1, 100);
@@ -111,7 +111,7 @@
   <script src="//unpkg.com/force-graph">
 
   </script>
-  <script src="//unpkg.com/d3-quadtree">
+  <script src="//unpkg.com/d3-quadtree@1.0.6/dist/d3-quadtree.min.js">
 
   </script>
   <script src="//unpkg.com/d3-force">
