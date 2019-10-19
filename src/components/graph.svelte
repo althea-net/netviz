@@ -17,18 +17,39 @@
       return img;
     });
 
-    $nodes.map(n => (n.img = images[n.level - 1]));
+    $nodes.map(n => (n.img = images[2]));
 
     const NODE_REL_SIZE = 4;
     const config = ForceGraph()
-      .dagMode("radialout")
+      .dagMode("radialOut")
       .dagLevelDistance(100)
       .backgroundColor("#F5EFD3")
       .linkColor(() => "rgba(255,255,255,0.8)")
       .nodeRelSize(NODE_REL_SIZE)
       .nodeId("id")
       .nodeVal(node => 100 / (node.level + 1))
-      .nodeLabel("id")
+      .nodeLabel(
+        node =>
+          `${node.id}<br>` +
+          (node.neighbor
+            ? `
+          route_metric: ${node.route_metric}<br>
+          route_metric_to_exit: ${node.route_metric_to_exit}<br>
+          latency: ${node.stats.latency.avg}<br>
+          packet_loss: ${node.stats.packet_loss.avg}<br>
+          link_cost: ${node.link_cost}<br>
+          `
+            : "") +
+          (node.route
+            ? `
+          iface: ${node.iface},
+          metric: ${node.metric},
+          refmetric: ${node.refmetric},
+          full_path_rtt: ${node.full_path_rtt},
+          price: ${node.price},
+          fee: ${node.fee}`
+            : "")
+      )
       .nodeAutoColorBy("module")
       .onNodeClick(click)
       .onNodeHover((node, prevNode) => {
@@ -37,11 +58,14 @@
       })
       .linkWidth(link => link.value * 0.5)
       .linkCurvature("curvature")
-      .linkDirectionalParticles(3)
+      .linkDirectionalParticles(5)
       .linkDirectionalParticleWidth(2)
       .linkColor("color")
+      .linkLabel(link => {
+        return link.target.level + "<br>" + link.source.level;
+      })
       .linkDirectionalParticleColor("white")
-      .d3Force("charge", d3.forceManyBody().strength(-2000))
+      .d3Force("charge", d3.forceManyBody().strength(-3000))
       .nodeCanvasObject(({ x, y, label, img, id }, ctx, globalScale) => {
         const size = 36;
         const fontSize = 16 / globalScale;

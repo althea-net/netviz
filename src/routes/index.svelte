@@ -1,8 +1,17 @@
 <script context="module">
   export async function preload(page, session) {
-    const res = await this.fetch("neighbors.json");
+    //let res = await this.fetch("http://192.168.10.1:4877/neighbors");
+    let res = await this.fetch("neighbors.json");
     const neighbors = await res.json();
-    return { neighbors };
+
+    // res = await this.fetch("http://192.168.10.1:4877/routes");
+    res = await this.fetch("routes.json");
+    const routes = await res.json();
+
+    res = await this.fetch("http://192.168.10.1:4877/mesh_ip");
+    const ip = (await res.json()).mesh_ip;
+
+    return { neighbors, routes, ip };
   }
 </script>
 
@@ -13,9 +22,12 @@
   import { links, nodes } from "../store";
 
   export let neighbors;
-  const res = data(neighbors);
-  $links = res.links;
-  $nodes = res.nodes;
+  export let routes;
+  export let ip;
+
+  const d = data(ip, neighbors, routes);
+  $links = d.links;
+  $nodes = d.nodes;
 
   let labelled;
 
