@@ -42,12 +42,12 @@
             : "") +
           (node.route
             ? `
-          iface: ${node.iface},
-          metric: ${node.metric},
-          refmetric: ${node.refmetric},
-          full_path_rtt: ${node.full_path_rtt},
-          price: ${node.price},
-          fee: ${node.fee}`
+            iface: ${node.iface}<br>
+            metric: ${node.metric}<br>
+            refmetric: ${node.refmetric}<br>
+            full_path_rtt: ${node.full_path_rtt}<br>
+            price: ${node.price}<br>
+            fee: ${node.fee}`
             : "")
       )
       .nodeAutoColorBy("module")
@@ -58,12 +58,14 @@
       })
       .linkWidth(link => link.value * 0.5)
       .linkCurvature("curvature")
-      .linkDirectionalParticles(5)
+      .linkDirectionalParticles(2)
       .linkDirectionalParticleWidth(2)
       .linkColor("color")
-      .linkLabel(link => {
-        return link.target.level + "<br>" + link.source.level;
-      })
+      .linkLabel(link =>
+        link.target.neighbor
+          ? `latency: ${link.target.stats.latency.avg}`
+          : `metric: ${link.target.metric}`
+      )
       .linkDirectionalParticleColor("white")
       .d3Force("charge", d3.forceManyBody().strength(-3000))
       .nodeCanvasObject(({ x, y, label, img, id }, ctx, globalScale) => {
