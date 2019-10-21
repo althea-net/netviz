@@ -15,7 +15,6 @@ export default (ip, neighbors, routes) => {
       .filter(r => r.installed)
       .map(r => {
         if (ids.includes(r.neigh_ip)) return undefined;
-        console.log("route", r);
         ids.push(r.neigh_ip);
         let level = 3;
         let group = 1;
@@ -25,8 +24,6 @@ export default (ip, neighbors, routes) => {
       })
   ];
 
-  console.log(routes.filter(r => r.installed));
-
   nodes.push({
     level: 1,
     group: 1,
@@ -35,8 +32,6 @@ export default (ip, neighbors, routes) => {
   });
 
   nodes = nodes.filter(n => n);
-
-  // console.log(nodes);
 
   let links = nodes.map(n => {
     let parents = nodes.filter(p => p.level === n.level - 1);

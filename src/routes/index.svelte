@@ -19,6 +19,8 @@
   import data from "../data";
   import Graph from "../components/graph.svelte";
   import List from "../components/list.svelte";
+  import Export from "../components/export.svelte";
+  import Import from "../components/import.svelte";
   import { links, nodes } from "../store";
 
   export let neighbors;
@@ -46,6 +48,8 @@
     <Graph />
   </div>
   <div class="col">
+    <Export />
+    <Import />
     <List />
   </div>
 </div>
