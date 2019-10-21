@@ -3,6 +3,7 @@
   import { links, nodes, graph, map, selected, zooming } from "../store";
 
   let el;
+  let zoom;
 
   const click = node => {
     $graph.centerAt(node.x, node.y, 300);
@@ -23,6 +24,21 @@
       (worldPoint.x - bottomLeft.x) * scale,
       (worldPoint.y - topRight.y) * scale
     );
+  }
+
+  function point2LatLng(point, map) {
+    var topRight = map
+      .getProjection()
+      .fromLatLngToPoint(map.getBounds().getNorthEast());
+    var bottomLeft = map
+      .getProjection()
+      .fromLatLngToPoint(map.getBounds().getSouthWest());
+    var scale = Math.pow(2, map.getZoom());
+    var worldPoint = new google.maps.Point(
+      point.x / scale + bottomLeft.x,
+      point.y / scale + topRight.y
+    );
+    return map.getProjection().fromPointToLatLng(worldPoint);
   }
 
   onMount(async () => {
@@ -66,24 +82,27 @@
       )
       .nodeAutoColorBy("module")
       .onNodeClick(click)
-      .onNodeDrag(console.log)
       .onNodeDragEnd(node => {
         node.fx = node.x;
         node.fy = node.y;
-
-        if ($map) {
-          console.log(google.maps.Projection($map.getCenter()));
-        } 
       })
       .onNodeHover((node, prevNode) => {
         el.style.cursor = "pointer";
         if (!node) el.style.cursor = "auto";
       })
       .onZoom(({ k }) => {
-        /*
-        if ($map && $map.setZoom)
-          $map.setZoom(Math.floor(k * 12));
-          */
+        zoom = k;
+        if ($map && $map.setZoom) {
+          let z = $map.getZoom();
+          let r = 0;
+
+          if (k < 0.5) r = -1;
+          if (k < 0.25) r = -2;
+          if (k > 1.5) r = +1;
+          if (k > 2) r = +2;
+
+          $map.setZoom(15 + r);
+        }
       })
       .linkWidth(2)
       .linkCurvature("curvature")
@@ -100,7 +119,8 @@
       .nodeCanvasObject(({ x, y, label, img, id }, ctx, globalScale) => {
         const size = 36;
         const fontSize = 16 / globalScale;
-        ctx.font = `${id === $selected ? "bold" : ""} ${fontSize * 4}px Sans-Serif`;
+        ctx.font = `${id === $selected ? "bold" : ""} ${fontSize *
+          4}px Sans-Serif`;
 
         if (id === $selected && !$zooming) {
           $zooming = true;
@@ -112,15 +132,15 @@
         const textWidth = ctx.measureText(text).width;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.scale(0.25, 0.25)
-        ctx.strokeStyle = 'white';
+        ctx.scale(0.25, 0.25);
+        ctx.strokeStyle = "white";
         ctx.lineWidth = 16;
         ctx.strokeText(text, x * 4, (y + 26) * 4);
-        ctx.miterLimit=2;
+        ctx.miterLimit = 2;
         ctx.fillStyle = "black";
         ctx.fillText(text, x * 4, (y + 26) * 4);
         ctx.fillStyle = "#51AFEF";
-        ctx.scale(4, 4)
+        ctx.scale(4, 4);
         // ctx.beginPath();
         // ctx.arc(x, y, 5, 0, 2 * Math.PI, false);
         // ctx.fill();
@@ -130,6 +150,31 @@
     const graphData = { nodes: $nodes, links: $links };
     $graph = config(el).graphData(graphData);
     $graph.width(el.offsetWidth);
+
+    let px = 0;
+    let py = 0;
+
+    const move = () => {
+      let { x, y } = $graph.centerAt();
+
+      let dx = x - px;
+      let dy = y - py;
+
+      if ($map && $map.getProjection()) {
+        let { x: mx, y: my } = latLng2Point($map.getCenter(), $map);
+        if (dx || dy) {
+          let point = { x: mx + dx*zoom, y: my + dy*zoom };
+          let latLng = point2LatLng(point, $map);
+          $map.setCenter(latLng);
+        }
+      }
+
+      setTimeout(move, 1);
+      px = x;
+      py = y;
+    };
+
+    move();
   });
 
   const resize = () => {
