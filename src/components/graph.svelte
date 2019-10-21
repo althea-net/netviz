@@ -38,8 +38,7 @@
     const config = ForceGraph()
       .dagMode("radialOut")
       .dagLevelDistance(100)
-      .backgroundColor(() => "rgba(255,0,0,0.5)")
-      .linkColor(() => "rgba(255,255,255,0.8)")
+      .backgroundColor(() => "rgba(0,0,0,0)")
       .nodeRelSize(NODE_REL_SIZE)
       .nodeId("id")
       .nodeVal(node => 100 / (node.level + 1))
@@ -67,11 +66,14 @@
       )
       .nodeAutoColorBy("module")
       .onNodeClick(click)
+      .onNodeDrag(console.log)
       .onNodeDragEnd(node => {
         node.fx = node.x;
         node.fy = node.y;
 
-
+        if ($map) {
+          console.log(google.maps.Projection($map.getCenter()));
+        } 
       })
       .onNodeHover((node, prevNode) => {
         el.style.cursor = "pointer";
@@ -83,17 +85,17 @@
           $map.setZoom(Math.floor(k * 12));
           */
       })
-      .linkWidth(link => link.value * 0.5)
+      .linkWidth(2)
       .linkCurvature("curvature")
+      .linkColor(link => link.color)
       .linkDirectionalParticles(2)
-      .linkDirectionalParticleWidth(2)
-      .linkColor("color")
+      .linkDirectionalParticleWidth(3)
       .linkLabel(link =>
         link.target.neighbor
           ? `latency: ${link.target.stats.latency.avg}`
           : `metric: ${link.target.metric}`
       )
-      .linkDirectionalParticleColor("white")
+      .linkDirectionalParticleColor(() => "#fff")
       .d3Force("charge", d3.forceManyBody().strength(-3000))
       .nodeCanvasObject(({ x, y, label, img, id }, ctx, globalScale) => {
         const size = 36;
@@ -103,21 +105,11 @@
         if (id === $selected && !$zooming) {
           $zooming = true;
           $graph.centerAt(x, y, 300);
-          $graph.zoom(8, 600);
+          $graph.zoom(1.2, 600);
         }
 
         const text = label || id.substr(-4);
         const textWidth = ctx.measureText(text).width;
-        const bckgDimensions = [textWidth, fontSize].map(
-          n => n + fontSize * 0.2
-        ); // some padding
-        ctx.fillStyle = "rgba(255, 255, 255, 0)";
-        ctx.fillRect(
-          x - bckgDimensions[0] / 2,
-          y - bckgDimensions[1] / 2,
-          ...bckgDimensions
-        );
-        // ctx.rect(x - bckgDimensions[0] / 2, y - bckgDimensions[1] / 2, 100, 20);
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.scale(0.25, 0.25)
@@ -131,7 +123,7 @@
         ctx.scale(4, 4)
         // ctx.beginPath();
         // ctx.arc(x, y, 5, 0, 2 * Math.PI, false);
-        ctx.fill();
+        // ctx.fill();
         ctx.drawImage(img, x - size / 2, y - size / 2, 26, 36);
       });
 
