@@ -10,6 +10,21 @@
     if (node.el) node.el.focus();
   };
 
+  function latLng2Point(latLng, map) {
+    var topRight = map
+      .getProjection()
+      .fromLatLngToPoint(map.getBounds().getNorthEast());
+    var bottomLeft = map
+      .getProjection()
+      .fromLatLngToPoint(map.getBounds().getSouthWest());
+    var scale = Math.pow(2, map.getZoom());
+    var worldPoint = map.getProjection().fromLatLngToPoint(latLng);
+    return new google.maps.Point(
+      (worldPoint.x - bottomLeft.x) * scale,
+      (worldPoint.y - topRight.y) * scale
+    );
+  }
+
   onMount(async () => {
     const images = [1, 2, 3, 4].map(i => {
       const img = new Image();
@@ -55,6 +70,8 @@
       .onNodeDragEnd(node => {
         node.fx = node.x;
         node.fy = node.y;
+
+
       })
       .onNodeHover((node, prevNode) => {
         el.style.cursor = "pointer";
@@ -81,15 +98,15 @@
       .nodeCanvasObject(({ x, y, label, img, id }, ctx, globalScale) => {
         const size = 36;
         const fontSize = 16 / globalScale;
-        ctx.font = `${id === $selected ? "bold" : ""} ${fontSize}px Sans-Serif`;
+        ctx.font = `${id === $selected ? "bold" : ""} ${fontSize * 4}px Sans-Serif`;
 
         if (id === $selected && !$zooming) {
           $zooming = true;
           $graph.centerAt(x, y, 300);
-          $graph.zoom(4, 600);
+          $graph.zoom(8, 600);
         }
 
-        const text = label || id;
+        const text = label || id.substr(-4);
         const textWidth = ctx.measureText(text).width;
         const bckgDimensions = [textWidth, fontSize].map(
           n => n + fontSize * 0.2
@@ -100,16 +117,22 @@
           y - bckgDimensions[1] / 2,
           ...bckgDimensions
         );
-        ctx.rect(x - bckgDimensions[0] / 2, y - bckgDimensions[1] / 2, 100, 20);
+        // ctx.rect(x - bckgDimensions[0] / 2, y - bckgDimensions[1] / 2, 100, 20);
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
+        ctx.scale(0.25, 0.25)
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 16;
+        ctx.strokeText(text, x * 4, (y + 26) * 4);
+        ctx.miterLimit=2;
         ctx.fillStyle = "black";
-        ctx.fillText(text, x, y + 40);
+        ctx.fillText(text, x * 4, (y + 26) * 4);
         ctx.fillStyle = "#51AFEF";
-        ctx.beginPath();
-        ctx.arc(x, y, 5, 0, 2 * Math.PI, false);
+        ctx.scale(4, 4)
+        // ctx.beginPath();
+        // ctx.arc(x, y, 5, 0, 2 * Math.PI, false);
         ctx.fill();
-        ctx.drawImage(img, x - size / 2, y - size / 2, 36, 48);
+        ctx.drawImage(img, x - size / 2, y - size / 2, 26, 36);
       });
 
     const graphData = { nodes: $nodes, links: $links };

@@ -13,16 +13,15 @@
 
     $map = new google.maps.Map(mapEl, {
       center: {
-        lat: 38.44630556,
-        lng: -122.38444444
+        lat: 46.103418,
+        lng: -123.201742
       },
-      zoom: 14,
+      zoom: 15,
       styles,
       disableDefaultUI: true
     });
-
-    console.log($map.setZoom);
   });
+
 </script>
 
 <style>
@@ -32,4 +31,4 @@
   }
 </style>
 
-<div id="map">hiii</div>
+<div id="map" />
