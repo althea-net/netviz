@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { links, nodes, graph, selected, zooming } from "../store";
+  import { links, nodes, graph, map, selected, zooming } from "../store";
 
   let el;
 
@@ -23,7 +23,7 @@
     const config = ForceGraph()
       .dagMode("radialOut")
       .dagLevelDistance(100)
-      .backgroundColor("#F5EFD3")
+      .backgroundColor(() => "rgba(255,0,0,0.5)")
       .linkColor(() => "rgba(255,255,255,0.8)")
       .nodeRelSize(NODE_REL_SIZE)
       .nodeId("id")
@@ -52,9 +52,19 @@
       )
       .nodeAutoColorBy("module")
       .onNodeClick(click)
+      .onNodeDragEnd(node => {
+        node.fx = node.x;
+        node.fy = node.y;
+      })
       .onNodeHover((node, prevNode) => {
         el.style.cursor = "pointer";
         if (!node) el.style.cursor = "auto";
+      })
+      .onZoom(({ k }) => {
+        /*
+        if ($map && $map.setZoom)
+          $map.setZoom(Math.floor(k * 12));
+          */
       })
       .linkWidth(link => link.value * 0.5)
       .linkCurvature("curvature")
@@ -109,6 +119,9 @@
 
   const resize = () => {
     $graph.width(el.offsetWidth).d3ReheatSimulation();
+    let map = document.getElementById("map");
+    map.style.width = `${el.offsetWidth + 2}px`;
+    map.style.height = `${el.offsetHeight}px`;
   };
 
   const zoomOut = () => $graph.zoom(1, 100);
@@ -152,5 +165,5 @@
     alt="Zoom Out"
     title="Zoom Out" />
 
-  <div bind:this={el} />
+  <div id="graph" bind:this={el} />
 </div>

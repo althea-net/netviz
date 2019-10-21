@@ -36,6 +36,7 @@ self.addEventListener("fetch", event => {
     return;
 
   const url = new URL(event.request.url);
+  if (event.request.url.includes("maps")) return;
 
   // don't try to handle e.g. data: URIs
   if (!url.protocol.startsWith("http")) return;

@@ -16,8 +16,10 @@
 </script>
 
 <script>
+  import { onMount } from "svelte";
   import data from "../data";
   import Graph from "../components/graph.svelte";
+  import Map from "../components/map.svelte";
   import List from "../components/list.svelte";
   import Export from "../components/export.svelte";
   import Import from "../components/import.svelte";
@@ -26,6 +28,23 @@
   export let neighbors;
   export let routes;
   export let ip;
+  let ready = false;
+
+  if (typeof window !== "undefined") {
+    let script_tag = document.createElement("script");
+    script_tag.setAttribute("type", "text/javascript");
+    script_tag.setAttribute(
+      "src",
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIqlinIzzCoLCwThCqUcsGgheMjbMg6EQ&callback=initMap"
+    );
+    (
+      document.getElementsByTagName("head")[0] || document.documentElement
+    ).appendChild(script_tag);
+    window.initMap = () => {
+      ready = true;
+      console.log("ready");
+    };
+  }
 
   const d = data(ip, neighbors, routes);
   $links = d.links;
@@ -44,7 +63,10 @@
 </script>
 
 <div class="flex flex-wrap w-100">
-  <div class="col">
+  <div class="col relative">
+    {#if ready}
+      <Map />
+    {/if}
     <Graph />
   </div>
   <div class="col">
