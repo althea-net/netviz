@@ -1,7 +1,7 @@
 <script>
   import { links, nodes, selected, zooming } from "../store";
 
-  const persist = n => window.localStorage.setItem(n.id, n.label);
+  const persist = ({ id, label, latlng }) => window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
   const select = ({ id }) => {
     $selected = id;
     $zooming = false;

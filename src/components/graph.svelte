@@ -1,47 +1,22 @@
 <script>
   import { onMount } from "svelte";
-  import { links, nodes, graph, map, selected, zooming } from "../store";
+  import { links, nodes, graph, map, zoom } from "../store";
+  import { latLng2Point, point2LatLng } from "../utils/map";
+  import GraphUtils from "../utils/graph.svelte";
 
-  let el;
-  let zoom;
-
-  const click = node => {
-    $graph.centerAt(node.x, node.y, 300);
-    $selected = node.id;
-    if (node.el) node.el.focus();
-  };
-
-  function latLng2Point(latLng, map) {
-    var topRight = map
-      .getProjection()
-      .fromLatLngToPoint(map.getBounds().getNorthEast());
-    var bottomLeft = map
-      .getProjection()
-      .fromLatLngToPoint(map.getBounds().getSouthWest());
-    var scale = Math.pow(2, map.getZoom());
-    var worldPoint = map.getProjection().fromLatLngToPoint(latLng);
-    return new google.maps.Point(
-      (worldPoint.x - bottomLeft.x) * scale,
-      (worldPoint.y - topRight.y) * scale
-    );
-  }
-
-  function point2LatLng(point, map) {
-    var topRight = map
-      .getProjection()
-      .fromLatLngToPoint(map.getBounds().getNorthEast());
-    var bottomLeft = map
-      .getProjection()
-      .fromLatLngToPoint(map.getBounds().getSouthWest());
-    var scale = Math.pow(2, map.getZoom());
-    var worldPoint = new google.maps.Point(
-      point.x / scale + bottomLeft.x,
-      point.y / scale + topRight.y
-    );
-    return map.getProjection().fromPointToLatLng(worldPoint);
-  }
+  let el, graphUtils;
 
   onMount(async () => {
+    const {
+      linkLabel,
+      nodeLabel,
+      onNodeHover,
+      onNodeDragEnd,
+      onNodeClick,
+      nodeCanvasObject,
+      onZoom
+    } = graphUtils.utils;
+
     const images = [1, 2, 3, 4].map(i => {
       const img = new Image();
       img.src = `house${i}.svg`;
@@ -52,100 +27,27 @@
 
     const NODE_REL_SIZE = 4;
     const config = ForceGraph()
-      .dagMode("radialOut")
-      .dagLevelDistance(100)
       .backgroundColor(() => "rgba(0,0,0,0)")
-      .nodeRelSize(NODE_REL_SIZE)
-      .nodeId("id")
-      .nodeVal(node => 100 / (node.level + 1))
-      .nodeLabel(
-        node =>
-          `${node.id}<br>` +
-          (node.neighbor
-            ? `
-          route_metric: ${node.route_metric}<br>
-          route_metric_to_exit: ${node.route_metric_to_exit}<br>
-          latency: ${node.stats.latency.avg}<br>
-          packet_loss: ${node.stats.packet_loss.avg}<br>
-          link_cost: ${node.link_cost}<br>
-          `
-            : "") +
-          (node.route
-            ? `
-            iface: ${node.iface}<br>
-            metric: ${node.metric}<br>
-            refmetric: ${node.refmetric}<br>
-            full_path_rtt: ${node.full_path_rtt}<br>
-            price: ${node.price}<br>
-            fee: ${node.fee}`
-            : "")
-      )
-      .nodeAutoColorBy("module")
-      .onNodeClick(click)
-      .onNodeDragEnd(node => {
-        node.fx = node.x;
-        node.fy = node.y;
-      })
-      .onNodeHover((node, prevNode) => {
-        el.style.cursor = "pointer";
-        if (!node) el.style.cursor = "auto";
-      })
-      .onZoom(({ k }) => {
-        zoom = k;
-        if ($map && $map.setZoom) {
-          let z = $map.getZoom();
-          let r = 0;
-
-          if (k < 0.5) r = -1;
-          if (k < 0.25) r = -2;
-          if (k > 1.5) r = +1;
-          if (k > 2) r = +2;
-
-          $map.setZoom(15 + r);
-        }
-      })
-      .linkWidth(2)
-      .linkCurvature("curvature")
-      .linkColor(link => link.color)
-      .linkDirectionalParticles(2)
-      .linkDirectionalParticleWidth(3)
-      .linkLabel(link =>
-        link.target.neighbor
-          ? `latency: ${link.target.stats.latency.avg}`
-          : `metric: ${link.target.metric}`
-      )
-      .linkDirectionalParticleColor(() => "#fff")
       .d3Force("charge", d3.forceManyBody().strength(-3000))
-      .nodeCanvasObject(({ x, y, label, img, id }, ctx, globalScale) => {
-        const size = 36;
-        const fontSize = 16 / globalScale;
-        ctx.font = `${id === $selected ? "bold" : ""} ${fontSize *
-          4}px Sans-Serif`;
-
-        if (id === $selected && !$zooming) {
-          $zooming = true;
-          $graph.centerAt(x, y, 300);
-          $graph.zoom(1.2, 600);
-        }
-
-        const text = label || id.substr(-4);
-        const textWidth = ctx.measureText(text).width;
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.scale(0.25, 0.25);
-        ctx.strokeStyle = "white";
-        ctx.lineWidth = 16;
-        ctx.strokeText(text, x * 4, (y + 26) * 4);
-        ctx.miterLimit = 2;
-        ctx.fillStyle = "black";
-        ctx.fillText(text, x * 4, (y + 26) * 4);
-        ctx.fillStyle = "#51AFEF";
-        ctx.scale(4, 4);
-        // ctx.beginPath();
-        // ctx.arc(x, y, 5, 0, 2 * Math.PI, false);
-        // ctx.fill();
-        ctx.drawImage(img, x - size / 2, y - size / 2, 26, 36);
-      });
+      .dagLevelDistance(100)
+      .dagMode("radialOut")
+      .linkColor(link => link.color)
+      .linkCurvature("curvature")
+      .linkDirectionalParticleColor(() => "#fff")
+      .linkDirectionalParticleWidth(3)
+      .linkDirectionalParticles(2)
+      .linkLabel(linkLabel)
+      .linkWidth(2)
+      .nodeAutoColorBy("module")
+      .nodeCanvasObject(nodeCanvasObject)
+      .nodeId("id")
+      .nodeLabel(nodeLabel)
+      .nodeRelSize(NODE_REL_SIZE)
+      .nodeVal(node => 100 / (node.level + 1))
+      .onNodeClick(onNodeClick)
+      .onNodeDragEnd(onNodeDragEnd)
+      .onNodeHover((node, prevNode) => onNodeHover(node, el))
+      .onZoom(onZoom);
 
     const graphData = { nodes: $nodes, links: $links };
     $graph = config(el).graphData(graphData);
@@ -154,7 +56,7 @@
     let px = 0;
     let py = 0;
 
-    const move = () => {
+    setInterval(() => {
       let { x, y } = $graph.centerAt();
 
       let dx = x - px;
@@ -163,18 +65,15 @@
       if ($map && $map.getProjection()) {
         let { x: mx, y: my } = latLng2Point($map.getCenter(), $map);
         if (dx || dy) {
-          let point = { x: mx + dx*zoom, y: my + dy*zoom };
+          let point = { x: mx + dx * $zoom, y: my + dy * $zoom };
           let latLng = point2LatLng(point, $map);
           $map.setCenter(latLng);
         }
       }
 
-      setTimeout(move, 1);
       px = x;
       py = y;
-    };
-
-    move();
+    }, 10);
   });
 
   const resize = () => {
@@ -200,23 +99,6 @@
 
 <svelte:window on:resize={resize} />
 
-<svelte:head>
-  <script src="//unpkg.com/three">
-
-  </script>
-  <script src="//unpkg.com/three-spritetext">
-
-  </script>
-  <script src="//unpkg.com/force-graph">
-
-  </script>
-  <script src="//unpkg.com/d3-quadtree@1.0.6/dist/d3-quadtree.min.js">
-
-  </script>
-  <script src="//unpkg.com/d3-force">
-
-  </script>
-</svelte:head>
 <div class="relative rounded shadow-lg px-4 py-4 m-4">
   <img
     src="screen-full.svg"
@@ -227,3 +109,5 @@
 
   <div id="graph" bind:this={el} />
 </div>
+
+<GraphUtils bind:this={graphUtils} />

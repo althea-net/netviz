@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import styles from "../mapStyles";
+  import { styles } from "../utils/map";
   import { map } from "../store";
 
   onMount(async () => {

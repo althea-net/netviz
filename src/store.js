@@ -6,3 +6,4 @@ export const graph = writable();
 export const map = writable();
 export const selected = writable();
 export const zooming = writable(false);
+export const zoom = writable();

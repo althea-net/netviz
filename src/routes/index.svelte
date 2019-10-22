@@ -23,7 +23,7 @@
   import List from "../components/list.svelte";
   import Export from "../components/export.svelte";
   import Import from "../components/import.svelte";
-  import { links, nodes } from "../store";
+  import { links, map, nodes } from "../store";
 
   export let neighbors;
   export let routes;
@@ -42,24 +42,34 @@
     ).appendChild(script_tag);
     window.initMap = () => {
       ready = true;
-      console.log("ready");
+      let labelled;
+
+      if (!labelled) {
+        labelled = $nodes.map(n => {
+          try {
+            let { id, latlng, label } = JSON.parse(window.localStorage.getItem(n.id));
+            let { x: fx, y: fy } = latLng2Point(latlng, $map);
+
+            return {
+              label,
+              fx,
+              fy,
+              ...n
+            };
+          } catch (e) {
+            window.localStorage.removeItem(n.id);
+            return n;
+          } 
+        });
+
+        $nodes = labelled;
+      }
     };
   }
 
   const d = data(ip, neighbors, routes);
   $links = d.links;
   $nodes = d.nodes;
-
-  let labelled;
-
-  if (!labelled && typeof window !== "undefined") {
-    labelled = $nodes.map(n => ({
-      label: window.localStorage.getItem(n.id),
-      ...n
-    }));
-
-    $nodes = labelled;
-  }
 </script>
 
 <div class="flex flex-wrap w-100">
