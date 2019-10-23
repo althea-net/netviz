@@ -1,5 +1,6 @@
 <script>
   import { graph, map, selected, zoom, zooming } from "../store";
+  import { point2LatLng, latLng2Point } from "./map";
 
   export const utils = {
     linkLabel(link) {
@@ -62,11 +63,15 @@
       if (node.el) node.el.focus();
     },
     onNodeDragEnd(node) {
-      node.fx = node.x;
-      node.fy = node.y;
+      let { id, label, x, y, latlng } = node;
+      node.fx = x;
+      node.fy = y;
 
       if ($map) {
-        node.latlng = point2LatLng(point, $map);
+        latlng = point2LatLng({ x, y }, $map);
+        node.latlng = latlng;
+        let point = latLng2Point(latlng, $map);
+        window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
       }
     },
     onNodeHover(node, el) {

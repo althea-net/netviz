@@ -28,6 +28,7 @@
   export let neighbors;
   export let routes;
   export let ip;
+
   let ready = false;
 
   if (typeof window !== "undefined") {
@@ -42,28 +43,6 @@
     ).appendChild(script_tag);
     window.initMap = () => {
       ready = true;
-      let labelled;
-
-      if (!labelled) {
-        labelled = $nodes.map(n => {
-          try {
-            let { id, latlng, label } = JSON.parse(window.localStorage.getItem(n.id));
-            let { x: fx, y: fy } = latLng2Point(latlng, $map);
-
-            return {
-              label,
-              fx,
-              fy,
-              ...n
-            };
-          } catch (e) {
-            window.localStorage.removeItem(n.id);
-            return n;
-          } 
-        });
-
-        $nodes = labelled;
-      }
     };
   }
 

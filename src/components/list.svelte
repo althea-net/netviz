@@ -1,7 +1,11 @@
 <script>
   import { links, nodes, selected, zooming } from "../store";
 
-  const persist = ({ id, label, latlng }) => window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
+  const persist = ({ id, label, latlng }) => {
+    console.log(label);
+    if (latlng) console.log(latlng.lat());
+    window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
+  } 
   const select = ({ id }) => {
     $selected = id;
     $zooming = false;
@@ -38,7 +42,7 @@
         id={n.id}
         bind:value={n.label}
         bind:this={n.el}
-        on:change={e => persist(n)} />
+        on:keyup={e => persist(n)} />
     </div>
   {/each}
 </div>

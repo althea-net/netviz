@@ -1,7 +1,8 @@
 <script>
   import { onMount } from "svelte";
   import { styles } from "../utils/map";
-  import { map } from "../store";
+  import { map, nodes } from "../store";
+  import { latLng2Point, point2LatLng } from "../utils/map";
 
   onMount(async () => {
     const mapEl = document.getElementById("map");
@@ -20,8 +21,29 @@
       styles,
       disableDefaultUI: true
     });
-  });
 
+    google.maps.event.addListenerOnce($map, "idle", function() {
+      $nodes = $nodes.map(n => {
+          let saved = window.localStorage.getItem(n.id)
+          if (saved) {
+            let { id, latlng, label } = JSON.parse(saved);
+
+            let fx, fy;
+            if (latlng) {
+              let point = latLng2Point(new google.maps.LatLng(latlng.lat, latlng.lng), $map);
+              console.log(label, latlng, point);
+              ({ x: fx, y: fy } = point);
+            }
+
+            n.label = label;
+            n.fx = fx;
+            n.fy = fy;
+          }
+
+          return n;
+      });
+    });
+  });
 </script>
 
 <style>
