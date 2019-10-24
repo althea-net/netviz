@@ -29,9 +29,10 @@
             let { id, latlng, label } = JSON.parse(saved);
 
             let fx, fy;
+
             if (latlng) {
-              let point = latLng2Point(new google.maps.LatLng(latlng.lat, latlng.lng), $map);
-              console.log(label, latlng, point);
+              n.latlng = new google.maps.LatLng(latlng.lat, latlng.lng);
+              let point = latLng2Point(n.latlng, $map);
               ({ x: fx, y: fy } = point);
             }
 

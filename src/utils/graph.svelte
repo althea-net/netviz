@@ -2,16 +2,35 @@
   import { graph, map, selected, zoom, zooming } from "../store";
   import { point2LatLng, latLng2Point } from "./map";
 
+  const savePosition = node => {
+      let { id, label, x, y, latlng } = node;
+      node.fx = x;
+      node.fy = y;
+
+      if ($map) {
+        latlng = point2LatLng({ x, y }, $map);
+        node.latlng = latlng;
+        let point = latLng2Point(latlng, $map);
+        window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
+      }
+  }
+
   export const utils = {
     linkLabel(link) {
       link.target.neighbor
         ? `latency: ${link.target.stats.latency.avg}`
         : `metric: ${link.target.metric}`;
     },
-    nodeCanvasObject({ x, y, label, img, id }, ctx, globalScale) {
+    nodeCanvasObject({ x, y, label, img, id, latlng }, ctx, globalScale) {
       const size = 36;
       const fontSize = 16 / globalScale;
-      const text = label || id.substr(-4);
+
+      let text = label || id.substr(-4);
+      /*
+      if (x && y) text += ` ${x.toFixed(2)} ${y.toFixed(2)}`
+      if (latlng) text += ` ${latlng.lat().toFixed(4)} ${latlng.lng().toFixed(4)}`;
+      */
+
       const textWidth = ctx.measureText(text).width;
 
       ctx.scale(0.25, 0.25);
@@ -57,23 +76,13 @@
             fee: ${node.fee}`
           : "");
     },
-    onNodeClick(node) {
+    onNodeClick({ x, y, el, id }) {
       $graph.centerAt(node.x, node.y, 300);
       $selected = node.id;
       if (node.el) node.el.focus();
+      savePosition(node);
     },
-    onNodeDragEnd(node) {
-      let { id, label, x, y, latlng } = node;
-      node.fx = x;
-      node.fy = y;
-
-      if ($map) {
-        latlng = point2LatLng({ x, y }, $map);
-        node.latlng = latlng;
-        let point = latLng2Point(latlng, $map);
-        window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
-      }
-    },
+    onNodeDragEnd: savePosition,
     onNodeHover(node, el) {
       el.style.cursor = "pointer";
       if (!node) el.style.cursor = "auto";
