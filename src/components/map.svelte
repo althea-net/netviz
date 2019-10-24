@@ -24,6 +24,7 @@
 
     google.maps.event.addListenerOnce($map, "idle", function() {
       $nodes = $nodes.map(n => {
+        try {
           let saved = window.localStorage.getItem(n.id)
           if (saved) {
             let { id, latlng, label } = JSON.parse(saved);
@@ -42,6 +43,9 @@
           }
 
           return n;
+        } catch (e) {
+          window.localStorage.removeItem(n.id);
+        } 
       });
     });
   });
