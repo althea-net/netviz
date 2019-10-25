@@ -1,36 +1,46 @@
 <script>
+  import { onMount, tick } from "svelte";
   import { links, map, nodes } from "../store";
 
   let json = "";
   let show = false;
+  let ref;
+
+  const toggle = () => {
+    show = !show;
+    if (show) tick().then(() => ref.focus());
+
+  };
 
   const doImport = () => {
     let saved = JSON.parse(json);
-      $nodes = $nodes.map(n => {
-        try {
-          if (saved[n.id]) {
-            let { label, lat, lng } = saved[n.id];
+    $nodes = $nodes.map(n => {
+      try {
+        if (saved[n.id]) {
+          let { label, lat, lng } = saved[n.id];
 
-            if (label) {
-              n.label = label;
-            }
-
-            if (lat) {
-              let fx, fy;
-              n.latlng = new google.maps.LatLng(lat, lng);
-              let point = latLng2Point(n.latlng, $map);
-              ({ x: fx, y: fy } = point);
-
-              n.fx = fx;
-              n.fy = fy;
-            }
+          if (label) {
+            n.label = label;
           }
 
-          return n;
-        } catch (e) {
-          window.localStorage.removeItem(n.id);
+          if (lat) {
+            let fx, fy;
+            n.latlng = new google.maps.LatLng(lat, lng);
+            let point = latLng2Point(n.latlng, $map);
+            ({ x: fx, y: fy } = point);
+
+            n.fx = fx;
+            n.fy = fy;
+          }
         }
-      });
+
+        return n;
+      } catch (e) {
+        window.localStorage.removeItem(n.id);
+      }
+    });
+
+    show = false;
   };
 </script>
 
@@ -44,9 +54,9 @@
   }
 </style>
 
-<button on:click={() => (show = !show)}>Import</button>
+<button on:click={toggle}>Import</button>
 
 {#if show}
-  <textarea bind:value={json} />
+  <textarea bind:value={json} bind:this={ref} />
   <button on:click={doImport}>Go</button>
 {/if}
