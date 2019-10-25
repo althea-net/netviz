@@ -3,8 +3,15 @@
 
   const o = {};
   const doExport = () => {
-    $nodes.map(({ id, label }) => label && (o[id] = label));
-    console.log(o);
+    $nodes.map(({ id, label, latlng }) => {
+      let lat, lng;
+      if (latlng) {
+        lat = latlng.lat();
+        lng = latlng.lng();
+      } 
+
+      return (label || lat) && (o[id] = { label, lat, lng });
+    });
     const filename = "nodes.json";
     let blob = new Blob([JSON.stringify(o)], { type: "text/json;charset=utf-8;" });
     if (navigator.msSaveBlob) {
