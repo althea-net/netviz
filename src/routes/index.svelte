@@ -21,6 +21,7 @@
   import Graph from "../components/graph.svelte";
   import Map from "../components/map.svelte";
   import List from "../components/list.svelte";
+  import Clear from "../components/clear.svelte";
   import Export from "../components/export.svelte";
   import Import from "../components/import.svelte";
   import { links, map, nodes } from "../store";
@@ -61,6 +62,7 @@
   <div class="col">
     <Export />
     <Import />
+    <Clear />
     <List />
   </div>
 </div>
