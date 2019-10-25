@@ -27,7 +27,6 @@
 
     const NODE_REL_SIZE = 4;
     const config = ForceGraph()
-      .height(800)
       .backgroundColor(() => "rgba(0,0,0,0)")
       .d3Force("charge", d3.forceManyBody().strength(-3000))
       .dagLevelDistance(100)
@@ -53,6 +52,8 @@
     const graphData = { nodes: $nodes, links: $links };
     $graph = config(el).graphData(graphData);
     $graph.width(el.offsetWidth);
+    $graph.height(800)
+    $graph.zoom(1);
 
     let px = 0;
     let py = 0;
@@ -88,12 +89,16 @@
 </script>
 
 <style>
+  #graph {
+    z-index: 1;
+  } 
+
   .full-screen {
     position: absolute;
     width: 20px;
     top: 40px;
     right: 40px;
-    z-index: 1;
+    z-index: 2;
     cursor: pointer;
   }
 </style>

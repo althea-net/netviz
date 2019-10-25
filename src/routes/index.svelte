@@ -1,22 +1,5 @@
-<script context="module">
-  export async function preload(page, session) {
-    //let res = await this.fetch("http://192.168.10.1:4877/neighbors");
-    let res = await this.fetch("neighbors.json");
-    const neighbors = await res.json();
-
-    // res = await this.fetch("http://192.168.10.1:4877/routes");
-    res = await this.fetch("routes.json");
-    const routes = await res.json();
-
-    res = await this.fetch("http://192.168.10.1:4877/mesh_ip");
-    const ip = (await res.json()).mesh_ip;
-
-    return { neighbors, routes, ip };
-  }
-</script>
-
 <script>
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
   import data from "../data";
   import Graph from "../components/graph.svelte";
   import Map from "../components/map.svelte";
@@ -24,13 +7,10 @@
   import Clear from "../components/clear.svelte";
   import Export from "../components/export.svelte";
   import Import from "../components/import.svelte";
-  import { links, map, nodes } from "../store";
+  import { graph, links, map, nodes } from "../store";
 
-  export let neighbors;
-  export let routes;
-  export let ip;
-
-  let ready = false;
+  let mapReady = false;
+  let graphReady = false;
 
   if (typeof window !== "undefined") {
     let script_tag = document.createElement("script");
@@ -43,21 +23,54 @@
       document.getElementsByTagName("head")[0] || document.documentElement
     ).appendChild(script_tag);
     window.initMap = () => {
-      ready = true;
+      mapReady = true;
     };
   }
 
-  const d = data(ip, neighbors, routes);
-  $links = d.links;
-  $nodes = d.nodes;
+  const getData = async () => {
+    if (typeof window !== "undefined") {
+      let res = await fetch("http://192.168.10.1:4877/neighbors");
+      // let res = await fetch("neighbors.json");
+      const neighbors = await res.json();
+
+      res = await fetch("http://192.168.10.1:4877/routes");
+      // res = await fetch("routes.json");
+      const routes = await res.json();
+
+      res = await fetch("http://192.168.10.1:4877/mesh_ip");
+      const ip = (await res.json()).mesh_ip;
+
+      const d = data(ip, neighbors, routes);
+
+      if ($nodes) {
+        $nodes = d.nodes.map(n => {
+          let prev = $nodes.find(d => d.id === n.id);
+          Object.keys(n).map(k => !(['label', 'latlng'].includes(k)) && (prev[k] = n[k]))
+          return prev
+        });
+      } else {
+        $nodes = d.nodes;
+        $links = d.links;
+        graphReady = true;
+        tick().then(() => setTimeout(() => $graph.zoom(1), 50));
+      }
+    }
+  };
+
+  onMount(() => {
+    getData();
+    setInterval(getData, 5000);
+  });
 </script>
 
 <div class="flex flex-wrap w-100">
   <div class="col relative">
-    {#if ready}
-      <Map />
+    {#if graphReady}
+      <Graph />
+      {#if mapReady}
+        <Map />
+      {/if}
     {/if}
-    <Graph />
   </div>
   <div class="col">
     <Export />

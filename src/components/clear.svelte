@@ -8,6 +8,8 @@
     $nodes = $nodes.map(n => {
       n.label = "";
       n.latlng = undefined;
+      n.fx = undefined;
+      n.fy = undefined;
       window.localStorage.removeItem(n.id);
       return n;
     });
