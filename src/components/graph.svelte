@@ -17,20 +17,12 @@
       onZoom
     } = graphUtils.utils;
 
-    const images = [1, 2, 3, 4].map(i => {
-      const img = new Image();
-      img.src = `house${i}.svg`;
-      return img;
-    });
-
-    $nodes.map(n => (n.img = images[2]));
-
     const NODE_REL_SIZE = 4;
     const config = ForceGraph()
       .backgroundColor(() => "rgba(0,0,0,0)")
       .d3Force("charge", d3.forceManyBody().strength(-3000))
       .dagLevelDistance(100)
-      .dagMode("radialOut")
+      // .dagMode("radialOut")
       .linkColor(link => link.color)
       .linkCurvature("curvature")
       .linkDirectionalParticleColor(() => "#fff")

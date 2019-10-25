@@ -26,8 +26,8 @@
       const fontSize = 16 / globalScale;
 
       let text = label || id.substr(-4);
+      // if (fx && fy) text += ` ${fx.toFixed(2)} ${fy.toFixed(2)}`
       /*
-      if (x && y) text += ` ${x.toFixed(2)} ${y.toFixed(2)}`
       if (latlng) text += ` ${latlng.lat().toFixed(4)} ${latlng.lng().toFixed(4)}`;
       */
 
@@ -47,7 +47,8 @@
       ctx.fillStyle = "#51AFEF";
       ctx.scale(4, 4);
 
-      ctx.drawImage(img, x - size / 2, y - size / 2, 26, 36);
+      if (img)
+        ctx.drawImage(img, x - size / 2, y - size / 2, 26, 36);
 
       if (id === $selected && !$zooming) {
         $zooming = true;

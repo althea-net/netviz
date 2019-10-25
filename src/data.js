@@ -1,6 +1,5 @@
 export default (ip, neighbors, routes) => {
   const ids = [];
-
   let nodes = [
     ...neighbors.map(n => {
       if (ids.includes(n.ip)) return undefined;

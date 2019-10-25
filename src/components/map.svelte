@@ -35,11 +35,11 @@
               n.latlng = new google.maps.LatLng(latlng.lat, latlng.lng);
               let point = latLng2Point(n.latlng, $map);
               ({ x: fx, y: fy } = point);
+              n.fx = fx;
+              n.fy = fy;
             }
 
             n.label = label;
-            n.fx = fx;
-            n.fy = fy;
           }
 
           return n;
