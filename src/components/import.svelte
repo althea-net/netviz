@@ -1,6 +1,7 @@
 <script>
   import { onMount, tick } from "svelte";
   import { links, map, nodes } from "../store";
+  import { latLng2Point, point2LatLng } from "../utils/map";
 
   let json = "";
   let show = false;

@@ -11,6 +11,7 @@
 
   let mapReady = false;
   let graphReady = false;
+  let invisible = true;
 
   if (typeof window !== "undefined") {
     let script_tag = document.createElement("script");
@@ -45,7 +46,7 @@
       if ($nodes) {
         $nodes = d.nodes.map(n => {
           let prev = $nodes.find(d => d.id === n.id);
-          Object.keys(n).map(k => !(['label', 'latlng'].includes(k)) && (prev[k] = n[k]))
+          Object.keys(n).map(k => !(['label', 'latlng', 'fx', 'fy'].includes(k)) && (prev[k] = n[k]))
           return prev
         });
       } else {

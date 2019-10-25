@@ -88,7 +88,6 @@
       if (!node) el.style.cursor = "auto";
     },
     onZoom({ k }) {
-      console.log(k);
       $zoom = k;
       if ($map && $map.setZoom) {
         let z = $map.getZoom();

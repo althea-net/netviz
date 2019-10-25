@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { styles } from "../utils/map";
-  import { map, nodes } from "../store";
+  import { map, nodes, showGraph } from "../store";
   import { latLng2Point, point2LatLng } from "../utils/map";
 
   onMount(async () => {
@@ -47,6 +47,8 @@
           window.localStorage.removeItem(n.id);
         } 
       });
+
+      setTimeout(() => $showGraph = true, 150);
     });
   });
 </script>

@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { links, nodes, graph, map, zoom } from "../store";
+  import { links, nodes, graph, showGraph, map, zoom } from "../store";
   import { latLng2Point, point2LatLng } from "../utils/map";
   import GraphUtils from "../utils/graph.svelte";
 
@@ -113,7 +113,7 @@
     alt="Zoom Out"
     title="Zoom Out" />
 
-  <div id="graph" bind:this={el} />
+  <div id="graph" bind:this={el} class:invisible={!$showGraph} />
 </div>
 
 <GraphUtils bind:this={graphUtils} />
