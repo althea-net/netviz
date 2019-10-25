@@ -76,7 +76,7 @@
             fee: ${node.fee}`
           : "");
     },
-    onNodeClick({ x, y, el, id }) {
+    onNodeClick(node) {
       $graph.centerAt(node.x, node.y, 300);
       $selected = node.id;
       if (node.el) node.el.focus();
