@@ -38,7 +38,7 @@ export default (ip, neighbors, routes) => {
     let source = parents[Math.floor(parents.length * Math.random())];
     let value = Math.ceil(Math.random() * 4);
     if (!source) return undefined;
-    let curvature = (Math.random() / 2) * (1 - Math.random());
+    let curvature = (1 + Math.random()) * 0.1;
     let color = "#F5EFD3";
     return { target: n.id, source: source.id, value, curvature, color };
   });
