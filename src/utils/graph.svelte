@@ -17,7 +17,7 @@
 
   export const utils = {
     linkLabel(link) {
-      link.target.neighbor
+      return link.target.neighbor
         ? `latency: ${link.target.stats.latency.avg}`
         : `metric: ${link.target.metric}`;
     },
@@ -56,7 +56,7 @@
       }
     },
     nodeLabel(node) {
-      `${node.id}<br>` +
+      return `${node.id}<br>` +
         (node.neighbor
           ? `
           route_metric: ${node.route_metric}<br>
