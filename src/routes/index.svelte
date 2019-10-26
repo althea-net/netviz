@@ -17,10 +17,11 @@
   const toggleDevMode = () => {
     devmode = !devmode;
     window.localStorage.setItem("devmode", devmode)
+    getData();
   } 
 
   if (typeof window !== "undefined") {
-    devmode = window.localStorage.getItem("devmode");
+    devmode = window.localStorage.getItem("devmode") === "true";
     images = [1, 2, 3, 4].map(i => {
       const img = new Image();
       img.src = `house${i}.svg`;
