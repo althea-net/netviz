@@ -18,6 +18,7 @@
     } = graphUtils.utils;
 
     const NODE_REL_SIZE = 4;
+
     const config = ForceGraph()
       .backgroundColor(() => "rgba(0,0,0,0)")
       .d3Force("charge", d3.forceManyBody().strength(-3000))
