@@ -11,6 +11,9 @@
         latlng = point2LatLng({ x, y }, $map);
         node.latlng = latlng;
         let point = latLng2Point(latlng, $map);
+        console.log("point", point);
+        console.log("center", JSON.stringify($map.getCenter()));
+        console.log("center", latLng2Point($map.getCenter(), $map));
         window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
       }
   }
@@ -26,11 +29,6 @@
       const fontSize = 16 / globalScale;
 
       let text = label || id.substr(-4);
-      // if (fx && fy) text += ` ${fx.toFixed(2)} ${fy.toFixed(2)}`
-      /*
-      if (latlng) text += ` ${latlng.lat().toFixed(4)} ${latlng.lng().toFixed(4)}`;
-      */
-
       const textWidth = ctx.measureText(text).width;
 
       ctx.scale(0.25, 0.25);

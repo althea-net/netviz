@@ -2,22 +2,22 @@ export default (ip, neighbors, routes) => {
   const ids = [];
   let nodes = [
     ...neighbors.map(n => {
-      if (ids.includes(n.ip)) return undefined;
-      ids.push(n.ip);
+      let id = n.ip;
+      if (id.startsWith("fd00") || ids.map(id => id.substr(-9)).includes(n.ip.substr(-9))) return undefined;
       let level = 2;
       let group = 1;
-      let id = n.ip;
+      ids.push(id);
 
       return { ...n, id, group, level, neighbor: true };
     }),
     ...routes
       .filter(r => r.installed)
       .map(r => {
-        if (ids.includes(r.neigh_ip)) return undefined;
-        ids.push(r.neigh_ip);
+        let id = r.prefix.substr(0, r.prefix.length - 4);
+        if (id.startsWith("fd00") || ids.map(id => id.substr(-9)).includes(id.substr(-9))) return undefined;
         let level = 3;
         let group = 1;
-        let id = r.neigh_ip;
+        ids.push(id);
 
         return { ...r, id, group, level, route: true };
       })

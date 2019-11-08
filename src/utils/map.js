@@ -90,32 +90,54 @@ export const styles = [
   }
 ];
 
+
 export function latLng2Point(latLng, map) {
-  var topRight = map
-    .getProjection()
-    .fromLatLngToPoint(map.getBounds().getNorthEast());
-  var bottomLeft = map
-    .getProjection()
-    .fromLatLngToPoint(map.getBounds().getSouthWest());
-  var scale = Math.pow(2, map.getZoom());
-  var worldPoint = map.getProjection().fromLatLngToPoint(latLng);
-  return new google.maps.Point(
-    (worldPoint.x - bottomLeft.x) * scale,
-    (worldPoint.y - topRight.y) * scale
-  );
+  let lat = latLng.lat() + (46.103418 - map.getCenter().lat());
+  let lng = latLng.lng() - (-123.201742 - map.getCenter().lng());
+  //console.log("lng", latLng.lng(), map.getCenter().lng(), lng)
+  var latLngBounds = map.getBounds();
+  if (!latLngBounds) return { x: 0, y: 0 };
+  var neBound = latLngBounds.getNorthEast();
+  var swBound = latLngBounds.getSouthWest();
+
+  var tr = map.getProjection().fromLatLngToPoint(neBound);
+  var bl = map.getProjection().fromLatLngToPoint(swBound);
+
+  var point = map.getProjection().fromLatLngToPoint(latLng);
+  var xpoint = map.getProjection().fromLatLngToPoint(new google.maps.LatLng(lat, lng));
+  //console.log(point, xpoint);
+
+  var div = document.getElementById("map")
+  var w = div.offsetWidth;
+  var h = div.offsetHeight;
+
+  var x = ((point.x - bl.x)*w/ (tr.x - bl.x)) - w/2;
+  var y = ((point.y - tr.y)*h/ (bl.y - tr.y)) - h/2;
+
+  var xx = ((xpoint.x - bl.x)*w/ (tr.x - bl.x)) - w/2;
+  var xy = ((xpoint.y - tr.y)*h/ (bl.y - tr.y)) - h/2;
+
+  //console.log(x, y, xx, xy);
+
+  return new google.maps.Point(x, y);
 }
 
 export function point2LatLng(point, map) {
-  var topRight = map
+  var latLngBounds = map.getBounds();
+  var neBound = latLngBounds.getNorthEast();
+  var swBound = latLngBounds.getSouthWest();
+
+  var tr = map.getProjection().fromLatLngToPoint(neBound);
+  var bl = map.getProjection().fromLatLngToPoint(swBound);
+
+  var div = document.getElementById("map")
+  var w = div.offsetWidth;
+  var h = div.offsetHeight;
+
+  var x = ((tr.x - bl.x) * (point.x + w / 2)) / w + bl.x;
+  var y = ((bl.y - tr.y) * (point.y + h / 2)) / h + tr.y;
+
+  return map
     .getProjection()
-    .fromLatLngToPoint(map.getBounds().getNorthEast());
-  var bottomLeft = map
-    .getProjection()
-    .fromLatLngToPoint(map.getBounds().getSouthWest());
-  var scale = Math.pow(2, map.getZoom());
-  var worldPoint = new google.maps.Point(
-    point.x / scale + bottomLeft.x,
-    point.y / scale + topRight.y
-  );
-  return map.getProjection().fromPointToLatLng(worldPoint);
+    .fromPointToLatLng(new google.maps.Point(x, y));
 }

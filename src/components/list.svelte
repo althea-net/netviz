@@ -33,7 +33,7 @@
 </style>
 
 <div class="list">
-  {#each $nodes || [] as n (n.id)}
+  {#each ($nodes || []).sort((a, b) => a.id < b.id ? 1 : -1) as n (n.id)}
     <div class="node" on:click={e => select(n)}>
       <label for={n.id} class:selected={n.id === $selected}>{n.id}</label>
       <input

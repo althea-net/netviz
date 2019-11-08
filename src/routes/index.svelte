@@ -8,17 +8,28 @@
   import Export from "../components/export.svelte";
   import Import from "../components/import.svelte";
   import { graph, showGraph, links, map, nodes } from "../store";
+  import { latLng2Point } from "../utils/map";
 
   let mapReady = false;
   let graphReady = false;
   let devmode = false;
   let images;
 
+  let tr, bl, center;
+
+  setInterval(() => {
+    if ($showGraph) {
+      tr = $map.getBounds().getNorthEast();
+      bl = $map.getBounds().getSouthWest();
+      center = $map.getCenter();
+    }
+  }, 10);
+
   const toggleDevMode = () => {
     devmode = !devmode;
-    window.localStorage.setItem("devmode", devmode)
+    window.localStorage.setItem("devmode", devmode);
     getData();
-  } 
+  };
 
   if (typeof window !== "undefined") {
     devmode = window.localStorage.getItem("devmode") === "true";
@@ -52,7 +63,6 @@
       res = await fetch(
         devmode ? "routes.json" : "http://192.168.10.1:4877/routes"
       );
-      // res = await fetch("routes.json");
       const routes = await res.json();
 
       res = await fetch(
@@ -61,7 +71,6 @@
       const ip = (await res.json()).mesh_ip;
 
       const d = data(ip, neighbors, routes);
-
 
       if ($nodes) {
         let updateLinks = false;
@@ -72,24 +81,27 @@
               updateLinks = true;
               n.img = images[Math.floor(Math.random() * 4)];
               return n;
-            } 
+            }
 
             Object.keys(n).map(
               k =>
-                !["label", "latlng", "fx", "fy", "img"].includes(k) && (prev[k] = n[k])
+                !["label", "latlng", "fx", "fy", "img"].includes(k) &&
+                (prev[k] = n[k])
             );
 
             return prev;
           })
           .filter(n => n);
 
-          if (updateLinks) {
-            $links = d.links;
-            const graphData = { nodes: $nodes, links: $links };
-            $graph.graphData(graphData);
-          } 
+        if (updateLinks) {
+          $links = d.links;
+          const graphData = { nodes: $nodes, links: $links };
+          $graph.graphData(graphData);
+        }
       } else {
-        $nodes = d.nodes.map(n => (n.img = images[Math.floor(Math.random() * 4)]) && n)
+        $nodes = d.nodes.map(
+          n => (n.img = images[Math.floor(Math.random() * 4)]) && n
+        );
         // .map(n => (n.img = images[2]));
         $links = d.links;
         graphReady = true;
@@ -100,7 +112,7 @@
 
   onMount(() => {
     getData();
-    setInterval(getData, 3000);
+    setInterval(getData, 8000);
   });
 </script>
 
@@ -114,14 +126,30 @@
     {/if}
   </div>
   {#if showGraph}
-  <div class="col">
-    <Export />
-    <Import />
-    <Clear />
-    <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
-      {devmode ? "Live Mode" : "Dev Mode"}
-    </button>
-    <List />
-  </div>
+    <div class="col">
+      <Export />
+      <Import />
+      <Clear />
+      <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
+        {devmode ? 'Live Mode' : 'Dev Mode'}
+      </button>
+    {#if devmode}
+      <div class="p-4">
+        <div>tr {tr}</div>
+        <div>bl {bl}</div>
+        <div>center {center}</div>
+        <br />
+        <div>latlng {$nodes && JSON.stringify($nodes[0].latlng)}</div>
+        <div>
+          fx, fy {$nodes && JSON.stringify({ x: $nodes[0].fx, y: $nodes[0].fy })}
+        </div>
+        <div>
+          px, py {$nodes && $map && $nodes[0].latlng && JSON.stringify(latLng2Point($nodes[0].latlng, $map))}
+        </div>
+      </div>
+    {/if}
+
+      <List />
+    </div>
   {/if}
 </div>
