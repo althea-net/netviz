@@ -7,23 +7,13 @@
   import Clear from "../components/clear.svelte";
   import Export from "../components/export.svelte";
   import Import from "../components/import.svelte";
+  import Debugging from "../components/debugging.svelte";
   import { graph, showGraph, links, map, nodes } from "../store";
-  import { latLng2Point } from "../utils/map";
 
   let mapReady = false;
   let graphReady = false;
   let devmode = false;
   let images;
-
-  let tr, bl, center;
-
-  setInterval(() => {
-    if ($showGraph) {
-      tr = $map.getBounds().getNorthEast();
-      bl = $map.getBounds().getSouthWest();
-      center = $map.getCenter();
-    }
-  }, 10);
 
   const toggleDevMode = () => {
     devmode = !devmode;
@@ -133,22 +123,9 @@
       <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
         {devmode ? 'Live Mode' : 'Dev Mode'}
       </button>
-    {#if devmode}
-      <div class="p-4">
-        <div>tr {tr}</div>
-        <div>bl {bl}</div>
-        <div>center {center}</div>
-        <br />
-        <div>latlng {$nodes && JSON.stringify($nodes[0].latlng)}</div>
-        <div>
-          fx, fy {$nodes && JSON.stringify({ x: $nodes[0].fx, y: $nodes[0].fy })}
-        </div>
-        <div>
-          px, py {$nodes && $map && $nodes[0].latlng && JSON.stringify(latLng2Point($nodes[0].latlng, $map))}
-        </div>
-      </div>
-    {/if}
-
+      {#if devmode}
+        <Debugging />
+      {/if}
       <List />
     </div>
   {/if}

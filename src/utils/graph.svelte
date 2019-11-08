@@ -1,5 +1,5 @@
 <script>
-  import { graph, map, selected, zoom, zooming } from "../store";
+  import { graph, map, nodes, selected, zoom, zooming } from "../store";
   import { point2LatLng, latLng2Point } from "./map";
 
   const savePosition = node => {
@@ -11,11 +11,13 @@
         latlng = point2LatLng({ x, y }, $map);
         node.latlng = latlng;
         let point = latLng2Point(latlng, $map);
-        console.log("point", point);
-        console.log("center", JSON.stringify($map.getCenter()));
-        console.log("center", latLng2Point($map.getCenter(), $map));
         window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
+        $nodes.map(n => (n.lastTouched = false))
+        node.lastTouched = true;
+        $nodes = $nodes;
       }
+
+
   }
 
   export const utils = {
