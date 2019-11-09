@@ -124,9 +124,6 @@
       <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
         {devmode ? 'Live Mode' : 'Dev Mode'}
       </button>
-      {#if devmode}
-        <Debugging />
-      {/if}
       <Location />
       <List />
     </div>

@@ -23,7 +23,6 @@
     });
 
     google.maps.event.addListenerOnce($map, "tilesloaded", function() {
-      console.log("tilesloaded");
       $nodes = $nodes.map(n => {
         try {
           let saved = window.localStorage.getItem(n.id)

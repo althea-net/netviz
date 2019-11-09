@@ -87,15 +87,27 @@
       if (!node) el.style.cursor = "auto";
     },
     onZoom({ k }) {
+      console.log(new Date(), "k", k);
+      if (k > 2) return $graph.zoom(2);
+      if (k < 2 && k > 1.75) return $graph.zoom(1.5);
+      if (k < 1.75 && k > 1.5) return $graph.zoom(2);
+      if (k < 1.5 && k > 1.25) return $graph.zoom(1);
+      if (k < 1.25 && k > 1) return $graph.zoom(1.5);
+      if (k < 1 && k > 0.75) return $graph.zoom(0.5);
+      if (k < 0.75 && k > 0.5) return $graph.zoom(1);
+      if (k < 0.5) return $graph.zoom(0.5);
+
       $zoom = k;
       if ($map && $map.setZoom) {
         let z = $map.getZoom();
         let r = 0;
 
-        if (k < 0.5) r = -1;
-        if (k < 0.25) r = -2;
-        if (k > 1.5) r = +1;
-        if (k > 2) r = +2;
+        if (k === 0.25) r = -2;
+        if (k === 0.5) r = -1;
+        if (k === 1) r = 0;
+        if (k === 1.5) r = +1;
+        if (k === 2) r = +2;
+        if (k === 2.5) r = +3;
 
         $map.setZoom(15 + r);
       }
