@@ -2,6 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+input {
+  @apply p-2 border;
+} 
+
   .col {
     @apply w-full;
   }

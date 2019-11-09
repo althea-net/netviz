@@ -24,7 +24,7 @@
   }
 
   input {
-    @apply border p-2 w-full;
+    @apply w-full;
   }
 
   .list {

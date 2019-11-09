@@ -16,8 +16,6 @@
         node.lastTouched = true;
         $nodes = $nodes;
       }
-
-
   }
 
   export const utils = {

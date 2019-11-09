@@ -8,6 +8,7 @@
   import Export from "../components/export.svelte";
   import Import from "../components/import.svelte";
   import Debugging from "../components/debugging.svelte";
+  import Location from "../components/location.svelte";
   import { graph, showGraph, links, map, nodes } from "../store";
 
   let mapReady = false;
@@ -115,7 +116,7 @@
       {/if}
     {/if}
   </div>
-  {#if showGraph}
+  {#if $showGraph}
     <div class="col">
       <Export />
       <Import />
@@ -126,6 +127,7 @@
       {#if devmode}
         <Debugging />
       {/if}
+      <Location />
       <List />
     </div>
   {/if}
