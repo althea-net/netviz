@@ -3,20 +3,50 @@
   import { point2LatLng, latLng2Point } from "./map";
 
   const savePosition = node => {
-      let { id, label, x, y, latlng } = node;
-      node.fx = x;
-      node.fy = y;
+    let { id, label, x, y, latlng } = node;
+    node.fx = x;
+    node.fy = y;
 
-      if ($map) {
-        latlng = point2LatLng({ x, y }, $map);
-        node.latlng = latlng;
-        let point = latLng2Point(latlng, $map);
-        window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
-        $nodes.map(n => (n.lastTouched = false))
-        node.lastTouched = true;
-        $nodes = $nodes;
+    let reference = {
+      lat: 46.103418,
+      lng: -123.201742
+    };
+
+    if ($map) {
+      let referenceLatLng = new google.maps.LatLng(
+        reference.lat,
+        reference.lng
+      );
+      let referencePoint = latLng2Point(referenceLatLng, $map);
+      let z = 1;
+      switch ($map.getZoom()) {
+        case 17:
+          z=4;
+          break;
+        case 16:
+          z=2;
+          break;
+        case 14:
+          z=0.5;
+          break;
+        default:
+        case 15:
+          z=1;
+          break;
       }
-  }
+
+      latlng = point2LatLng(
+        { x: (x*z) + referencePoint.x, y: y*z + referencePoint.y },
+        $map
+      );
+      node.latlng = latlng;
+      let point = latLng2Point(latlng, $map);
+      window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
+      $nodes.map(n => (n.lastTouched = false));
+      node.lastTouched = true;
+      $nodes = $nodes;
+    }
+  };
 
   export const utils = {
     linkLabel(link) {
@@ -45,17 +75,16 @@
       ctx.fillStyle = "#51AFEF";
       ctx.scale(4, 4);
 
-      if (img)
-        ctx.drawImage(img, x - size / 2, y - size / 2, 26, 36);
+      if (img) ctx.drawImage(img, x - size / 2, y - size / 2, 26, 36);
 
       if (id === $selected && !$zooming) {
         $zooming = true;
         $graph.centerAt(x, y, 300);
-        $graph.zoom(1.2, 600);
       }
     },
     nodeLabel(node) {
-      return `${node.id}<br>` +
+      return (
+        `${node.id}<br>` +
         (node.neighbor
           ? `
           route_metric: ${node.route_metric}<br>
@@ -73,7 +102,8 @@
             full_path_rtt: ${node.full_path_rtt}<br>
             price: ${node.price}<br>
             fee: ${node.fee}`
-          : "");
+          : "")
+      );
     },
     onNodeClick(node) {
       $graph.centerAt(node.x, node.y, 300);
@@ -87,12 +117,11 @@
       if (!node) el.style.cursor = "auto";
     },
     onZoom({ k }) {
-      console.log(new Date(), "k", k);
-      if (k > 2) return $graph.zoom(2);
-      if (k < 2 && k > 1.75) return $graph.zoom(1.5);
-      if (k < 1.75 && k > 1.5) return $graph.zoom(2);
-      if (k < 1.5 && k > 1.25) return $graph.zoom(1);
-      if (k < 1.25 && k > 1) return $graph.zoom(1.5);
+      if (k > 4) return $graph.zoom(4);
+      if (k < 4 && k > 3) return $graph.zoom(2);
+      if (k < 3 && k > 2) return $graph.zoom(4);
+      if (k < 2 && k > 1.5) return $graph.zoom(1);
+      if (k < 1.5 && k > 1) return $graph.zoom(2);
       if (k < 1 && k > 0.75) return $graph.zoom(0.5);
       if (k < 0.75 && k > 0.5) return $graph.zoom(1);
       if (k < 0.5) return $graph.zoom(0.5);
@@ -102,14 +131,13 @@
         let z = $map.getZoom();
         let r = 0;
 
-        if (k === 0.25) r = -2;
-        if (k === 0.5) r = -1;
-        if (k === 1) r = 0;
-        if (k === 1.5) r = +1;
-        if (k === 2) r = +2;
-        if (k === 2.5) r = +3;
+        if (k === 0.5) r = -2;
+        if (k === 1) r = -1;
+        if (k === 2) r = 0;
+        if (k === 4) r = +1;
+        if (k > 4) r = +2;
 
-        $map.setZoom(15 + r);
+        $map.setZoom(16 + r);
       }
     }
   };

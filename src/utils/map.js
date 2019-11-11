@@ -94,7 +94,7 @@ export const styles = [
 export function latLng2Point(latLng, map) {
   let lat = latLng.lat() + (46.103418 - map.getCenter().lat());
   let lng = latLng.lng() - (-123.201742 - map.getCenter().lng());
-  //console.log("lng", latLng.lng(), map.getCenter().lng(), lng)
+  
   var latLngBounds = map.getBounds();
   if (!latLngBounds) return { x: 0, y: 0 };
   var neBound = latLngBounds.getNorthEast();
@@ -105,7 +105,6 @@ export function latLng2Point(latLng, map) {
 
   var point = map.getProjection().fromLatLngToPoint(latLng);
   var xpoint = map.getProjection().fromLatLngToPoint(new google.maps.LatLng(lat, lng));
-  //console.log(point, xpoint);
 
   var div = document.getElementById("map")
   var w = div.offsetWidth;
@@ -116,8 +115,6 @@ export function latLng2Point(latLng, map) {
 
   var xx = ((xpoint.x - bl.x)*w/ (tr.x - bl.x)) - w/2;
   var xy = ((xpoint.y - tr.y)*h/ (bl.y - tr.y)) - h/2;
-
-  //console.log(x, y, xx, xy);
 
   return new google.maps.Point(x, y);
 }
@@ -136,6 +133,7 @@ export function point2LatLng(point, map) {
 
   var x = ((tr.x - bl.x) * (point.x + w / 2)) / w + bl.x;
   var y = ((bl.y - tr.y) * (point.y + h / 2)) / h + tr.y;
+
 
   return map
     .getProjection()
