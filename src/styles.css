@@ -2,8 +2,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-input {
+input, button {
   @apply p-2 border;
+} 
+
+button {
+  @apply bg-blue-600 text-white;
 } 
 
   .col {

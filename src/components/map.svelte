@@ -23,6 +23,12 @@
     });
 
     google.maps.event.addListenerOnce($map, "tilesloaded", function() {
+      let center = JSON.parse(window.localStorage.getItem("center"));
+      if (center) {
+        const latlng = new google.maps.LatLng(center.lat, center.lng);
+        $map.setCenter(latlng);
+      }
+
       $nodes = $nodes.map(n => {
         try {
           let saved = window.localStorage.getItem(n.id)
@@ -37,6 +43,8 @@
               ({ x: fx, y: fy } = point);
               n.fx = fx;
               n.fy = fy;
+              n.lat = latlng.lat;
+              n.lng = latlng.lng;
             }
 
             n.label = label;

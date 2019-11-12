@@ -6,37 +6,31 @@
     let { id, label, x, y, latlng } = node;
     node.fx = x;
     node.fy = y;
-
-    let reference = {
-      lat: 46.103418,
-      lng: -123.201742
-    };
+    $selected = id;
 
     if ($map) {
-      let referenceLatLng = new google.maps.LatLng(
-        reference.lat,
-        reference.lng
-      );
+      const center = JSON.parse(window.localStorage.getItem("center"));
+      let referenceLatLng = new google.maps.LatLng(center.lat, center.lng);
       let referencePoint = latLng2Point(referenceLatLng, $map);
       let z = 1;
       switch ($map.getZoom()) {
         case 17:
-          z=4;
+          z = 4;
           break;
         case 16:
-          z=2;
+          z = 2;
           break;
         case 14:
-          z=0.5;
+          z = 0.5;
           break;
         default:
         case 15:
-          z=1;
+          z = 1;
           break;
       }
 
       latlng = point2LatLng(
-        { x: (x*z) + referencePoint.x, y: y*z + referencePoint.y },
+        { x: x * z + referencePoint.x, y: y * z + referencePoint.y },
         $map
       );
       node.latlng = latlng;
@@ -54,7 +48,8 @@
         ? `latency: ${link.target.stats.latency.avg}`
         : `metric: ${link.target.metric}`;
     },
-    nodeCanvasObject({ x, y, label, img, id, latlng }, ctx, globalScale) {
+    nodeCanvasObject(node, ctx, globalScale) {
+      const { x, y, label, img, id, latlng } = node;
       const size = 36;
       const fontSize = 16 / globalScale;
 
@@ -68,18 +63,18 @@
       ctx.textBaseline = "middle";
       ctx.strokeStyle = "white";
       ctx.lineWidth = 16;
-      ctx.strokeText(text, x * 4, (y + 26) * 4);
+      ctx.strokeText(text, x * 4, (y + 40 / $zoom) * 4);
       ctx.miterLimit = 2;
       ctx.fillStyle = "black";
-      ctx.fillText(text, x * 4, (y + 26) * 4);
+      ctx.fillText(text, x * 4, (y + 40 / $zoom) * 4);
       ctx.fillStyle = "#51AFEF";
       ctx.scale(4, 4);
 
-      if (img) ctx.drawImage(img, x - size / 2, y - size / 2, 26, 36);
+      if (img) ctx.drawImage(img, x - (36 / $zoom)/ 2, y - (48 / $zoom)/ 2, 36/$zoom, 48/$zoom);
 
       if (id === $selected && !$zooming) {
         $zooming = true;
-        $graph.centerAt(x, y, 300);
+        // $graph.centerAt(x, y, 300);
       }
     },
     nodeLabel(node) {
