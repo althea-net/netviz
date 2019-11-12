@@ -23,6 +23,9 @@
         case 14:
           z = 0.5;
           break;
+        case 13:
+          z = 0.25;
+          break;
         default:
         case 15:
           z = 1;
@@ -112,6 +115,7 @@
       if (!node) el.style.cursor = "auto";
     },
     onZoom({ k }) {
+      console.log(k);
       if (k > 4) return $graph.zoom(4);
       if (k < 4 && k > 3) return $graph.zoom(2);
       if (k < 3 && k > 2) return $graph.zoom(4);
@@ -119,13 +123,16 @@
       if (k < 1.5 && k > 1) return $graph.zoom(2);
       if (k < 1 && k > 0.75) return $graph.zoom(0.5);
       if (k < 0.75 && k > 0.5) return $graph.zoom(1);
-      if (k < 0.5) return $graph.zoom(0.5);
+      if (k < 0.5 && k > 0.375) return $graph.zoom(0.25);
+      if (k < 0.375 && k > 0.25) return $graph.zoom(0.5);
+      if (k < 0.25) return $graph.zoom(0.25);
 
       $zoom = k;
       if ($map && $map.setZoom) {
         let z = $map.getZoom();
         let r = 0;
 
+        if (k === 0.25) r = -3;
         if (k === 0.5) r = -2;
         if (k === 1) r = -1;
         if (k === 2) r = 0;

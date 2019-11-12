@@ -45,6 +45,9 @@
         case 14:
           z = 0.5;
           break;
+        case 13:
+          z = 0.25;
+          break;
         default:
         case 15:
           z = 1;
