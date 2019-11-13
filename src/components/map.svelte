@@ -64,7 +64,6 @@
 <style>
   #map {
     position: absolute;
-    margin: 30px;
     top: 0;
     z-index: -1;
   }

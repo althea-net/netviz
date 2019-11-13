@@ -43,7 +43,6 @@
     const graphData = { nodes: $nodes, links: $links };
     $graph = config(el).graphData(graphData);
     $graph.width(el.offsetWidth);
-    $graph.height(800)
     $graph.zoom(1);
 
     let px = 0;
@@ -96,7 +95,7 @@
 
 <svelte:window on:resize={resize} />
 
-<div class="relative rounded shadow-lg px-4 py-4 m-4">
+<div>
   <img
     src="screen-full.svg"
     class="full-screen"

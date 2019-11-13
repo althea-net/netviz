@@ -1,16 +1,40 @@
 <script>
+  import { derived } from "svelte/store";
   import { graph, links, map, nodes, selected, zooming } from "../store";
   import { latLng2Point } from "../utils/map";
 
-  const persist = ({ id, label, latlng }) =>
-    window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
+  const persist = n => {
+    let { id, label, lat, lng, latlng } = n;
+    latlng = new google.maps.LatLng(lat, lng);
+    let point = latLng2Point(latlng, $map);
+    const center = JSON.parse(window.localStorage.getItem("center"));
+    let referenceLatLng = new google.maps.LatLng(center.lat, center.lng);
+    let referencePoint = latLng2Point(referenceLatLng, $map);
+    let z = 1;
+    switch ($map.getZoom()) {
+      case 17:
+        z = 4;
+        break;
+      case 16:
+        z = 2;
+        break;
+      case 14:
+        z = 0.5;
+        break;
+      case 13:
+        z = 0.25;
+        break;
+      default:
+      case 15:
+        z = 1;
+        break;
+    }
 
-  const update = n => {
-    let node = $graph.graphData().nodes.find(node => node.id === n.id);
-    node.x = n.fx;
-    node.y = n.fy;
-    node.fx = n.fx;
-    node.fy = n.fy;
+    n.x = (point.x - referencePoint.x) / z;
+    n.y = (point.y - referencePoint.y) / z;
+    n.fx = (point.x - referencePoint.x) / z;
+    n.fy = (point.y - referencePoint.y) / z;
+    window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
   };
 
   const select = n => {
@@ -25,45 +49,22 @@
       );
       const json = await res.json();
       const { lat, lng } = json.results[0].geometry.location;
-      n = $graph.graphData().nodes.find(node => node.id === n.id);
       n.lat = lat;
       n.lng = lng;
-      n.latlng = new google.maps.LatLng(lat, lng);
+      $nodes = $nodes;
       persist(n);
-      let point = latLng2Point(n.latlng, $map);
-      const center = JSON.parse(window.localStorage.getItem("center"));
-      let referenceLatLng = new google.maps.LatLng(center.lat, center.lng);
-      let referencePoint = latLng2Point(referenceLatLng, $map);
-      let z = 1;
-      switch ($map.getZoom()) {
-        case 17:
-          z = 4;
-          break;
-        case 16:
-          z = 2;
-          break;
-        case 14:
-          z = 0.5;
-          break;
-        case 13:
-          z = 0.25;
-          break;
-        default:
-        case 15:
-          z = 1;
-          break;
-      }
-
-      n.x = (point.x - referencePoint.x) / z;
-      n.y = (point.y - referencePoint.y) / z;
-      n.fx = (point.x - referencePoint.x) / z;
-      n.fy = (point.y - referencePoint.y) / z;
     } catch (e) {
       console.log("Problem geocoding address", e);
     }
   };
 
-const init = el => { el.focus(); el.select(); };
+  const init = el => {
+    el.focus();
+    el.select();
+  };
+
+  let sorted;
+  $: sorted = ($nodes || []).sort((a, b) => (a.id < b.id ? 1 : -1));
 </script>
 
 <style>
@@ -89,10 +90,12 @@ const init = el => { el.focus(); el.select(); };
 </style>
 
 <div class="list">
-  {#each ($nodes || []).sort((a, b) => (a.id < b.id ? 1 : -1)) as n (n.id)}
+  {#each sorted as n (n.id)}
     <div class="node" on:click={e => select(n)}>
-      <div class="mb-2">
-        <label for={n.id} class:selected={n.id === $selected}>{n.label || n.id}</label>
+      <div>
+        <label for={n.id} class:selected={n.id === $selected}>
+          {n.label || n.id}
+        </label>
       </div>
 
       {#if n.id === $selected}
@@ -102,7 +105,7 @@ const init = el => { el.focus(); el.select(); };
             id={n.id}
             bind:value={n.label}
             bind:this={n.el}
-            on:keyup={e => persist(n)}
+            on:input={e => persist(n)}
             use:init />
         </div>
 
@@ -116,18 +119,18 @@ const init = el => { el.focus(); el.select(); };
             <label for={`${n.id}_address`}>Address</label>
             <input id={`${n.id}_address`} bind:value={n.address} />
           </div>
-          <button class="mt-auto">Search</button>
+          <button class="mt-auto">Set</button>
         </form>
 
         <div class="flex flex-wrap">
           <div class="mr-2">
             <label>Lat</label>
-            <input bind:value={n.lat} on:keyup={e => persist(n)} />
+            <input bind:value={n.lat} on:input={e => persist(n)} />
           </div>
 
           <div>
             <label>Lng</label>
-            <input bind:value={n.lng} on:keyup={e => persist(n)} />
+            <input bind:value={n.lng} on:input={e => persist(n)} />
           </div>
         </div>
       {/if}

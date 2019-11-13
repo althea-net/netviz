@@ -46,7 +46,6 @@ const init = el => el.focus();
 
 <div class="mb-2">
 <form class="mb-2" on:submit={getAddress}>
-  <label for="address">Address:</label>
   <div>
   <input id="address" bind:value={address} class:error use:init />
   <button>Search</button>

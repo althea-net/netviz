@@ -64,14 +64,12 @@
       const d = data(ip, neighbors, routes);
 
       if ($nodes) {
-        let updateLinks = false;
-        $nodes = d.nodes
+        d.nodes
           .map(n => {
             let prev = $nodes.find(p => p.id === n.id);
             if (!prev) {
-              updateLinks = true;
               n.img = images[Math.floor(Math.random() * 4)];
-              return n;
+              return $nodes.push(n);
             }
 
             Object.keys(n).map(
@@ -81,14 +79,7 @@
             );
 
             return prev;
-          })
-          .filter(n => n);
-
-        if (updateLinks) {
-          $links = d.links;
-          const graphData = { nodes: $nodes, links: $links };
-          $graph.graphData(graphData);
-        }
+          });
       } else {
         $nodes = d.nodes.map(
           n => (n.img = images[Math.floor(Math.random() * 4)]) && n
@@ -107,25 +98,31 @@
   });
 </script>
 
-<div class="flex flex-wrap w-100">
-  <div class="col relative">
-    {#if graphReady}
-      <Graph />
-      {#if mapReady}
-        <Map />
-      {/if}
-    {/if}
-  </div>
-  {#if $showGraph}
-    <div class="col">
-      <Export />
-      <Import />
-      <Clear />
-      <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
-        {devmode ? 'Live Mode' : 'Dev Mode'}
-      </button>
-      <Location />
-      <List />
-    </div>
+<style>
+  .controls {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    background: white;
+  } 
+</style>
+
+{#if graphReady}
+  <Graph />
+  {#if mapReady}
+    <Map />
   {/if}
-</div>
+{/if}
+{#if $showGraph}
+  <div class="controls">
+  <Export />
+  <Import />
+  <Clear />
+  <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
+    {devmode ? 'Live Mode' : 'Dev Mode'}
+  </button>
+  <Location />
+  <List />
+  </div>
+{/if}
+

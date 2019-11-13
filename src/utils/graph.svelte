@@ -37,6 +37,8 @@
         $map
       );
       node.latlng = latlng;
+      node.lat = latlng.lat();
+      node.lng = latlng.lng();
       let point = latLng2Point(latlng, $map);
       window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
       $nodes.map(n => (n.lastTouched = false));
@@ -115,7 +117,6 @@
       if (!node) el.style.cursor = "auto";
     },
     onZoom({ k }) {
-      console.log(k);
       if (k > 4) return $graph.zoom(4);
       if (k < 4 && k > 3) return $graph.zoom(2);
       if (k < 3 && k > 2) return $graph.zoom(4);
