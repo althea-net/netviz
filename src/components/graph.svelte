@@ -17,13 +17,11 @@
       onZoom
     } = graphUtils.utils;
 
-    const NODE_REL_SIZE = 4;
+    const NODE_REL_SIZE = 40;
 
     const config = ForceGraph()
       .backgroundColor(() => "rgba(0,0,0,0)")
       .d3Force("charge", d3.forceManyBody().strength(-3000))
-      .dagLevelDistance(100)
-      // .dagMode("radialOut")
       .linkColor(link => link.color)
       .linkCurvature("curvature")
       .linkDirectionalParticleColor(() => "#fff")
@@ -36,7 +34,7 @@
       .nodeId("id")
       .nodeLabel(nodeLabel)
       .nodeRelSize(NODE_REL_SIZE)
-      .nodeVal(node => 100 / (node.level + 1))
+      .nodeVal(() => 1/$zoom)
       .onNodeClick(onNodeClick)
       .onNodeDragEnd(onNodeDragEnd)
       .onNodeHover((node, prevNode) => onNodeHover(node, el))

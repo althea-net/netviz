@@ -35,11 +35,10 @@ export default (ip, neighbors, routes) => {
   let links = nodes.map(n => {
     let parents = nodes.filter(p => p.level === n.level - 1);
     let source = parents[Math.floor(parents.length * Math.random())];
-    let value = Math.ceil(Math.random() * 4);
     if (!source) return undefined;
     let curvature = (1 + Math.random()) * 0.1;
     let color = "#F5EFD3";
-    return { target: n.id, source: source.id, value, curvature, color };
+    return { target: n.id, source: source.id, curvature, color };
   });
 
   links = links.filter(l => l);
