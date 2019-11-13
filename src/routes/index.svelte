@@ -108,7 +108,17 @@
     left: 30px;
     top: 30px;
     background: white;
+    z-index: 3;
   }
+
+  @media (max-width: 600px) {
+    .menu {
+      top: 0;
+      left: 0;
+      width: 100vw;
+    }
+  }
+
   img {
     width: 30px;
   }
@@ -128,7 +138,7 @@
         <img
           src="menu.svg"
           alt="Menu"
-          class="mb-auto mr-2 mt-1 cursor-pointer"
+          class="mb-auto mr-2 mt-1 cursor-pointer hover:opacity-75"
           on:click={toggleMenu} />
         <Location />
       </div>
@@ -144,7 +154,7 @@
       {/if}
     </div>
     {#if showMenu}
-    <List />
+      <List />
     {/if}
   </div>
 {/if}

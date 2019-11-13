@@ -34,7 +34,7 @@
       .nodeId("id")
       .nodeLabel(nodeLabel)
       .nodeRelSize(NODE_REL_SIZE)
-      .nodeVal(() => 1/$zoom)
+      .nodeVal(() => 1 / $zoom)
       .onNodeClick(onNodeClick)
       .onNodeDragEnd(onNodeDragEnd)
       .onNodeHover((node, prevNode) => onNodeHover(node, el))
@@ -75,13 +75,17 @@
     map.style.height = `${el.offsetHeight}px`;
   };
 
-  const zoomOut = () => $graph.zoom(1, 100);
+  const zoomOut = () => {
+    $graph.zoom(1, 100);
+    let center = window.localStorage.getItem("center");
+    if (center) $graph.centerAt(0, 0);
+  };
 </script>
 
 <style>
   #graph {
     z-index: 1;
-  } 
+  }
 
   .full-screen {
     position: absolute;
@@ -90,6 +94,12 @@
     right: 40px;
     z-index: 2;
     cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+    .full-screen {
+      top: 90px;
+    }
   }
 </style>
 

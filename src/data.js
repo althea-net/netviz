@@ -5,10 +5,9 @@ export default (ip, neighbors, routes) => {
       let id = n.ip;
       if (id.startsWith("fd00") || ids.map(id => id.substr(-9)).includes(n.ip.substr(-9))) return undefined;
       let level = 2;
-      let group = 1;
       ids.push(id);
 
-      return { ...n, id, group, level, neighbor: true };
+      return { ...n, id, level, neighbor: true };
     }),
     ...routes
       .filter(r => r.installed)
@@ -16,10 +15,9 @@ export default (ip, neighbors, routes) => {
         let id = r.prefix.substr(0, r.prefix.length - 4);
         if (id.startsWith("fd00") || ids.map(id => id.substr(-9)).includes(id.substr(-9))) return undefined;
         let level = 3;
-        let group = 1;
         ids.push(id);
 
-        return { ...r, id, group, level, route: true };
+        return { ...r, id, level, route: true };
       })
   ];
 
@@ -33,12 +31,24 @@ export default (ip, neighbors, routes) => {
   nodes = nodes.filter(n => n);
 
   let links = nodes.map(n => {
-    let parents = nodes.filter(p => p.level === n.level - 1);
-    let source = parents[Math.floor(parents.length * Math.random())];
-    if (!source) return undefined;
     let curvature = (1 + Math.random()) * 0.1;
     let color = "#F5EFD3";
-    return { target: n.id, source: source.id, curvature, color };
+    let source;
+
+    if (n.level === 1) {
+      return undefined;
+    } 
+
+    if (n.level === 2) {
+      source = nodes.find(p => p.level === 1).id;
+    } 
+
+    if (n.level === 3) {
+      source = nodes.find(p => p.id.substr(-19) === n.neigh_ip.substr(-19))
+    }
+
+    if (!source) return undefined;
+    return { target: n.id, source: source, curvature, color };
   });
 
   links = links.filter(l => l);
