@@ -9,13 +9,3 @@ input, button {
 button {
   @apply bg-blue-600 text-white;
 } 
-
-  .col {
-    @apply w-full;
-  }
-
-  @screen lg {
-    .col {
-      @apply w-1/2;
-    }
-  }

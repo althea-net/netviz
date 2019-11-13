@@ -64,22 +64,21 @@
       const d = data(ip, neighbors, routes);
 
       if ($nodes) {
-        d.nodes
-          .map(n => {
-            let prev = $nodes.find(p => p.id === n.id);
-            if (!prev) {
-              n.img = images[Math.floor(Math.random() * 4)];
-              return $nodes.push(n);
-            }
+        d.nodes.map(n => {
+          let prev = $nodes.find(p => p.id === n.id);
+          if (!prev) {
+            n.img = images[Math.floor(Math.random() * 4)];
+            return $nodes.push(n);
+          }
 
-            Object.keys(n).map(
-              k =>
-                !["label", "latlng", "fx", "fy", "img"].includes(k) &&
-                (prev[k] = n[k])
-            );
+          Object.keys(n).map(
+            k =>
+              !["label", "latlng", "fx", "fy", "img"].includes(k) &&
+              (prev[k] = n[k])
+          );
 
-            return prev;
-          });
+          return prev;
+        });
       } else {
         $nodes = d.nodes.map(
           n => (n.img = images[Math.floor(Math.random() * 4)]) && n
@@ -96,15 +95,23 @@
     getData();
     setInterval(getData, 8000);
   });
+
+  let showMenu = false;
+  const toggleMenu = () => {
+    showMenu = !showMenu;
+  };
 </script>
 
 <style>
-  .controls {
+  .menu {
     position: absolute;
     left: 30px;
     top: 30px;
     background: white;
-  } 
+  }
+  img {
+    width: 30px;
+  }
 </style>
 
 {#if graphReady}
@@ -113,16 +120,31 @@
     <Map />
   {/if}
 {/if}
+
 {#if $showGraph}
-  <div class="controls">
-  <Export />
-  <Import />
-  <Clear />
-  <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
-    {devmode ? 'Live Mode' : 'Dev Mode'}
-  </button>
-  <Location />
-  <List />
+  <div class="menu">
+    <div class="p-4">
+      <div class="flex">
+        <img
+          src="menu.svg"
+          alt="Menu"
+          class="mb-auto mr-2 mt-1 cursor-pointer"
+          on:click={toggleMenu} />
+        <Location />
+      </div>
+      {#if showMenu}
+        <div class="mt-2">
+          <Export />
+          <Import />
+          <Clear />
+          <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
+            {devmode ? 'Live Mode' : 'Dev Mode'}
+          </button>
+        </div>
+      {/if}
+    </div>
+    {#if showMenu}
+    <List />
+    {/if}
   </div>
 {/if}
-
