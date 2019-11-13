@@ -39,15 +39,21 @@
 </script>
 
 <style>
+  form {
+    @apply flex justify-between w-full;
+  }
+
+  input {
+    @apply w-full mr-2;
+  } 
+
   .error {
     @apply border-red-500 border-4;
   }
 </style>
 
 <form on:submit={getAddress}>
-  <div>
-    <input id="address" bind:value={address} class:error use:init />
-    <button>Search</button>
-  </div>
+  <input id="address" bind:value={address} class:error use:init />
+  <button>Search</button>
 </form>
 

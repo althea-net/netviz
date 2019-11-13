@@ -38,7 +38,9 @@
   };
 
   const select = n => {
-    $selected = n.id;
+    if ($selected === n.id) $selected = undefined;
+    else $selected = n.id;
+    console.log($selected);
     $zooming = false;
   };
 
@@ -69,7 +71,7 @@
 
 <style>
   .node {
-    @apply border p-4 cursor-pointer;
+    @apply border;
   }
 
   .node label {
@@ -87,18 +89,23 @@
   .list {
     @apply max-h-screen overflow-y-scroll;
   }
+
+  .item {
+    @apply cursor-pointer p-4;
+  } 
 </style>
 
 <div class="list">
   {#each sorted as n (n.id)}
-    <div class="node" on:click={e => select(n)}>
-      <div>
-        <label for={n.id} class:selected={n.id === $selected}>
+    <div class="node">
+      <div on:click={e => { e.preventDefault(); select(n); }} class="item hover:bg-gray-200">
+        <label for={n.id} class:selected={n.id === $selected} class="cursor-pointer">
           {n.label || n.id}
         </label>
       </div>
 
       {#if n.id === $selected}
+        <div class="p-4 pt-0">
         <div class="mb-2">
           <label for={n.id}>Name</label>
           <input
@@ -122,16 +129,15 @@
           <button class="mt-auto">Set</button>
         </form>
 
-        <div class="flex flex-wrap">
-          <div class="mr-2">
-            <label>Lat</label>
-            <input bind:value={n.lat} on:input={e => persist(n)} />
-          </div>
+        <div class="mb-2">
+          <label>Lat</label>
+          <input bind:value={n.lat} on:input={e => persist(n)} />
+        </div>
 
-          <div>
-            <label>Lng</label>
-            <input bind:value={n.lng} on:input={e => persist(n)} />
-          </div>
+        <div>
+          <label>Lng</label>
+          <input bind:value={n.lng} on:input={e => persist(n)} />
+        </div>
         </div>
       {/if}
     </div>

@@ -96,7 +96,7 @@
     setInterval(getData, 8000);
   });
 
-  let showMenu = false;
+  let showMenu = true;
   const toggleMenu = () => {
     showMenu = !showMenu;
   };
