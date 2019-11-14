@@ -34,11 +34,12 @@
     script_tag.setAttribute("type", "text/javascript");
     script_tag.setAttribute(
       "src",
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIqlinIzzCoLCwThCqUcsGgheMjbMg6EQ&callback=initMap"
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIqlinIzzCoLCwThCqUcsGgheMjbMg6EQ&libraries=places&callback=initMap"
     );
     (
       document.getElementsByTagName("head")[0] || document.documentElement
     ).appendChild(script_tag);
+
     window.initMap = () => {
       mapReady = true;
     };

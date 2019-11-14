@@ -45,15 +45,23 @@
 
   const getAddress = async n => {
     try {
-      const res = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${n.address}&key=AIzaSyCIqlinIzzCoLCwThCqUcsGgheMjbMg6EQ`
-      );
-      const json = await res.json();
-      const { lat, lng } = json.results[0].geometry.location;
-      n.lat = lat;
-      n.lng = lng;
-      $nodes = $nodes;
-      persist(n);
+      let request = {
+        query: n.address,
+        fields: ["name", "geometry"],
+        locationBias: $map.getCenter()
+      };
+
+      let service = new google.maps.places.PlacesService($map);
+
+      service.findPlaceFromQuery(request, function(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          const loc = results[0].geometry.location;
+          n.lat = loc.lat();
+          n.lng = loc.lng();
+          $nodes = $nodes;
+          persist(n);
+        }
+      });
     } catch (e) {
       console.log("Problem geocoding address", e);
     }
@@ -91,52 +99,60 @@
 
   .item {
     @apply cursor-pointer p-4;
-  } 
+  }
 </style>
 
 <div class="list">
   {#each sorted as n (n.id)}
     <div class="node">
-      <div on:click={e => { e.preventDefault(); select(n); }} class="item hover:bg-gray-200">
-        <label for={n.id} class:selected={n.id === $selected} class="cursor-pointer">
+      <div
+        on:click={e => {
+          e.preventDefault();
+          select(n);
+        }}
+        class="item hover:bg-gray-200">
+        <label
+          for={n.id}
+          class:selected={n.id === $selected}
+          class="cursor-pointer">
           {n.label || n.id}
         </label>
       </div>
 
       {#if n.id === $selected}
         <div class="p-4 pt-0">
-        <div class="mb-2">
-          <label for={n.id}>Name</label>
-          <input
-            id={n.id}
-            bind:value={n.label}
-            bind:this={n.el}
-            on:input={e => persist(n)}
-            use:init />
-        </div>
-
-        <form
-          class="flex mb-2"
-          on:submit={e => {
-            e.preventDefault();
-            getAddress(n);
-          }}>
-          <div class="mr-2">
-            <label for={`${n.id}_address`}>Address</label>
-            <input id={`${n.id}_address`} bind:value={n.address} />
+          <div class="mb-2">
+            <label for={n.id}>Name</label>
+            <input
+              id={n.id}
+              bind:value={n.label}
+              bind:this={n.el}
+              on:input={e => persist(n)}
+              use:init />
           </div>
-          <button class="mt-auto">Set</button>
-        </form>
 
-        <div class="mb-2">
-          <label>Lat</label>
-          <input bind:value={n.lat} on:input={e => persist(n)} />
-        </div>
+          <form
+            class="flex mb-2"
+            on:submit={e => {
+              e.preventDefault();
+              getAddress(n);
+            }}>
+            <div class="mr-2">
+              <label for={`${n.id}_address`}>Address</label>
+              <input id={`${n.id}_address`} bind:value={n.address} />
+            </div>
+            <button class="mt-auto">Set</button>
+          </form>
 
-        <div>
-          <label>Lng</label>
-          <input bind:value={n.lng} on:input={e => persist(n)} />
-        </div>
+          <div class="mb-2">
+            <label>Lat</label>
+            <input bind:value={n.lat} on:input={e => persist(n)} />
+          </div>
+
+          <div>
+            <label>Lng</label>
+            <input bind:value={n.lng} on:input={e => persist(n)} />
+          </div>
         </div>
       {/if}
     </div>
