@@ -48,10 +48,26 @@
   };
 
   export const utils = {
+    linkColor(link) {
+      let metric = link.target.metric || link.target.route_metric;
+      let color = "#F5EFD3";
+      if (metric > 10000) color = "red";
+      return color;
+    },
+    linkDirectionalParticles(link) {
+      return 2;
+    },
     linkLabel(link) {
       return link.target.neighbor
         ? `latency: ${link.target.stats.latency.avg}`
         : `metric: ${link.target.metric}`;
+    },
+    linkWidth(link) {
+      let metric = link.target.metric || link.target.route_metric;
+      if (metric < 100) return 5;
+      if (metric < 500) return 4;
+      if (metric < 1000) return 3;
+      if (metric >= 2000) return 2;
     },
     nodeCanvasObject(node, ctx, globalScale) {
       const { x, y, label, img, id, latlng } = node;
@@ -75,7 +91,14 @@
       ctx.fillStyle = "#51AFEF";
       ctx.scale(4, 4);
 
-      if (img) ctx.drawImage(img, x - (36 / $zoom)/ 2, y - (48 / $zoom)/ 2, 36/$zoom, 48/$zoom);
+      if (img)
+        ctx.drawImage(
+          img,
+          x - 36 / $zoom / 2,
+          y - 48 / $zoom / 2,
+          36 / $zoom,
+          48 / $zoom
+        );
 
       if (id === $selected && !$zooming) {
         $zooming = true;

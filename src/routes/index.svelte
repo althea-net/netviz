@@ -83,7 +83,6 @@
         $nodes = d.nodes.map(
           n => (n.img = images[Math.floor(Math.random() * 4)]) && n
         );
-        // .map(n => (n.img = images[2]));
         $links = d.links;
         graphReady = true;
         tick().then(() => setTimeout(() => $graph.zoom(1), 50));
