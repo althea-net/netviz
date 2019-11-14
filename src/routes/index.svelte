@@ -62,13 +62,17 @@
       const ip = (await res.json()).mesh_ip;
 
       const d = data(ip, neighbors, routes);
+      $links = d.links;
 
       if ($nodes) {
+        let updateNeeded = false;
         d.nodes.map(n => {
           let prev = $nodes.find(p => p.id === n.id);
           if (!prev) {
             n.img = images[Math.floor(Math.random() * 4)];
-            return $nodes.push(n);
+            $nodes.push(n);
+            updateNeeded = true;
+            return;
           }
 
           Object.keys(n).map(
@@ -76,14 +80,27 @@
               !["label", "latlng", "fx", "fy", "img"].includes(k) &&
               (prev[k] = n[k])
           );
-
-          return prev;
         });
+
+        for (let i = $nodes.length - 1; i >= 0; i--) {
+          if (d.nodes.findIndex(n => n.id === $nodes[i].id) < 0) {
+            $nodes.splice(i, 1);
+            updateNeeded = true;
+          }
+        }
+
+        if (updateNeeded) {
+          $links.map(l => {
+            l.source = $nodes.find(n => n.id === l.source.id);
+            l.target = $nodes.find(n => n.id === l.target.id);
+          });
+
+          $graph.graphData({ links: $links, nodes: $nodes });
+        }  
       } else {
         $nodes = d.nodes.map(
           n => (n.img = images[Math.floor(Math.random() * 4)]) && n
         );
-        $links = d.links;
         graphReady = true;
         tick().then(() => setTimeout(() => $graph.zoom(1), 50));
       }

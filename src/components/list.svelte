@@ -40,7 +40,6 @@
   const select = n => {
     if ($selected === n.id) $selected = undefined;
     else $selected = n.id;
-    console.log($selected);
     $zooming = false;
   };
 

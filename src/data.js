@@ -39,7 +39,7 @@ export default (ip, neighbors, routes) => {
     } 
 
     if (n.level === 2) {
-      source = nodes.find(p => p.level === 1).id;
+      source = nodes.find(p => p.level === 1);
     } 
 
     if (n.level === 3) {
@@ -47,7 +47,7 @@ export default (ip, neighbors, routes) => {
     }
 
     if (!source) return undefined;
-    return { target: n.id, source: source, curvature };
+    return { target: n, source, curvature };
   });
 
   links = links.filter(l => l);

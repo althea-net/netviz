@@ -7,6 +7,7 @@
     node.fx = x;
     node.fy = y;
     $selected = id;
+    $graph.centerAt(x, y);
 
     if ($map) {
       const center = JSON.parse(window.localStorage.getItem("center"));
