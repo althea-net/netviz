@@ -27,7 +27,9 @@
       if (center) {
         const latlng = new google.maps.LatLng(center.lat, center.lng);
         $map.setCenter(latlng);
-      }
+      } else {
+        window.localStorage.setItem("center", JSON.stringify($map.getCenter()));
+      } 
 
       $nodes = $nodes.map(n => {
         try {
