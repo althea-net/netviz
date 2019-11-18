@@ -11,10 +11,10 @@
   import Location from "../components/location.svelte";
   import { graph, showGraph, links, map, nodes } from "../store";
 
+  let images;
   let mapReady = false;
   let graphReady = false;
   let devmode = false;
-  let images;
 
   const toggleDevMode = () => {
     devmode = !devmode;
@@ -24,7 +24,7 @@
 
   if (typeof window !== "undefined") {
     devmode = window.localStorage.getItem("devmode") === "true";
-    images = [1, 2, 3, 4].map(i => {
+    images = [1, 2, 3, 4, 5].map(i => {
       const img = new Image();
       img.src = `house${i}.svg`;
       return img;
@@ -46,71 +46,77 @@
   }
 
   const getData = async () => {
-    if (typeof window !== "undefined") {
-      let res = await fetch(
-        devmode ? "neighbors.json" : "http://192.168.10.1:4877/neighbors"
-      );
-      const neighbors = await res.json();
+    let res = await fetch(
+      devmode ? "neighbors.json" : "http://192.168.10.1:4877/neighbors"
+    );
+    const neighbors = await res.json();
 
-      res = await fetch(
-        devmode ? "routes.json" : "http://192.168.10.1:4877/routes"
-      );
-      const routes = await res.json();
+    res = await fetch(
+      devmode ? "routes.json" : "http://192.168.10.1:4877/routes"
+    );
+    const routes = await res.json();
 
-      res = await fetch(
-        devmode ? "ip.json" : "http://192.168.10.1:4877/mesh_ip"
-      );
-      const ip = (await res.json()).mesh_ip;
+    res = await fetch(devmode ? "ip.json" : "http://192.168.10.1:4877/mesh_ip");
+    const ip = (await res.json()).mesh_ip;
 
-      const d = data(ip, neighbors, routes);
-      $links = d.links;
+    const d = data(ip, neighbors, routes);
+    $links = d.links;
 
-      if ($nodes) {
-        let updateNeeded = false;
-        d.nodes.map(n => {
-          let prev = $nodes.find(p => p.id === n.id);
-          if (!prev) {
-            n.img = images[Math.floor(Math.random() * 4)];
-            $nodes.push(n);
-            updateNeeded = true;
-            return;
-          }
+    let updateNeeded = false;
 
-          Object.keys(n).map(
-            k =>
-              !["label", "latlng", "fx", "fy", "img"].includes(k) &&
-              (prev[k] = n[k])
-          );
-        });
+    if (!$nodes) {
+      $nodes = JSON.parse(window.localStorage.getItem("nodes")) || d.nodes;
+      $nodes.map(n => (n.img = images[Math.floor(Math.random() * 4)]));
+      graphReady = true;
+      tick().then(() => setTimeout(() => $graph.zoom(1), 50));
+      updateNeeded = true;
+    }
 
-        for (let i = $nodes.length - 1; i >= 0; i--) {
-          if (d.nodes.findIndex(n => n.id === $nodes[i].id) < 0) {
-            $nodes.splice(i, 1);
-            updateNeeded = true;
-          }
-        }
-
-        if (updateNeeded) {
-          $links.map(l => {
-            l.source = $nodes.find(n => n.id === l.source.id);
-            l.target = $nodes.find(n => n.id === l.target.id);
-          });
-
-          $graph.graphData({ links: $links, nodes: $nodes });
-        }  
-      } else {
-        $nodes = d.nodes.map(
-          n => (n.img = images[Math.floor(Math.random() * 4)]) && n
-        );
-        graphReady = true;
-        tick().then(() => setTimeout(() => $graph.zoom(1), 50));
+    d.nodes.map(n => {
+      let prev = $nodes.find(p => p.id === n.id);
+      if (!prev) {
+        $nodes.push(n);
+        updateNeeded = true;
+        return;
       }
+
+      Object.keys(n).map(
+        k =>
+          !["label", "latlng", "fx", "fy", "img"].includes(k) &&
+          (prev[k] = n[k])
+      );
+    });
+
+    $nodes.map(n => {
+      let curr = d.nodes.find(p => p.id === n.id);
+
+      if (!curr) {
+        n.img = images[4];
+        n.offline = true;
+      } else if (n.offline) {
+        n.offline = false;
+        n.img = images[Math.floor(Math.random() * 4)];
+        updateNeeded = true;
+      }
+    });
+
+    $nodes = $nodes;
+
+    if (updateNeeded) {
+      $links.map(l => {
+        l.source = $nodes.find(n => n.id === l.source.id);
+        l.target = $nodes.find(n => n.id === l.target.id);
+      });
+
+      if ($graph) $graph.graphData({ links: $links, nodes: $nodes });
     }
   };
 
   onMount(() => {
-    getData();
-    setInterval(getData, 8000);
+    if (typeof window !== "undefined") {
+      getData();
+      setInterval(getData, 8000);
+    }
   });
 
   let showMenu = true;

@@ -41,10 +41,11 @@
       node.lat = latlng.lat();
       node.lng = latlng.lng();
       let point = latLng2Point(latlng, $map);
-      window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
       $nodes.map(n => (n.lastTouched = false));
       node.lastTouched = true;
       $nodes = $nodes;
+
+      window.localStorage.setItem("nodes", JSON.stringify($nodes));
     }
   };
 

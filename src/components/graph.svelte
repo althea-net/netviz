@@ -26,7 +26,7 @@
       .backgroundColor(() => "rgba(0,0,0,0)")
       .d3Force("charge", d3.forceManyBody().strength(-3000))
       .linkColor(linkColor)
-      .linkCurvature("curvature")
+      .linkCurvature(0.1)
       .linkDirectionalParticleColor(() => "#fff")
       .linkDirectionalParticleWidth(n => linkWidth(n) + 2)
       .linkDirectionalParticles(linkDirectionalParticles)

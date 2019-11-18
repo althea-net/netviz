@@ -34,7 +34,7 @@
     n.y = (point.y - referencePoint.y) / z;
     n.fx = (point.x - referencePoint.x) / z;
     n.fy = (point.y - referencePoint.y) / z;
-    window.localStorage.setItem(id, JSON.stringify({ id, label, latlng }));
+    window.localStorage.setItem("nodes", JSON.stringify($nodes));
   };
 
   const select = n => {
@@ -100,6 +100,10 @@
   .item {
     @apply cursor-pointer p-4;
   }
+
+  .offline {
+    @apply bg-red-400;
+  } 
 </style>
 
 <div class="list">
@@ -110,7 +114,8 @@
           e.preventDefault();
           select(n);
         }}
-        class="item hover:bg-gray-200">
+         class="item hover:bg-gray-200"
+         class:offline={n.offline}>
         <label
           for={n.id}
           class:selected={n.id === $selected}

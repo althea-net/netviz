@@ -30,24 +30,23 @@ export default (ip, neighbors, routes) => {
 
   nodes = nodes.filter(n => n);
 
-  let links = nodes.map(n => {
-    let curvature = (1 + Math.random()) * 0.1;
+  let links = nodes.map(target => {
     let source;
 
-    if (n.level === 1) {
+    if (target.level === 1) {
       return undefined;
     } 
 
-    if (n.level === 2) {
-      source = nodes.find(p => p.level === 1);
+    if (target.level === 2) {
+      source = nodes.find(n => n.level === 1);
     } 
 
-    if (n.level === 3) {
-      source = nodes.find(p => p.id.substr(-19) === n.neigh_ip.substr(-19))
+    if (target.level === 3) {
+      source = nodes.find(n => n.id.substr(-19) === target.neigh_ip.substr(-19))
     }
 
     if (!source) return undefined;
-    return { target: n, source, curvature };
+    return { target, source };
   });
 
   links = links.filter(l => l);
