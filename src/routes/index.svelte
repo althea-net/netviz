@@ -75,6 +75,7 @@
     d.nodes.map(n => {
       let prev = $nodes.find(p => p.id === n.id);
       if (!prev) {
+        n.img = images[Math.floor(Math.random() * 4)];
         $nodes.push(n);
         updateNeeded = true;
         return;
@@ -107,7 +108,7 @@
         l.source = $nodes.find(n => n.id === l.source.id);
         l.target = $nodes.find(n => n.id === l.target.id);
       });
-
+      
       if ($graph) $graph.graphData({ links: $links, nodes: $nodes });
     }
   };

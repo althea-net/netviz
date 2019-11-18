@@ -74,6 +74,24 @@
 
   let sorted;
   $: sorted = ($nodes || []).sort((a, b) => (a.id < b.id ? 1 : -1));
+
+  const remove = n => {
+    $nodes.splice($nodes.findIndex(p => n.id === p.id), 1);
+
+    $links = $graph.graphData().links;
+
+    let c = $links.filter(l => l.source.id === n.id).length;
+    for (let i = 0; i < c; i++) {
+      let x = $links.findIndex(l => l.source.id === n.id);
+      $links.splice(x, 1);
+    }
+
+    c = $links.filter(l => l.target.id === n.id).length;
+    for (let i = 0; i < c; i++) {
+      let x = $links.findIndex(l => l.target.id === n.id);
+      $links.splice(x, 1);
+    }
+  };
 </script>
 
 <style>
@@ -103,7 +121,7 @@
 
   .offline {
     @apply bg-red-400;
-  } 
+  }
 </style>
 
 <div class="list">
@@ -114,14 +132,23 @@
           e.preventDefault();
           select(n);
         }}
-         class="item hover:bg-gray-200"
-         class:offline={n.offline}>
+        class="flex item hover:bg-gray-200"
+        class:offline={n.offline}>
         <label
           for={n.id}
           class:selected={n.id === $selected}
           class="cursor-pointer">
           {n.label || n.id}
         </label>
+        {#if n.offline}
+          <img
+            src="trash.svg"
+            alt="Trash"
+            width="20"
+            height="20"
+            class="ml-auto"
+            on:click={() => remove(n)} />
+        {/if}
       </div>
 
       {#if n.id === $selected}

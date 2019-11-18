@@ -133,7 +133,7 @@
     onNodeClick(node) {
       $graph.centerAt(node.x, node.y, 300);
       $selected = node.id;
-      if (node.el) node.el.focus();
+      if (node.el && node.el.focus) node.el.focus();
       savePosition(node);
     },
     onNodeDragEnd: savePosition,
