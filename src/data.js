@@ -32,7 +32,6 @@ export default (ip, neighbors, routes) => {
   nodes = nodes.filter(n => n);
 
   let numbers = [... new Set(nodes.map(n => n.metric || n.route_metric).filter(n => n))];
-  console.log(numbers);
   let ratio = Math.max(...numbers) / numbers.length;
   numbers = numbers.map(v => {
     return { metric: v, normalized: Math.round(v / ratio) }

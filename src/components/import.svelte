@@ -10,7 +10,6 @@
   const toggle = () => {
     show = !show;
     if (show) tick().then(() => ref.focus());
-
   };
 
   const doImport = () => {

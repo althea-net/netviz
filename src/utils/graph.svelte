@@ -113,7 +113,7 @@
     linkLabel(link) {
       return link.target.neighbor
         ? `latency: ${link.target.stats.latency.avg}`
-        : `metric: ${link.target.metric}`;
+        : `metric: ${link.target.metric} ${link.target.color}`;
     },
     linkWidth(link) {
       return link.target.normalizedMetric + 2;

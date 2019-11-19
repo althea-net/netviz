@@ -17,9 +17,23 @@
   let graphReady = false;
   let devmode = false;
 
+  let poll;
+  const init =  () => {
+    clearInterval(poll);
+    if (typeof window !== "undefined") {
+      if (devmode) {
+        doImport();
+      } else {
+        getData();
+        poll = setInterval(getData, 8000);
+      }
+    }
+  };
+
   const toggleDevMode = () => {
     devmode = !devmode;
     window.localStorage.setItem("devmode", devmode);
+    init();
   };
 
   if (typeof window !== "undefined") {
@@ -116,6 +130,7 @@
     const json = await res.json();
     let { nodes: savedNodes, links: savedLinks } = json;
 
+    $nodes.map(n => (n.img = images[Math.floor(Math.random() * 4)]));
     if (!$nodes) {
       $nodes = savedNodes;
 
@@ -130,6 +145,7 @@
     $links = savedLinks.map(l => {
       l.source = $nodes.find(n => n.id === l.source.id);
       l.target = $nodes.find(n => n.id === l.target.id);
+      l.color = l.target.color;
       return l;
     });
 
@@ -144,16 +160,7 @@
     graphReady = true;
   };
 
-  onMount(() => {
-    if (typeof window !== "undefined") {
-      if (devmode) {
-        doImport();
-      } else {
-        getData();
-        setInterval(getData, 8000);
-      }
-    }
-  });
+  onMount(init);
 
   let showMenu = true;
   const toggleMenu = () => {
