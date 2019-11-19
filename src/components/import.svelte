@@ -14,31 +14,37 @@
   };
 
   const doImport = () => {
-    let saved = JSON.parse(json);
-    $nodes = $nodes.map(n => {
+    let { nodes: savedNodes, links: savedLinks } = JSON.parse(json);
+
+    $nodes = savedNodes.map(node => {
+      let n = $nodes.find(n => n.id === node.id);
+
       try {
-        if (saved[n.id]) {
-          let { label, lat, lng } = saved[n.id];
+        let { label, lat, lng } = node;
 
-          if (label) {
-            n.label = label;
-          }
+        if (label) {
+          n.label = label;
+        }
 
-          if (lat) {
-            let fx, fy;
-            n.latlng = new google.maps.LatLng(lat, lng);
-            let point = latLng2Point(n.latlng, $map);
-            ({ x: fx, y: fy } = point);
+        if (lat) {
+          let fx, fy;
+          n.latlng = new google.maps.LatLng(lat, lng);
+          let point = latLng2Point(n.latlng, $map);
+          ({ x: fx, y: fy } = point);
 
-            n.fx = fx;
-            n.fy = fy;
-          }
+          n.fx = fx;
+          n.fy = fy;
         }
 
         return n;
       } catch (e) {
         window.localStorage.removeItem(n.id);
       }
+    });
+
+    $links = savedLinks.map(l => {
+      l.source = $nodes.find(n => n.id === l.source.id);
+      l.target = $nodes.find(n => n.id === l.target.id);
     });
 
     show = false;

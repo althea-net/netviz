@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { styles } from "../utils/map";
-  import { map, nodes, showGraph } from "../store";
+  import { graph, map, nodes, showGraph } from "../store";
   import { latLng2Point, point2LatLng } from "../utils/map";
 
   onMount(async () => {
@@ -31,6 +31,7 @@
         window.localStorage.setItem("center", JSON.stringify($map.getCenter()));
       } 
 
+      $graph.zoom(1);
       setTimeout(() => $showGraph = true, 150);
     });
   });

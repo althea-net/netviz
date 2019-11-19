@@ -1,3 +1,4 @@
+import chroma from "chroma-js";
 export default (ip, neighbors, routes) => {
   const ids = [];
   let nodes = [
@@ -30,6 +31,21 @@ export default (ip, neighbors, routes) => {
 
   nodes = nodes.filter(n => n);
 
+  let numbers = [... new Set(nodes.map(n => n.metric || n.route_metric).filter(n => n))];
+  console.log(numbers);
+  let ratio = Math.max(...numbers) / numbers.length;
+  numbers = numbers.map(v => {
+    return { metric: v, normalized: Math.round(v / ratio) }
+  } );
+  nodes.map((n, i) => {
+    let colors = chroma.scale(['#F5EFD3','#D8B272']).mode('lch').colors(numbers.length);
+    let metric = n.metric || n.route_metric;
+    let metricIndex = numbers.findIndex(m => m.metric === metric);
+    if (metricIndex < 0) metricIndex = 0;
+    n.normalizedMetric = numbers[metricIndex].normalized;
+    n.color = colors[metricIndex];
+  }) 
+
   let links = nodes.map(target => {
     let source;
 
@@ -46,7 +62,10 @@ export default (ip, neighbors, routes) => {
     }
 
     if (!source) return undefined;
-    return { target, source };
+
+    let color = target.color;
+
+    return { target, source, color };
   });
 
   links = links.filter(l => l);

@@ -2,6 +2,17 @@
   import { graph, map, nodes, selected, zoom, zooming } from "../store";
   import { point2LatLng, latLng2Point } from "./map";
 
+  const colors = [
+    "#ddc087",
+    "#e0c791",
+    "#e3ce9c",
+    "#e6d5a7",
+    "#eadbb2",
+    "#ede2bd",
+    "#f1e9c8",
+    "#f5efd3"
+  ];
+
   const savePosition = node => {
     let { id, label, x, y, latlng } = node;
     node.fx = x;
@@ -50,11 +61,51 @@
   };
 
   export const utils = {
-    linkColor(link) {
-      let metric = link.target.metric || link.target.route_metric;
-      let color = "#F5EFD3";
-      if (metric > 10000) color = "red";
-      return color;
+    linkCanvasObject(link, ctx) {
+      const MAX_FONT_SIZE = 16;
+      const LABEL_NODE_MARGIN = $graph.nodeRelSize() * 1.5;
+      const start = link.source;
+      const end = link.target;
+      // ignore unbound links
+      if (typeof start !== "object" || typeof end !== "object") return;
+      // calculate label positioning
+      const textPos = Object.assign(
+        ...["x", "y"].map(c => ({
+          [c]: start[c] + (end[c] - start[c]) / 2 // calc middle point
+        }))
+      );
+      const relLink = { x: end.x - start.x, y: end.y - start.y };
+      const maxTextLength =
+        Math.sqrt(Math.pow(relLink.x, 2) + Math.pow(relLink.y, 2)) -
+        LABEL_NODE_MARGIN * 2;
+      let textAngle = Math.atan2(relLink.y, relLink.x);
+      // maintain label vertical orientation for legibility
+      if (textAngle > Math.PI / 2) textAngle = -(Math.PI - textAngle);
+      if (textAngle < -Math.PI / 2) textAngle = -(-Math.PI - textAngle);
+      const label = `${end.metric || end.route_metric}`;
+      // estimate fontSize to fit in link length
+      ctx.font = "1px Sans-Serif";
+      const fontSize =
+        Math.min(MAX_FONT_SIZE, maxTextLength / ctx.measureText(label).width) /
+        $zoom;
+      ctx.font = `${fontSize}px Sans-Serif`;
+      const textWidth = ctx.measureText(label).width;
+      const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2); // some padding
+      // draw text label (with background rect)
+      ctx.save();
+      ctx.translate(textPos.x, textPos.y);
+      ctx.rotate(textAngle);
+      ctx.fillStyle = "rgba(255, 255, 255, 1)";
+      ctx.fillRect(
+        -bckgDimensions[0] / 2,
+        -bckgDimensions[1] / 2,
+        ...bckgDimensions
+      );
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#000";
+      ctx.fillText(label, 0, 0);
+      ctx.restore();
     },
     linkDirectionalParticles(link) {
       return 2;
@@ -65,11 +116,7 @@
         : `metric: ${link.target.metric}`;
     },
     linkWidth(link) {
-      let metric = link.target.metric || link.target.route_metric;
-      if (metric < 100) return 5;
-      if (metric < 500) return 4;
-      if (metric < 1000) return 3;
-      if (metric >= 2000) return 2;
+      return link.target.normalizedMetric + 2;
     },
     nodeCanvasObject(node, ctx, globalScale) {
       const { x, y, label, img, id, latlng } = node;

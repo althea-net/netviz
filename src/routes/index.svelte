@@ -10,6 +10,7 @@
   import Debugging from "../components/debugging.svelte";
   import Location from "../components/location.svelte";
   import { graph, showGraph, links, map, nodes } from "../store";
+  import { latLng2Point } from "../utils/map";
 
   let images;
   let mapReady = false;
@@ -19,7 +20,6 @@
   const toggleDevMode = () => {
     devmode = !devmode;
     window.localStorage.setItem("devmode", devmode);
-    getData();
   };
 
   if (typeof window !== "undefined") {
@@ -46,17 +46,15 @@
   }
 
   const getData = async () => {
-    let res = await fetch(
-      devmode ? "neighbors.json" : "http://192.168.10.1:4877/neighbors"
-    );
+    const baseUrl = "/api";
+
+    let res = await fetch(`${baseUrl}/neighbors`);
     const neighbors = await res.json();
 
-    res = await fetch(
-      devmode ? "routes.json" : "http://192.168.10.1:4877/routes"
-    );
+    res = await fetch(`${baseUrl}/routes`);
     const routes = await res.json();
 
-    res = await fetch(devmode ? "ip.json" : "http://192.168.10.1:4877/mesh_ip");
+    res = await fetch(`${baseUrl}/mesh_ip`);
     const ip = (await res.json()).mesh_ip;
 
     const d = data(ip, neighbors, routes);
@@ -68,7 +66,6 @@
       $nodes = JSON.parse(window.localStorage.getItem("nodes")) || d.nodes;
       $nodes.map(n => (n.img = images[Math.floor(Math.random() * 4)]));
       graphReady = true;
-      tick().then(() => setTimeout(() => $graph.zoom(1), 50));
       updateNeeded = true;
     }
 
@@ -108,15 +105,53 @@
         l.source = $nodes.find(n => n.id === l.source.id);
         l.target = $nodes.find(n => n.id === l.target.id);
       });
-      
+
       if ($graph) $graph.graphData({ links: $links, nodes: $nodes });
     }
   };
 
+  const doImport = async () => {
+    $nodes = JSON.parse(window.localStorage.getItem("nodes"));
+    const res = await fetch("network.json");
+    const json = await res.json();
+    let { nodes: savedNodes, links: savedLinks } = json;
+
+    if (!$nodes) {
+      $nodes = savedNodes;
+
+      $nodes.map(n => (n.img = images[Math.floor(Math.random() * 4)]));
+      let numbers = $nodes.map(n => n.metric || n.route_metric).filter(n => n);
+      let ratio = Math.max(...numbers) / 10;
+      numbers = numbers.map(v => Math.round(v / ratio));
+      $nodes.map((n, i) => (n.normalizedMetric = numbers[i]));
+    }
+    
+
+    $links = savedLinks.map(l => {
+      l.source = $nodes.find(n => n.id === l.source.id);
+      l.target = $nodes.find(n => n.id === l.target.id);
+      return l;
+    });
+
+    let interval = setInterval(() => {
+      if ($showGraph) {
+        $graph.graphData({ nodes: $nodes, links: $links });
+
+        clearInterval(interval);
+      }
+    }, 50);
+
+    graphReady = true;
+  };
+
   onMount(() => {
     if (typeof window !== "undefined") {
-      getData();
-      setInterval(getData, 8000);
+      if (devmode) {
+        doImport();
+      } else {
+        getData();
+        setInterval(getData, 8000);
+      }
     }
   });
 

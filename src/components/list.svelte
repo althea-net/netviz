@@ -91,6 +91,8 @@
       let x = $links.findIndex(l => l.target.id === n.id);
       $links.splice(x, 1);
     }
+
+    window.localStorage.setItem("nodes", JSON.stringify($nodes));
   };
 </script>
 

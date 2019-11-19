@@ -8,6 +8,7 @@
 
   onMount(async () => {
     const {
+      linkCanvasObject,
       linkColor,
       linkDirectionalParticles,
       linkLabel,
@@ -25,10 +26,12 @@
     const config = ForceGraph()
       .backgroundColor(() => "rgba(0,0,0,0)")
       .d3Force("charge", d3.forceManyBody().strength(-3000))
-      .linkColor(linkColor)
+      .linkCanvasObjectMode(() => 'after')
+      .linkCanvasObject(linkCanvasObject)
+      .linkColor("color")
       .linkCurvature(0.1)
       .linkDirectionalParticleColor(() => "#fff")
-      .linkDirectionalParticleWidth(n => linkWidth(n) + 2)
+      .linkDirectionalParticleWidth(l => linkWidth(l) + 2)
       .linkDirectionalParticles(linkDirectionalParticles)
       .linkLabel(linkLabel)
       .linkWidth(linkWidth)
