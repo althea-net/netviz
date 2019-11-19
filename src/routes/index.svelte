@@ -60,7 +60,7 @@
   }
 
   const getData = async () => {
-    const baseUrl = "/api";
+    const baseUrl = "http://192.168.10.1:4877";
 
     let res = await fetch(`${baseUrl}/neighbors`);
     const neighbors = await res.json();
