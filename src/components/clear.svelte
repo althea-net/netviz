@@ -5,14 +5,7 @@
   let show = false;
 
   const clear = () => {
-    $nodes.map(n => {
-      n.latlng = undefined;
-      n.fx = undefined;
-      n.fy = undefined;
-      const { id, label, latlng } = n;
-      window.localStorage.setItem(n.id, JSON.stringify({ id, label, latlng }));
-      return n;
-    });
+    window.localStorage.removeItem("nodes");
     window.location.reload();
   };
 </script>

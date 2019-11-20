@@ -82,7 +82,7 @@
       // maintain label vertical orientation for legibility
       if (textAngle > Math.PI / 2) textAngle = -(Math.PI - textAngle);
       if (textAngle < -Math.PI / 2) textAngle = -(-Math.PI - textAngle);
-      const label = `${end.metric || end.route_metric}`;
+      const label = `${end.neighbor ? end.stats.latency.avg.toFixed(2) : end.metric || end.route_metric}`;
       // estimate fontSize to fit in link length
       ctx.font = "1px Sans-Serif";
       const fontSize =
@@ -113,10 +113,10 @@
     linkLabel(link) {
       return link.target.neighbor
         ? `latency: ${link.target.stats.latency.avg}`
-        : `metric: ${link.target.metric} ${link.target.color}`;
+        : `metric: ${link.target.metric}`;
     },
     linkWidth(link) {
-      return link.target.normalizedMetric + 2;
+      return 4;
     },
     nodeCanvasObject(node, ctx, globalScale) {
       const { x, y, label, img, id, latlng } = node;

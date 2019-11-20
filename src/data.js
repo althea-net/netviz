@@ -2,6 +2,12 @@ import chroma from "chroma-js";
 export default (ip, neighbors, routes) => {
   const ids = [];
   let nodes = [
+    {
+      level: 1,
+      group: 1,
+      id: ip,
+      neighbor: false
+    },
     ...neighbors.map(n => {
       let id = n.ip;
       if (id.startsWith("fd00") || ids.map(id => id.substr(-9)).includes(n.ip.substr(-9))) return undefined;
@@ -21,13 +27,6 @@ export default (ip, neighbors, routes) => {
         return { ...r, id, level, route: true };
       })
   ];
-
-  nodes.push({
-    level: 1,
-    group: 1,
-    id: ip,
-    neighbor: false
-  });
 
   nodes = nodes.filter(n => n);
 

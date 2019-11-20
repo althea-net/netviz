@@ -17,6 +17,22 @@
   let graphReady = false;
   let devmode = false;
 
+  const loadImage = n => {
+    if (n.offline) {
+      n.img = images[4];
+      return;
+    } 
+
+    /*
+    if (n.id === $nodes[0].id) {
+      n.img = images[5];
+      return;
+    } 
+    */
+
+    n.img = images[Math.floor(Math.random() * 4)];
+  } 
+
   let poll;
   const init =  () => {
     clearInterval(poll);
@@ -38,7 +54,7 @@
 
   if (typeof window !== "undefined") {
     devmode = window.localStorage.getItem("devmode") === "true";
-    images = [1, 2, 3, 4, 5].map(i => {
+    images = [1, 2, 3, 4, 5, 6, 7].map(i => {
       const img = new Image();
       img.src = `house${i}.svg`;
       return img;
@@ -78,7 +94,7 @@
 
     if (!$nodes) {
       $nodes = JSON.parse(window.localStorage.getItem("nodes")) || d.nodes;
-      $nodes.map(n => (n.img = images[Math.floor(Math.random() * 4)]));
+      $nodes.map(n => loadImage(n));
       graphReady = true;
       updateNeeded = true;
     }
@@ -86,7 +102,7 @@
     d.nodes.map(n => {
       let prev = $nodes.find(p => p.id === n.id);
       if (!prev) {
-        n.img = images[Math.floor(Math.random() * 4)];
+        loadImage(n);
         $nodes.push(n);
         updateNeeded = true;
         return;
@@ -107,7 +123,7 @@
         n.offline = true;
       } else if (n.offline) {
         n.offline = false;
-        n.img = images[Math.floor(Math.random() * 4)];
+        loadImage(n);
         updateNeeded = true;
       }
     });
@@ -130,11 +146,11 @@
     const json = await res.json();
     let { nodes: savedNodes, links: savedLinks } = json;
 
-    $nodes.map(n => (n.img = images[Math.floor(Math.random() * 4)]));
+    $nodes.map(n => loadImage(n));
     if (!$nodes) {
       $nodes = savedNodes;
 
-      $nodes.map(n => (n.img = images[Math.floor(Math.random() * 4)]));
+      $nodes.map(n => loadImage(n));
       let numbers = $nodes.map(n => n.metric || n.route_metric).filter(n => n);
       let ratio = Math.max(...numbers) / 10;
       numbers = numbers.map(v => Math.round(v / ratio));
