@@ -29,10 +29,39 @@
         $map.setCenter(latlng);
       } else {
         window.localStorage.setItem("center", JSON.stringify($map.getCenter()));
-      } 
+      }
 
       $graph.zoom(1);
-      setTimeout(() => $showGraph = true, 150);
+      setTimeout(() => {
+        $nodes.map(n => {
+          try {
+            let saved = window.localStorage.getItem(n.id);
+            if (saved) {
+              let { id, latlng, label } = JSON.parse(saved);
+
+              let fx, fy;
+
+              if (latlng) {
+                n.latlng = new google.maps.LatLng(latlng.lat, latlng.lng);
+                let point = latLng2Point(n.latlng, $map);
+                ({ x: fx, y: fy } = point);
+                n.fx = fx;
+                n.fy = fy;
+                n.lat = latlng.lat;
+                n.lng = latlng.lng;
+              }
+
+              n.label = label;
+            }
+          } catch (e) {
+            console.log(e);
+          }
+
+          window.localStorage.removeItem(n.id);
+        });
+        $nodes = $nodes;
+        $showGraph = true;
+      }, 150);
     });
   });
 </script>
