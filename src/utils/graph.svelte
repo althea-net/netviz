@@ -1,6 +1,7 @@
 <script>
   import { graph, map, nodes, selected, zoom, zooming } from "../store";
   import { point2LatLng, latLng2Point } from "./map";
+  import chroma from "chroma-js";
 
   const colors = [
     "#ddc087",
@@ -61,6 +62,23 @@
   };
 
   export const utils = {
+    linkColor(link) {
+      let metrics = [
+        ...new Set($nodes.map(n => n.metric || n.route_metric).filter(n => n))
+      ];
+      let ratio = Math.max(...metrics) / metrics.length;
+
+      let colors = chroma
+        .scale(["#d2b97e", "#F5EFD3"])
+        .mode("lch")
+        .colors(metrics.length);
+
+      let n = link.target;
+      let metric = n.metric || n.route_metric;
+      let metricIndex = metrics.findIndex(m => m === metric);
+      if (metricIndex < 0) metricIndex = 0;
+      return colors[metricIndex];
+    },
     linkCanvasObject(link, ctx) {
       const MAX_FONT_SIZE = 16;
       const LABEL_NODE_MARGIN = $graph.nodeRelSize() * 1.5;
@@ -82,7 +100,11 @@
       // maintain label vertical orientation for legibility
       if (textAngle > Math.PI / 2) textAngle = -(Math.PI - textAngle);
       if (textAngle < -Math.PI / 2) textAngle = -(-Math.PI - textAngle);
-      const label = `${end.neighbor ? end.stats.latency.avg && end.stats.latency.avg.toFixed(2) : end.metric || end.route_metric}`;
+      const label = `${
+        end.neighbor
+          ? end.stats.latency.avg && end.stats.latency.avg.toFixed(2)
+          : end.metric || end.route_metric
+      }`;
       // estimate fontSize to fit in link length
       ctx.font = "1px Sans-Serif";
       const fontSize =

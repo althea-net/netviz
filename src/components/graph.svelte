@@ -28,7 +28,7 @@
       .d3Force("charge", d3.forceManyBody().strength(-3000))
       .linkCanvasObjectMode(() => 'after')
       .linkCanvasObject(linkCanvasObject)
-      .linkColor("color")
+      .linkColor(linkColor)
       .linkCurvature(0.1)
       .linkDirectionalParticleColor(() => "#fff")
       .linkDirectionalParticleWidth(l => linkWidth(l) + 2)

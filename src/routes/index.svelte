@@ -27,7 +27,7 @@
   const loadImage = n => {
     n.img = images[0];
     if (n.offline) {
-      n.img = images[3];
+      n.img = images[4];
     } else if (n.neighbor) {
       n.img = images[2];
     } else if (n.id === ip) {
@@ -158,13 +158,13 @@
       let curr = d.nodes.find(p => p.id === n.id);
 
       if (!curr) {
-        n.img = images[4];
         n.offline = true;
       } else if (n.offline) {
         n.offline = false;
-        loadImage(n);
         updateNeeded = true;
       }
+
+      loadImage(n);
     });
 
     $nodes = $nodes;
@@ -188,18 +188,12 @@
     $nodes.map(n => loadImage(n));
     if (!$nodes) {
       $nodes = savedNodes;
-
       $nodes.map(n => loadImage(n));
-      let numbers = $nodes.map(n => n.metric || n.route_metric).filter(n => n);
-      let ratio = Math.max(...numbers) / 10;
-      numbers = numbers.map(v => Math.round(v / ratio));
-      $nodes.map((n, i) => (n.normalizedMetric = numbers[i]));
     }
 
     $links = savedLinks.map(l => {
       l.source = $nodes.find(n => n.id === l.source.id);
       l.target = $nodes.find(n => n.id === l.target.id);
-      l.color = l.target.color;
       return l;
     });
 
