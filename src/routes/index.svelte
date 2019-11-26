@@ -1,4 +1,5 @@
 <script>
+  import { fade } from 'svelte/transition';
   import { onMount, tick } from "svelte";
   import data from "../data";
   import Graph from "../components/graph.svelte";
@@ -11,30 +12,33 @@
   import Location from "../components/location.svelte";
   import { graph, showGraph, links, map, nodes } from "../store";
   import { latLng2Point } from "../utils/map";
+  import { SHA3 } from "sha3";
+
+  const baseUrl = "/api";
 
   let images;
   let mapReady = false;
   let graphReady = false;
   let devmode = false;
+  let ip;
+  let loginFailed = false;
+  let needPassword = false;
+  let noConnection = true;
+  let password;
 
   const loadImage = n => {
+    n.img = images[0];
     if (n.offline) {
-      n.img = images[4];
-      return;
-    } 
-
-    /*
-    if (n.id === $nodes[0].id) {
-      n.img = images[5];
-      return;
-    } 
-    */
-
-    n.img = images[Math.floor(Math.random() * 4)];
-  } 
+      n.img = images[3];
+    } else if (n.neighbor) {
+      n.img = images[2];
+    } else if (n.id === ip) {
+      n.img = images[1];
+    }
+  };
 
   let poll;
-  const init =  () => {
+  const init = () => {
     clearInterval(poll);
     if (typeof window !== "undefined") {
       if (devmode) {
@@ -54,7 +58,7 @@
 
   if (typeof window !== "undefined") {
     devmode = window.localStorage.getItem("devmode") === "true";
-    images = [1, 2, 3, 4, 5, 6, 7].map(i => {
+    images = [1, 2, 3, 4].map(i => {
       const img = new Image();
       img.src = `house${i}.svg`;
       return img;
@@ -75,17 +79,52 @@
     };
   }
 
-  const getData = async () => {
-    const baseUrl = "http://192.168.10.1:4877";
+  const login = async () => {
+    let salt = "RitaSalt";
+    let Authorization =
+      "Basic " +
+      btoa(
+        "rita:" +
+          SHA3(512)
+            .update(password + salt)
+            .digest("hex")
+      );
+    let headers = { Authorization };
 
-    let res = await fetch(`${baseUrl}/neighbors`);
+    try {
+      let res = await fetch(baseUrl + "/info", { headers });
+      if (res.status === 403) throw new Error("wrong password");
+      let json = await res.json();
+
+      window.sessionStorage.setItem("Authorization", Authorization);
+      needPassword = false;
+      getData();
+    } catch (e) {
+      loginFailed = true;
+      console.log(e);
+    }
+
+    return json;
+  };
+
+  const getData = async () => {
+    let Authorization = window.sessionStorage.getItem("Authorization");
+    let headers = { Authorization };
+
+    let res = await fetch(`${baseUrl}/neighbors`, { headers });
+    if (!res.ok) {
+      noConnection = true;
+      if (res.status === 403) needPassword = true;
+      return;
+    }
+
     const neighbors = await res.json();
 
-    res = await fetch(`${baseUrl}/routes`);
+    res = await fetch(`${baseUrl}/routes`, { headers });
     const routes = await res.json();
 
-    res = await fetch(`${baseUrl}/mesh_ip`);
-    const ip = (await res.json()).mesh_ip;
+    res = await fetch(`${baseUrl}/mesh_ip`, { headers });
+    ip = (await res.json()).mesh_ip;
 
     const d = data(ip, neighbors, routes);
     $links = d.links;
@@ -156,7 +195,6 @@
       numbers = numbers.map(v => Math.round(v / ratio));
       $nodes.map((n, i) => (n.normalizedMetric = numbers[i]));
     }
-    
 
     $links = savedLinks.map(l => {
       l.source = $nodes.find(n => n.id === l.source.id);
@@ -201,42 +239,59 @@
     }
   }
 
-  img {
+  .menu img {
     width: 30px;
   }
 </style>
 
-{#if graphReady}
-  <Graph />
-  {#if mapReady}
-    <Map />
-  {/if}
-{/if}
 
-{#if $showGraph}
-  <div class="menu">
-    <div class="p-4">
-      <div class="flex">
-        <img
-          src="menu.svg"
-          alt="Menu"
-          class="mb-auto mr-2 mt-1 cursor-pointer hover:opacity-75"
-          on:click={toggleMenu} />
-        <Location />
+{#if needPassword}
+  <div class="flex w-100">
+    <div class="m-auto mt-5">
+      <label>Password</label>
+      <div>
+        <input name="password" bind:value={password} />
+        <button on:click={login}>Submit</button>
+        {#if loginFailed}
+          <div class="text-red-700">Incorrect</div>
+        {/if}
+      </div>
+    </div>
+  </div>
+{:else}
+  {#if graphReady}
+    <Graph />
+    {#if mapReady}
+      <Map />
+    {/if}
+  {/if}
+
+
+  {#if $showGraph}
+    <div class="menu">
+      <div class="p-4">
+        <div class="flex">
+          <img
+            src="menu.svg"
+            alt="Menu"
+            class="mb-auto mr-2 mt-1 cursor-pointer hover:opacity-75"
+            on:click={toggleMenu} />
+          <Location />
+        </div>
+        {#if showMenu}
+          <div class="mt-2">
+            <Export />
+            <Import />
+            <Clear />
+            <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
+              {devmode ? 'Live Mode' : 'Dev Mode'}
+            </button>
+          </div>
+        {/if}
       </div>
       {#if showMenu}
-        <div class="mt-2">
-          <Export />
-          <Import />
-          <Clear />
-          <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
-            {devmode ? 'Live Mode' : 'Dev Mode'}
-          </button>
-        </div>
+        <List />
       {/if}
     </div>
-    {#if showMenu}
-      <List />
-    {/if}
-  </div>
+  {/if}
 {/if}

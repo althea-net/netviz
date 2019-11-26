@@ -88,6 +88,7 @@ export default {
         preprocess
       }),
       resolve({
+        preferBuiltins: false,
         browser: true,
         dedupe
       }),
