@@ -82,7 +82,7 @@
       // maintain label vertical orientation for legibility
       if (textAngle > Math.PI / 2) textAngle = -(Math.PI - textAngle);
       if (textAngle < -Math.PI / 2) textAngle = -(-Math.PI - textAngle);
-      const label = `${end.neighbor ? end.stats.latency.avg.toFixed(2) : end.metric || end.route_metric}`;
+      const label = `${end.neighbor ? end.stats.latency.avg && end.stats.latency.avg.toFixed(2) : end.metric || end.route_metric}`;
       // estimate fontSize to fit in link length
       ctx.font = "1px Sans-Serif";
       const fontSize =

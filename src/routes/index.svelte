@@ -1,5 +1,4 @@
 <script>
-  import { fade } from 'svelte/transition';
   import { onMount, tick } from "svelte";
   import data from "../data";
   import Graph from "../components/graph.svelte";
@@ -14,8 +13,7 @@
   import { latLng2Point } from "../utils/map";
   import { SHA3 } from "sha3";
 
-  const baseUrl = "/api";
-
+  let baseUrl = "http://192.168.10.1:4877";
   let images;
   let mapReady = false;
   let graphReady = false;
@@ -108,6 +106,8 @@
   };
 
   const getData = async () => {
+    if (!window.location.href.includes("althea.net")) baseUrl = "/api";
+
     let Authorization = window.sessionStorage.getItem("Authorization");
     let headers = { Authorization };
 
@@ -244,7 +244,6 @@
   }
 </style>
 
-
 {#if needPassword}
   <div class="flex w-100">
     <div class="m-auto mt-5">
@@ -265,7 +264,6 @@
       <Map />
     {/if}
   {/if}
-
 
   {#if $showGraph}
     <div class="menu">
