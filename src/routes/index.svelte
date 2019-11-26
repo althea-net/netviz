@@ -56,7 +56,7 @@
 
   if (typeof window !== "undefined") {
     devmode = window.localStorage.getItem("devmode") === "true";
-    images = [1, 2, 3, 4].map(i => {
+    images = [1, 2, 3, 4, 5].map(i => {
       const img = new Image();
       img.src = `house${i}.svg`;
       return img;
