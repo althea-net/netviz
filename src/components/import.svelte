@@ -1,6 +1,6 @@
 <script>
   import { onMount, tick } from "svelte";
-  import { links, map, nodes } from "../store";
+  import { graph, ip, links, map, nodes } from "../store";
   import { latLng2Point, point2LatLng } from "../utils/map";
 
   let json = "";
@@ -12,11 +12,29 @@
     if (show) tick().then(() => ref.focus());
   };
 
+  const images = [1, 2, 3, 4, 5].map(i => {
+    const img = new Image();
+    img.src = `house${i}.svg`;
+    return img;
+  });
+
+  const loadImage = n => {
+    n.img = images[0];
+    if (n.offline) {
+      n.img = images[4];
+    } else if (n.neighbor) {
+      n.img = images[2];
+    } else if (n.id === $ip) {
+      n.img = images[1];
+    }
+  };
+
   const doImport = () => {
     let { nodes: savedNodes, links: savedLinks } = JSON.parse(json);
 
     $nodes = savedNodes.map(node => {
       let n = $nodes.find(n => n.id === node.id);
+      if (!n) return node;
 
       try {
         let { label, lat, lng } = node;
@@ -37,14 +55,21 @@
 
         return n;
       } catch (e) {
-        window.localStorage.removeItem(n.id);
+        if (n) window.localStorage.removeItem(n.id);
       }
-    });
+    }).filter(n => n);
+
+    $nodes.map(n => loadImage(n));
+
+    console.log("links", savedLinks);
 
     $links = savedLinks.map(l => {
       l.source = $nodes.find(n => n.id === l.source.id);
       l.target = $nodes.find(n => n.id === l.target.id);
-    });
+      return l;
+    }).filter(l => l);
+
+    $graph.graphData({ links: $links, nodes: $nodes });
 
     show = false;
   };

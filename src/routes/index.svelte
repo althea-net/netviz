@@ -9,7 +9,7 @@
   import Import from "../components/import.svelte";
   import Debugging from "../components/debugging.svelte";
   import Location from "../components/location.svelte";
-  import { graph, showGraph, links, map, nodes } from "../store";
+  import { graph, showGraph, ip, links, map, nodes } from "../store";
   import { latLng2Point } from "../utils/map";
   import { SHA3 } from "sha3";
 
@@ -18,7 +18,6 @@
   let mapReady = false;
   let graphReady = false;
   let devmode = false;
-  let ip;
   let loginFailed = false;
   let needPassword = false;
   let noConnection = true;
@@ -30,7 +29,7 @@
       n.img = images[4];
     } else if (n.neighbor) {
       n.img = images[2];
-    } else if (n.id === ip) {
+    } else if (n.id === $ip) {
       n.img = images[1];
     }
   };
@@ -124,9 +123,9 @@
     const routes = await res.json();
 
     res = await fetch(`${baseUrl}/mesh_ip`, { headers });
-    ip = (await res.json()).mesh_ip;
+    $ip = (await res.json()).mesh_ip;
 
-    const d = data(ip, neighbors, routes);
+    const d = data($ip, neighbors, routes);
     $links = d.links;
 
     let updateNeeded = false;
@@ -180,25 +179,31 @@
   };
 
   const doImport = async () => {
-    $nodes = JSON.parse(window.localStorage.getItem("nodes"));
+    $nodes = JSON.parse(window.localStorage.getItem("nodes")) || [];
     const res = await fetch("network.json");
     const json = await res.json();
     let { nodes: savedNodes, links: savedLinks } = json;
 
+
     $nodes.map(n => loadImage(n));
-    if (!$nodes) {
+    if (!$nodes || !$nodes.length) {
+      console.log("wee");
       $nodes = savedNodes;
       $nodes.map(n => loadImage(n));
     }
 
+    console.log(savedNodes, $nodes);
+
     $links = savedLinks.map(l => {
       l.source = $nodes.find(n => n.id === l.source.id);
       l.target = $nodes.find(n => n.id === l.target.id);
+      if (!l.source || !l.target) return undefined;
       return l;
-    });
+    }).filter(l => l);
 
     let interval = setInterval(() => {
       if ($showGraph) {
+        console.log("nodes", $nodes, "links", $links);
         $graph.graphData({ nodes: $nodes, links: $links });
 
         clearInterval(interval);

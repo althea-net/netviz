@@ -1,5 +1,6 @@
 import { writable } from "svelte/store";
 
+export const ip = writable();
 export const links = writable();
 export const nodes = writable();
 export const graph = writable();
