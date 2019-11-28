@@ -61,8 +61,6 @@
 
     $nodes.map(n => loadImage(n));
 
-    console.log("links", savedLinks);
-
     $links = savedLinks.map(l => {
       l.source = $nodes.find(n => n.id === l.source.id);
       l.target = $nodes.find(n => n.id === l.target.id);

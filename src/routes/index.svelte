@@ -1,5 +1,5 @@
 <script>
-  import { onMount, tick } from "svelte";
+  import { onMount } from "svelte";
   import data from "../data";
   import Graph from "../components/graph.svelte";
   import Map from "../components/map.svelte";
