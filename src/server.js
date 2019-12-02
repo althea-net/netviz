@@ -73,5 +73,9 @@ setInterval(() => {
 setInterval(() => {
   let d = new Date();
   let second = d.getSeconds() + 60 * d.getMinutes() + 1;
-  Object.keys(nodes).map(k => (nodes[k][second] = 0));
+  if (second % 60 === 0) {
+    Object.keys(nodes).map(k => {
+      for (let i = 0; i < 65; i++) nodes[k][second+i] = 0;
+    });
+  }
 }, 1000);
