@@ -7,7 +7,7 @@
   let initialized = false;
 
   const loop = async () => {
-    let res = await fetch("/nodes");
+    let res = await fetch("/network/nodes");
     let curr = await res.json();
 
     if (!keys.length) keys = Object.keys(curr);
@@ -27,7 +27,7 @@
         });
 
         if (!initialized) {
-          res = await fetch("/names");
+          res = await fetch("/network/names");
           names = await res.json();
 
           tick().then(() => {

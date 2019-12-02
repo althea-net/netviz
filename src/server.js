@@ -20,24 +20,36 @@ polka() // You can also use Express
   .use(
     "/network",
     compression({ threshold: 0 }),
+    async (req, res, next) => {
+      switch (req.path) {
+        case "/nodes":
+          res.end(JSON.stringify(nodes));
+        break;
+        case "/names":
+          const base = new Airtable({ apiKey: process.env.AIRTABLE_KEY }).base(
+            process.env.AIRTABLE_BASE
+          );
+
+          await new Promise((resolve, reject) => {
+            base("Nodes")
+              .select()
+              .all((err, rows) => {
+                let names = {};
+                rows.map(r => (names[r.fields["WG Key"]] = r.fields["Name"]));
+                resolve(res.end(JSON.stringify(names)));
+              })
+          });
+        break;
+      } 
+
+      next();
+    }, 
     sirv("static", { dev }),
     sapper.middleware()
   )
-  .get("/nodes", (req, res) => {
-    res.end(JSON.stringify(nodes));
+  .get("/network/nodes", (req, res) => {
   })
-  .get("/names", async (req, res) => {
-    const base = new Airtable({ apiKey: process.env.AIRTABLE_KEY }).base(
-      process.env.AIRTABLE_BASE
-    );
-
-    base("Nodes")
-      .select()
-      .all((err, rows) => {
-        let names = {};
-        rows.map(r => (names[r.fields["WG Key"]] = r.fields["Name"]));
-        res.end(JSON.stringify(names));
-      })
+  .get("/network/names", async (req, res) => {
   })
   .listen(PORT, err => {
     if (err) console.log("error", err);
