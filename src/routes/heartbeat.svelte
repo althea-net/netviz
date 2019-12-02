@@ -1,40 +1,66 @@
 <script>
   import { onMount, tick } from "svelte";
-  let nodes = [];
+  let keys = [];
+  let names;
+  let nodes;
+  let minutes = Array.from(Array(60).keys());
+  let initialized = false;
 
-  onMount(async () => {
+  const loop = async () => {
     let res = await fetch("/nodes");
-    let json = await res.json();
-    let minutes = Array.from(Array(60).keys());
-    let data = minutes.map(minute => ({
-      minute,
-      beats: Math.floor(Math.random() * 13)
-    }));
-    nodes = Object.keys(json);
+    let newnodes = await res.json();
+    res = await fetch("/names");
+    names = await res.json();
+
+    if (!keys.length) keys = Object.keys(newnodes);
 
     tick().then(() => {
-      nodes.map(id => {
-        let ndx = crossfilter(data),
-          dimension = ndx.dimension(d => d.minute),
-          group = dimension.group().reduceSum(d => d.beats);
+      keys.map(id => {
+        let data = minutes.map(minute => {
+          let start = minute * 60;
+          let end = (minute+1) * 60;
+          let pings = 0;
+          Object.keys(newnodes[id]).filter(t => t > start && t <= end).map(k => pings += newnodes[id][k]);
+          return { minute, pings }
+        });
 
-        let chart = dc.barChart("#a" + id.replace(/\W/g, ""))
-          .x(d3.scaleLinear().domain([0, 60]))
-          .brushOn(false)
-          .xAxisLabel("minute")
-          .yAxisLabel("pings")
-          .dimension(dimension)
-          .group(group)
-          .render();
+        if (!initialized) {
+          nodes = newnodes;
+          nodes[id].ndx = crossfilter(data);
+          let dimension = nodes[id].ndx.dimension(d => d.minute);
+          let group = dimension.group().reduceSum(d => d.pings);
+
+          dc.barChart("#a" + id.replace(/\W/g, ""))
+            .x(d3.scaleLinear().domain([0, 60]))
+            .brushOn(false)
+            .xAxisLabel("minutes ago")
+            .yAxisLabel("pings")
+            .dimension(dimension)
+            .group(group);
+
+          dc.renderAll();
+          initialized = true;
+        } else {
+          nodes[id].ndx.remove(() => true);
+          nodes[id].ndx.add(data);
+          dc.redrawAll();
+        } 
       });
     });
+  } 
+
+
+  onMount(() => {
+    loop();
+    setInterval(loop, 5000);
   });
+
 </script>
 
 <div class="flex flex-wrap">
-  {#each nodes as id (id)}
-    <div>
-      <h1 class="text-lg text-center">{id}</h1>
+  {#each keys as id (id)}
+    <div class="card">
+      <h1 class="text-lg text-center">{names[id] || id}</h1>
       <div id={'a' + id.replace(/\W/g, '')} />
     </div>
   {/each}

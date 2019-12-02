@@ -9,3 +9,7 @@ input, button {
 button {
   @apply bg-blue-600 text-white;
 } 
+
+.card {
+  @apply p-4 m-4 shadow;
+} 
