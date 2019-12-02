@@ -47,10 +47,6 @@ polka() // You can also use Express
     sirv("static", { dev }),
     sapper.middleware()
   )
-  .get("/network/nodes", (req, res) => {
-  })
-  .get("/network/names", async (req, res) => {
-  })
   .listen(PORT, err => {
     if (err) console.log("error", err);
   });
