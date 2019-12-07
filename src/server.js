@@ -5,6 +5,7 @@ import * as sapper from "@sapper/server";
 import fs from "fs";
 import Airtable from "airtable";
 import { config } from "dotenv";
+import { json } from "body-parser";
 
 config();
 
@@ -16,37 +17,44 @@ const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === "development";
 let nodes = {};
 
+const handler = async (req, res, next) => {
+  switch (req.path) {
+    case "/nodes":
+      const filter = {};
+      if (req.body.nodes)
+        req.body.nodes.map(n => (filter[n] = nodes[n]))
+      res.end(JSON.stringify(filter));
+      break;
+    case "/names":
+      const base = new Airtable({ apiKey: process.env.AIRTABLE_KEY }).base(
+        process.env.AIRTABLE_BASE
+      );
+
+      await new Promise((resolve, reject) => {
+        base("Nodes")
+          .select()
+          .all((err, rows) => {
+            let names = {};
+            rows.map(r => (names[r.fields["WG Key"]] = r.fields["Name"]));
+            resolve(res.end(JSON.stringify(names)));
+          });
+      });
+      break;
+  }
+
+  next();
+};
+
 polka() // You can also use Express
+  .use(json())
   .use(
     "/network",
     compression({ threshold: 0 }),
-    async (req, res, next) => {
-      switch (req.path) {
-        case "/nodes":
-          res.end(JSON.stringify(nodes));
-        break;
-        case "/names":
-          const base = new Airtable({ apiKey: process.env.AIRTABLE_KEY }).base(
-            process.env.AIRTABLE_BASE
-          );
-
-          await new Promise((resolve, reject) => {
-            base("Nodes")
-              .select()
-              .all((err, rows) => {
-                let names = {};
-                rows.map(r => (names[r.fields["WG Key"]] = r.fields["Name"]));
-                resolve(res.end(JSON.stringify(names)));
-              })
-          });
-        break;
-      } 
-
-      next();
-    }, 
+    handler,
     sirv("static", { dev }),
     sapper.middleware()
   )
+  .post("/test", (req, res) => res.end(JSON.stringify(req.body)))
   .listen(PORT, err => {
     if (err) console.log("error", err);
   });
@@ -70,7 +78,7 @@ server.on("message", function(message, remote) {
 
 server.bind(UDPPORT, HOST);
 
-fs.readFile('/tmp/nodes', (err, data) => {
+fs.readFile("/tmp/nodes", (err, data) => {
   if (data) nodes = JSON.parse(data);
 });
 
@@ -83,7 +91,7 @@ setInterval(() => {
   let second = d.getSeconds() + 60 * d.getMinutes() + 1;
   if (second % 60 === 0) {
     Object.keys(nodes).map(k => {
-      for (let i = 0; i < 65; i++) nodes[k][second+i] = 0;
+      for (let i = 0; i < 65; i++) nodes[k][second + i] = 0;
     });
   }
 }, 1000);

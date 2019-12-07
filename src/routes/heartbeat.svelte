@@ -7,7 +7,18 @@
   let initialized = false;
 
   const loop = async () => {
-    let res = await fetch("/network/nodes");
+
+  let headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json"
+  };
+    let res = await fetch("/network/nodes", {
+      method: "POST",
+      body: JSON.stringify({
+        nodes: ["ycRUJju+RCBTpkveFRZUWwjkxg0gPSP8iNG8tx8jBV0="]
+      }),
+      headers
+    });
     let curr = await res.json();
 
     if (!keys.length) keys = Object.keys(curr);
