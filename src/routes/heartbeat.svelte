@@ -3,25 +3,25 @@
   let keys = [];
   let names;
   let nodes;
+  let nodeList;
   let minutes = Array.from(Array(60).keys());
   let initialized = false;
 
-  const loop = async () => {
+  const getData = async () => {
+    let headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    };
 
-  let headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json"
-  };
     let res = await fetch("/network/nodes", {
       method: "POST",
-      body: JSON.stringify({
-        nodes: ["ycRUJju+RCBTpkveFRZUWwjkxg0gPSP8iNG8tx8jBV0="]
-      }),
+      body: JSON.stringify({ nodes: nodeList }),
       headers
     });
+
     let curr = await res.json();
 
-    if (!keys.length) keys = Object.keys(curr);
+    if (!initialized) keys = Object.keys(curr);
 
     tick().then(() => {
       keys.map(async id => {
@@ -71,16 +71,39 @@
   };
 
   onMount(() => {
-    loop();
-    setInterval(loop, 5000);
+    nodeList = JSON.parse(window.localStorage.getItem("heartbeatNodes")) || [];
+    getData();
+    setInterval(getData, 5000);
   });
+
+  let node;
+  const addNode = () => {
+    nodeList.push(node);
+    window.localStorage.setItem("heartbeatNodes", JSON.stringify(nodeList));
+    initialized = false;
+  };
+
+const delNode = id => {
+  let i = nodeList.findIndex(n => n === id);
+  if (i > -1) nodeList.splice(i, 1);
+  window.localStorage.setItem("heartbeatNodes", JSON.stringify(nodeList));
+  initialized = false;
+} 
 </script>
+
+<div class="w-full">
+  <input bind:value={node} placeholder="WG Pubkey" />
+  <button on:click={addNode}>Add Node</button>
+</div>
 
 {#if names}
   <div class="flex flex-wrap">
     {#each keys as id (id)}
       <div class="card">
-        <h1 class="text-lg text-center">{names[id] || id}</h1>
+        <div class="flex">
+          <h1 class="text-lg text-center mr-2">{names[id] || id}</h1>
+          <img src="trash.svg" alt="Trash Can Icon" on:click={() => delNode(id)} style="width: 20px" class="ml-auto cursor-pointer" />
+        </div>
         <div id={'a' + id.replace(/\W/g, '')} />
       </div>
     {/each}
