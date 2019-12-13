@@ -1,6 +1,6 @@
 <script>
   import { onMount, tick } from "svelte";
-  import { graph, importing, ip, links, map, nodes } from "../store";
+  import { graph, importing, ip, links, map, nodes, notification } from "../store";
   import { latLng2Point, point2LatLng } from "../utils/map";
 
   let hovered = false;
@@ -68,6 +68,8 @@
 
     $graph.graphData({ links: $links, nodes: $nodes });
     window.localStorage.setItem("nodes", JSON.stringify($nodes));
+    $notification = "Import success!";
+    setTimeout(() => ($notification = null), 5000);
 
     $importing = false;
   };
@@ -117,5 +119,6 @@
 </style>
 
 <input class:hovered on:dragover={() => hovered = true} on:dragleave={() => hovered = false} type="file" on:change={readFile} />
+<div class="w-full text-center mb-2">or</div>
 <textarea bind:value={json} bind:this={textarea} placeholder="Paste JSON" class="w-full" />
 <button on:click={doImport}>Do Import</button>

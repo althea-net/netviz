@@ -8,7 +8,8 @@
   import Menu from "../components/menu.svelte";
   import Debugging from "../components/debugging.svelte";
   import Location from "../components/location.svelte";
-  import { graph, showGraph, importing, ip, links, map, nodes } from "../store";
+  import Notification from "../components/notification.svelte";
+  import { graph, showGraph, importing, ip, links, map, notification, nodes } from "../store";
   import { latLng2Point } from "../utils/map";
   import { SHA3 } from "sha3";
 
@@ -230,6 +231,7 @@
   }
 </style>
 
+
 {#if needPassword}
   <div class="flex w-100">
     <div class="m-auto mt-5">
@@ -254,6 +256,7 @@
   {#if $showGraph}
     <div class="menu">
       <div class="p-4">
+        <Notification />
         <div class="flex">
           <img
             src="menu.svg"

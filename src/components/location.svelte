@@ -53,7 +53,7 @@
 </style>
 
 <form on:submit={getAddress}>
-  <input id="address" bind:value={address} class:error use:init />
+  <input id="address" bind:value={address} class:error use:init placeholder="Map Center Location" />
   <button>Search</button>
 </form>
 

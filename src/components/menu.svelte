@@ -1,10 +1,21 @@
 <script>
-  import { links, importing, map, nodes } from "../store";
+  import { confirming ,links, importing, map, nodes, notification } from "../store";
+
+  const confirm = () => {
+    warn("Resetting will clear all node labels and locations. Are you sure?");
+  };
 
   const reset = () => {
-    window.localStorage.removeItem("nodes");
-    window.location.reload();
-  };
+      window.localStorage.removeItem("nodes");
+      window.location.reload();
+      $notification = null;
+      $confirming = null;
+  }
+
+  const warn = msg => {
+    $notification = msg;
+    $confirming = reset;
+  } 
 
   const toggleDevMode = () => {
     devmode = !devmode;
@@ -46,7 +57,7 @@
           <div class="mt-2">
             <button class="bg-blue-500" on:click={doExport}>Export</button>
             <button class="bg-green-500" on:click={() => ($importing = !$importing)}>Import</button>
-            <button class="bg-orange-500" on:click={reset}>Reset</button>
+            <button class="bg-orange-500" on:click={confirm}>Reset</button>
             <button class="bg-yellow-500" on:click={toggleDevMode}>
               {devmode ? 'Live Mode' : 'Dev Mode'}
             </button>
