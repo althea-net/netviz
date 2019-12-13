@@ -187,12 +187,9 @@
 
     $nodes.map(n => loadImage(n));
     if (!$nodes || !$nodes.length) {
-      console.log("wee");
       $nodes = savedNodes;
       $nodes.map(n => loadImage(n));
     }
-
-    console.log(savedNodes, $nodes);
 
     $links = savedLinks.map(l => {
       l.source = $nodes.find(n => n.id === l.source.id);
@@ -203,7 +200,6 @@
 
     let interval = setInterval(() => {
       if ($showGraph) {
-        console.log("nodes", $nodes, "links", $links);
         $graph.graphData({ nodes: $nodes, links: $links });
 
         clearInterval(interval);

@@ -3,7 +3,7 @@
 
   const doExport = () => {
     const filename = "network.json";
-    let blob = new Blob([JSON.stringify({ nodes: $nodes, links: $links })], { type: "text/json;charset=utf-8;" });
+    let blob = new Blob([JSON.stringify({ nodes: $nodes, links: $links }, null, 2)], { type: "text/json;charset=utf-8;" });
     if (navigator.msSaveBlob) {
       navigator.msSaveBlob(blob, filename);
     } else {
