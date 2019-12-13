@@ -4,12 +4,11 @@
   import Graph from "../components/graph.svelte";
   import Map from "../components/map.svelte";
   import List from "../components/list.svelte";
-  import Clear from "../components/clear.svelte";
-  import Export from "../components/export.svelte";
   import Import from "../components/import.svelte";
+  import Menu from "../components/menu.svelte";
   import Debugging from "../components/debugging.svelte";
   import Location from "../components/location.svelte";
-  import { graph, showGraph, ip, links, map, nodes } from "../store";
+  import { graph, showGraph, importing, ip, links, map, nodes } from "../store";
   import { latLng2Point } from "../utils/map";
   import { SHA3 } from "sha3";
 
@@ -17,7 +16,6 @@
   let images;
   let mapReady = false;
   let graphReady = false;
-  let devmode = false;
   let loginFailed = false;
   let needPassword = false;
   let noConnection = true;
@@ -38,7 +36,7 @@
   const init = () => {
     clearInterval(poll);
     if (typeof window !== "undefined") {
-      if (devmode) {
+      if (window.localStorage.getItem("devmode") === "true") {
         doImport();
       } else {
         getData();
@@ -47,14 +45,7 @@
     }
   };
 
-  const toggleDevMode = () => {
-    devmode = !devmode;
-    window.localStorage.setItem("devmode", devmode);
-    init();
-  };
-
   if (typeof window !== "undefined") {
-    devmode = window.localStorage.getItem("devmode") === "true";
     images = [1, 2, 3, 4, 5].map(i => {
       const img = new Image();
       img.src = `house${i}.svg`;
@@ -272,14 +263,10 @@
           <Location />
         </div>
         {#if showMenu}
-          <div class="mt-2">
-            <Export />
-            <Import />
-            <Clear />
-            <button class="p-4 bg-yellow-500" on:click={toggleDevMode}>
-              {devmode ? 'Live Mode' : 'Dev Mode'}
-            </button>
-          </div>
+          <Menu />
+        {/if}
+        {#if $importing}
+          <Import />
         {/if}
       </div>
       {#if showMenu}

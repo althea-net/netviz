@@ -1,37 +1,11 @@
 <script>
   import { onMount, tick } from "svelte";
-  import { graph, ip, links, map, nodes } from "../store";
+  import { graph, importing, ip, links, map, nodes } from "../store";
   import { latLng2Point, point2LatLng } from "../utils/map";
 
-  onMount(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener(
-        "dragover",
-        function(e) {
-          e = e || event;
-          e.preventDefault();
-        },
-        false
-      );
-      window.addEventListener(
-        "drop",
-        function(e) {
-          e = e || event;
-          e.preventDefault();
-        },
-        false
-      );
-    }
-  });
-
+  let hovered = false;
   let json = "";
-  let show = false;
-  let ref;
-
-  const toggle = () => {
-    show = !show;
-    if (show) tick().then(() => ref.focus());
-  };
+  let textarea;
 
   const images = [1, 2, 3, 4, 5].map(i => {
     const img = new Image();
@@ -95,7 +69,7 @@
     $graph.graphData({ links: $links, nodes: $nodes });
     window.localStorage.setItem("nodes", JSON.stringify($nodes));
 
-    show = false;
+    $importing = false;
   };
 
   const readFile= e => {
@@ -117,25 +91,31 @@
 
 <style>
   button {
-    @apply bg-green-500 p-4;
-  }
+    @apply p-4 bg-green-500;
+  } 
 
   textarea {
-    @apply p-4 m-4 border block;
+    @apply border block p-4 mb-2;
   }
 
-  .drop {
-    height: 200px;
-    @apply p-2 my-2 cursor-pointer border-red-500 border border-dashed;
-  }
+  .hovered {
+    @apply border-2;
+    position: relative;
+    left: -1px;
+    top: -1px;
+  } 
+
+  input {
+    height: 100px;
+    @apply border-red-500 border border-dashed my-2 w-full cursor-pointer;
+  } 
+
+  input:hover {
+    @apply hovered;
+  } 
+
 </style>
 
-<button on:click={toggle}>Import</button>
-<div class="drop flex flex-wrap w-100" on:drop|preventDefault={readFile}>
-  <input class="mx-auto" type="file" on:change={readFile} />
-</div>
-
-{#if show}
-  <textarea bind:value={json} bind:this={ref} />
-  <button on:click={doImport}>Go</button>
-{/if}
+<input class:hovered on:dragover={() => hovered = true} on:dragleave={() => hovered = false} type="file" on:change={readFile} />
+<textarea bind:value={json} bind:this={textarea} placeholder="Paste JSON" class="w-full" />
+<button on:click={doImport}>Do Import</button>
