@@ -9,9 +9,19 @@
   import Debugging from "../components/debugging.svelte";
   import Location from "../components/location.svelte";
   import Notification from "../components/notification.svelte";
-  import { graph, showGraph, importing, ip, links, map, notification, nodes } from "../store";
+  import {
+    graph,
+    showGraph,
+    importing,
+    ip,
+    links,
+    map,
+    notification,
+    nodes
+  } from "../store";
   import { latLng2Point } from "../utils/map";
   import { SHA3 } from "sha3";
+  import chroma from "chroma-js";
 
   let baseUrl = "http://192.168.10.1:4877";
   let images;
@@ -168,7 +178,44 @@
 
       if ($graph) $graph.graphData({ links: $links, nodes: $nodes });
     }
+
+    setColors();
   };
+
+const setColors = () => {
+    let a = 0;
+    let b = 5;
+    const normalize = (val, min, max) => {
+      if (max - min === 0) return b;
+      return a + ((val - min) * (b - a)) / (max - min);
+    };
+
+    let metrics = [
+      ...new Set(
+        $nodes.map(n => n.metric).filter(n => n < 2000)
+      )
+    ];
+
+    let latencies = [
+      ...new Set(
+        $nodes.map(n => n.stats ? n.stats.latency.avg : undefined).filter(n => n)
+      )
+    ];
+
+
+    let gradient = chroma
+      .scale(["#F5EFD3", "#d66711"])
+      .mode("lch")
+      .colors(b + 1);
+
+    $links.map(link => {
+      let n = link.target;
+      if (n.metric) 
+        link.color = gradient[Math.floor(normalize(n.metric, Math.min(...metrics), Math.max(...metrics)))];
+      else if (n.stats)
+        link.color = gradient[Math.floor(normalize(n.stats.latency.avg, Math.min(...latencies), Math.max(...latencies)))];
+    });
+} 
 
   const doImport = async () => {
     $nodes = JSON.parse(window.localStorage.getItem("nodes")) || [];
@@ -176,19 +223,20 @@
     const json = await res.json();
     let { nodes: savedNodes, links: savedLinks } = json;
 
-
     $nodes.map(n => loadImage(n));
     if (!$nodes || !$nodes.length) {
       $nodes = savedNodes;
       $nodes.map(n => loadImage(n));
     }
 
-    $links = savedLinks.map(l => {
-      l.source = $nodes.find(n => n.id === l.source.id);
-      l.target = $nodes.find(n => n.id === l.target.id);
-      if (!l.source || !l.target) return undefined;
-      return l;
-    }).filter(l => l);
+    $links = savedLinks
+      .map(l => {
+        l.source = $nodes.find(n => n.id === l.source.id);
+        l.target = $nodes.find(n => n.id === l.target.id);
+        if (!l.source || !l.target) return undefined;
+        return l;
+      })
+      .filter(l => l);
 
     let interval = setInterval(() => {
       if ($showGraph) {
@@ -197,6 +245,8 @@
         clearInterval(interval);
       }
     }, 50);
+
+    setColors();
 
     graphReady = true;
   };
@@ -230,7 +280,6 @@
     width: 30px;
   }
 </style>
-
 
 {#if needPassword}
   <div class="flex w-100">

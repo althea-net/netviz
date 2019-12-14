@@ -1,1 +1,4757 @@
-{"nodes":[{"id":"fdae:4fc7:26d:a853:3ede:8bbf:bb0a:19df","iface":"wg0","xroute":false,"installed":true,"neigh_ip":"fe80::4161:3ef3:d5da:1324","prefix":"fdae:4fc7:26d:a853:3ede:8bbf:bb0a:19df/128","metric":192,"refmetric":96,"full_path_rtt":6.231,"price":152777,"fee":0,"level":3,"route":true,"img":{},"__indexColor":"#ec0001","color":"#d8b272","index":0,"x":-438.9434977383353,"y":347.58868562150747,"vx":0,"vy":0,"lastTouched":true,"fx":-438.9434977383353,"fy":347.58868562150747,"latlng":{"lat":49.32744249860675,"lng":-123.05717671130662},"lat":49.32744249860675,"lng":-123.05717671130662,"el":{"__svelte_meta":{"loc":{"file":"src/components/list.svelte","line":162,"column":12,"char":4634}}},"label":"glb1","normalizedMetric":2,"offline":false,"group":1,"neighbor":false},{"id":"fd91:b21:475b:3b1:269c:142a:b479:f93a","iface":"wg0","xroute":false,"installed":true,"neigh_ip":"fe80::4161:3ef3:d5da:1324","prefix":"fd91:b21:475b:3b1:269c:142a:b479:f93a/128","metric":192,"refmetric":96,"full_path_rtt":4.811,"price":152777,"fee":0,"level":3,"route":true,"normalizedMetric":2,"img":{},"__indexColor":"#d80002","color":"#d8b272","index":1,"x":-288.07182381954044,"y":217.90115835843608,"vx":0,"vy":0,"fx":-288.07182381954044,"fy":217.90115835843608,"latlng":{"lat":49.33106965262602,"lng":-123.05070200148458},"lat":49.33106965262602,"lng":-123.05070200148458,"lastTouched":false,"el":null,"label":"glb2"},{"nickname":"WRT32x","ip":"fd7a:3e8d:df21:e340:4161:3ef3:d5da:1324","id":"fd7a:3e8d:df21:e340:4161:3ef3:d5da:1324","route_metric_to_exit":1288,"route_metric":96,"total_payments":"0","debt":"2665120768904","link_cost":1192,"price_to_exit":152777,"speed_limit":null,"stats":{"latency":{"avg":0.6589859,"std_dev":0.008278114},"packet_loss":{"avg":0.00022883296,"five_min_avg":0}},"level":2,"neighbor":true,"normalizedMetric":1,"img":{},"__indexColor":"#c40003","color":"#f5efd3","index":2,"x":-486.4030800778419,"y":-100.16773630214334,"vx":0,"vy":0,"fx":-486.4030800778419,"fy":-100.16773630214334,"latlng":{"lat":49.339964402680025,"lng":-123.05921345562012},"lat":49.339964402680025,"lng":-123.05921345562012,"lastTouched":false,"el":null,"offline":false,"label":"wrtx"},{"level":1,"group":1,"id":"fd2b:c469:f7c5:a8c3:8c0b:3d2c:7a68:10c8","neighbor":false,"img":{},"__indexColor":"#b00004","color":"#f5efd3","index":3,"x":-328.6295688338578,"y":43.9142313497141,"vx":0,"vy":0,"latlng":{"lat":49.33593537070527,"lng":-123.0524425510734},"fx":-328.6295688338578,"fy":43.9142313497141,"lat":49.33593537070527,"lng":-123.0524425510734,"label":"wrta","lastTouched":false,"el":null,"address":"mcdonalds","offline":false,"normalizedMetric":1,"iface":"wg0","xroute":false,"installed":true,"neigh_ip":"fe80::4161:3ef3:d5da:1324","prefix":"fd2b:c469:f7c5:a8c3:8c0b:3d2c:7a68:10c8/128","metric":192,"refmetric":96,"full_path_rtt":4.95,"price":152777,"fee":71400,"route":true},{"id":"fd15:2aa3:e7ec:1b5d:5249:8b94:8f02:27f1","iface":"wg0","xroute":false,"installed":true,"neigh_ip":"fe80::4161:3ef3:d5da:1324","prefix":"fd15:2aa3:e7ec:1b5d:5249:8b94:8f02:27f1/128","metric":288,"refmetric":192,"full_path_rtt":8.213,"price":430554,"fee":0,"level":3,"route":true,"normalizedMetric":3,"color":"#e5d1a1","img":{},"__indexColor":"#9c0005","index":4,"x":-390.95203123334795,"y":322.76365899192865,"vx":0,"vy":0,"fx":-390.95203123334795,"fy":322.76365899192865,"latlng":{"lat":49.32813683582722,"lng":-123.05511714100106},"lat":49.32813683582722,"lng":-123.05511714100106,"lastTouched":false,"el":null,"label":"wrtb"}],"links":[{"target":{"nickname":"WRT32x","ip":"fd7a:3e8d:df21:e340:4161:3ef3:d5da:1324","id":"fd7a:3e8d:df21:e340:4161:3ef3:d5da:1324","route_metric_to_exit":1288,"route_metric":96,"total_payments":"0","debt":"2665120768904","link_cost":1192,"price_to_exit":152777,"speed_limit":null,"stats":{"latency":{"avg":0.6589859,"std_dev":0.008278114},"packet_loss":{"avg":0.00022883296,"five_min_avg":0}},"level":2,"neighbor":true,"normalizedMetric":1,"color":"#f5efd3"},"source":{"level":1,"group":1,"id":"fd2b:c469:f7c5:a8c3:8c0b:3d2c:7a68:10c8","neighbor":false,"normalizedMetric":1,"color":"#f5efd3"},"color":"#f5efd3"},{"target":{"id":"fd15:2aa3:e7ec:1b5d:5249:8b94:8f02:27f1","iface":"wg0","xroute":false,"installed":true,"neigh_ip":"fe80::4161:3ef3:d5da:1324","prefix":"fd15:2aa3:e7ec:1b5d:5249:8b94:8f02:27f1/128","metric":288,"refmetric":192,"full_path_rtt":8.213,"price":430554,"fee":0,"level":3,"route":true,"normalizedMetric":3,"color":"#e5d1a1"},"source":{"nickname":"WRT32x","ip":"fd7a:3e8d:df21:e340:4161:3ef3:d5da:1324","id":"fd7a:3e8d:df21:e340:4161:3ef3:d5da:1324","route_metric_to_exit":1288,"route_metric":96,"total_payments":"0","debt":"2665120768904","link_cost":1192,"price_to_exit":152777,"speed_limit":null,"stats":{"latency":{"avg":0.6589859,"std_dev":0.008278114},"packet_loss":{"avg":0.00022883296,"five_min_avg":0}},"level":2,"neighbor":true,"normalizedMetric":1,"color":"#f5efd3"},"color":"#e5d1a1"},{"target":{"id":"fd91:b21:475b:3b1:269c:142a:b479:f93a","iface":"wg0","xroute":false,"installed":true,"neigh_ip":"fe80::4161:3ef3:d5da:1324","prefix":"fd91:b21:475b:3b1:269c:142a:b479:f93a/128","metric":192,"refmetric":96,"full_path_rtt":4.811,"price":152777,"fee":0,"level":3,"route":true,"normalizedMetric":2,"color":"#d8b272"},"source":{"nickname":"WRT32x","ip":"fd7a:3e8d:df21:e340:4161:3ef3:d5da:1324","id":"fd7a:3e8d:df21:e340:4161:3ef3:d5da:1324","route_metric_to_exit":1288,"route_metric":96,"total_payments":"0","debt":"2665120768904","link_cost":1192,"price_to_exit":152777,"speed_limit":null,"stats":{"latency":{"avg":0.6589859,"std_dev":0.008278114},"packet_loss":{"avg":0.00022883296,"five_min_avg":0}},"level":2,"neighbor":true,"normalizedMetric":1,"color":"#f5efd3"},"color":"#d8b272"},{"target":{"id":"fdae:4fc7:26d:a853:3ede:8bbf:bb0a:19df","iface":"wg0","xroute":false,"installed":true,"neigh_ip":"fe80::4161:3ef3:d5da:1324","prefix":"fdae:4fc7:26d:a853:3ede:8bbf:bb0a:19df/128","metric":192,"refmetric":96,"full_path_rtt":6.231,"price":152777,"fee":0,"level":3,"route":true,"normalizedMetric":2,"color":"#d8b272"},"source":{"nickname":"WRT32x","ip":"fd7a:3e8d:df21:e340:4161:3ef3:d5da:1324","id":"fd7a:3e8d:df21:e340:4161:3ef3:d5da:1324","route_metric_to_exit":1288,"route_metric":96,"total_payments":"0","debt":"2665120768904","link_cost":1192,"price_to_exit":152777,"speed_limit":null,"stats":{"latency":{"avg":0.6589859,"std_dev":0.008278114},"packet_loss":{"avg":0.00022883296,"five_min_avg":0}},"level":2,"neighbor":true,"normalizedMetric":1,"color":"#f5efd3"},"color":"#d8b272"}]}
+{
+  "nodes": [
+    {
+      "ip": "42e0:690e:4181:4319:09a5:717a:ba29:c219",
+      "id": "42e0:690e:4181:4319:09a5:717a:ba29:c219",
+      "route_metric_to_exit": 413,
+      "route_metric": 161,
+      "total_payments": "0",
+      "debt": "50207773076156400",
+      "link_cost": 252,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 25.620808,
+          "std_dev": 72.34988
+        },
+        "packet_loss": {
+          "avg": 0.00062644307,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 14,
+      "color": "",
+      "img": {},
+      "__indexColor": "#24000b",
+      "index": 10,
+      "latlng": {
+        "lat": 44.464090110431385,
+        "lng": -121.29017319422732
+      },
+      "fx": -210.1458512490538,
+      "fy": -408.240417327292,
+      "lat": 44.464090110431385,
+      "lng": -121.29017319422732,
+      "label": "Leah Carson",
+      "iface": "wg123",
+      "prefix": "ec40:a9f7:d234:c7a1:74c2:eca3:f326:ec4d/128",
+      "neigh_ip": "e769:aa83:36b6:a045:c42b:d168:5a8c:ca8d"
+    },
+    {
+      "ip": "d9ef:5561:ab26:81af:f2f6:eed1:e182:1648",
+      "id": "d9ef:5561:ab26:81af:f2f6:eed1:e182:1648",
+      "route_metric_to_exit": 443,
+      "route_metric": 198,
+      "total_payments": "201600880208244460",
+      "debt": "634500",
+      "link_cost": 245,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 24.597664,
+          "std_dev": 14.117777
+        },
+        "packet_loss": {
+          "avg": 0.00015750568,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 17,
+      "color": "",
+      "img": {},
+      "__indexColor": "#600008",
+      "index": 7,
+      "latlng": {
+        "lat": 46.805885124675555,
+        "lng": -124.51451762475462
+      },
+      "fx": 217.55746936770302,
+      "fy": -707.4213603342622,
+      "lat": 46.805885124675555,
+      "lng": -124.51451762475462,
+      "label": "Rosa Smith",
+      "iface": "wg123",
+      "prefix": "5749:02ce:1a07:ede7:ec9e:c5e8:c060:6e5f/128",
+      "neigh_ip": "d407:d3fc:1e3c:df04:fe79:0c66:8406:9f51"
+    },
+    {
+      "level": 1,
+      "group": 1,
+      "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+      "neighbor": false,
+      "normalizedMetric": 11,
+      "color": "",
+      "img": {},
+      "__indexColor": "#ec0001",
+      "index": 0,
+      "latlng": {
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914
+      },
+      "fx": -159.32985078363575,
+      "fy": -1.3712493988658423,
+      "lat": 48.553512274434446,
+      "lng": -121.32436852764914,
+      "label": "Ina Norris",
+      "iface": "wg123",
+      "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+      "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+      "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+    },
+    {
+      "ip": "4f87:dd86:7dd3:2502:006f:17cc:bcbf:bef9",
+      "id": "4f87:dd86:7dd3:2502:006f:17cc:bcbf:bef9",
+      "route_metric_to_exit": 414,
+      "route_metric": 154,
+      "total_payments": "201601143301009200",
+      "debt": "0",
+      "link_cost": 260,
+      "price_to_exit": 0,
+      "speed_limit": 10000,
+      "stats": {
+        "latency": {
+          "avg": 24.456707,
+          "std_dev": 10.258895
+        },
+        "packet_loss": {
+          "avg": 0.00003221707,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 13,
+      "color": "",
+      "img": {},
+      "__indexColor": "#38000a",
+      "index": 9,
+      "label": "Rosetta Frazier",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "iface": "wg123",
+      "prefix": "fdf4:cdc1:d5e5:aff0:98db:002f:9c6e:4a63/128",
+      "neigh_ip": "ff74:696f:2448:53c0:ead1:7b83:718f:de1e"
+    },
+    {
+      "ip": "55ff:8792:a7d5:7714:7943:1a9f:e2b0:96e8",
+      "id": "55ff:8792:a7d5:7714:7943:1a9f:e2b0:96e8",
+      "route_metric_to_exit": 391,
+      "route_metric": 144,
+      "total_payments": "244555352633692700",
+      "debt": "485000",
+      "link_cost": 236,
+      "price_to_exit": 0,
+      "speed_limit": 10000,
+      "stats": {
+        "latency": {
+          "avg": 25.37535,
+          "std_dev": 20.010143
+        },
+        "packet_loss": {
+          "avg": 0.00007875284,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 12,
+      "color": "",
+      "img": {},
+      "__indexColor": "#4c0009",
+      "index": 8,
+      "label": "Alfred Lindsey",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "iface": "wg123",
+      "prefix": "22a9:3902:c991:da0e:5459:2d96:bd3c:e11b/128",
+      "neigh_ip": "18f2:b2dc:4937:9aa1:0428:3d75:823e:af9d"
+    },
+    {
+      "ip": "16da:064c:7d8e:7f09:5748:1cc2:e719:f0a2",
+      "id": "16da:064c:7d8e:7f09:5748:1cc2:e719:f0a2",
+      "route_metric_to_exit": 404,
+      "route_metric": 153,
+      "total_payments": "403219091290907200",
+      "debt": "2928200",
+      "link_cost": 251,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 24.301489,
+          "std_dev": 12.957277
+        },
+        "packet_loss": {
+          "avg": 0.0006668818,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 13,
+      "color": "",
+      "img": {},
+      "__indexColor": "#700014",
+      "index": 19,
+      "label": "Madge Rose",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "iface": "wg123",
+      "prefix": "e389:e62f:13e2:2b1c:3d51:5ebb:af36:ed21/128",
+      "neigh_ip": "f731:98bf:9626:b056:7c67:5c9b:0242:5048"
+    },
+    {
+      "ip": "644d:9c27:edc3:2be8:3d46:c43a:6735:458a",
+      "id": "644d:9c27:edc3:2be8:3d46:c43a:6735:458a",
+      "route_metric_to_exit": 417,
+      "route_metric": 166,
+      "total_payments": "201600706194428400",
+      "debt": "0",
+      "link_cost": 251,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 24.416582,
+          "std_dev": 11.173933
+        },
+        "packet_loss": {
+          "avg": 0.000014318698,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 14,
+      "color": "",
+      "img": {},
+      "__indexColor": "#d80002",
+      "index": 1,
+      "label": "Ralph Willis",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "iface": "wg123",
+      "prefix": "f623:d8cd:803e:82f2:818e:b4f2:9349:843e/128",
+      "neigh_ip": "9396:5413:f422:ea35:b574:d453:7a1f:a297"
+    },
+    {
+      "ip": "bce5:6a8e:a8e4:4b3d:1f2f:08ac:3254:7584",
+      "id": "bce5:6a8e:a8e4:4b3d:1f2f:08ac:3254:7584",
+      "route_metric_to_exit": 415,
+      "route_metric": 179,
+      "total_payments": "2017191349571717700",
+      "debt": "3724400",
+      "link_cost": 236,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 22.905514,
+          "std_dev": 19.166548
+        },
+        "packet_loss": {
+          "avg": 0.0013331661,
+          "five_min_avg": 0.01
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 15,
+      "color": "",
+      "img": {},
+      "__indexColor": "#9c0005",
+      "index": 4,
+      "label": "Laura Gray",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "iface": "wg123",
+      "prefix": "79f1:5237:dcbb:fa9b:260d:bcc1:cde0:1ac9/128",
+      "neigh_ip": "3455:a65e:52bc:5a4b:9884:7cbb:8585:408a"
+    },
+    {
+      "id": "5fdd:5081:716b:3532:cad9:7908:618a:755d",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "867f:533e:e0c3:d6fd:2a1e:d397:9171:cb4b",
+      "prefix": "cf33:c007:7fbb:29d1:ef53:2a62:fa5f:2234/128",
+      "metric": 223,
+      "refmetric": 127,
+      "full_path_rtt": 26.69,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 19,
+      "color": "",
+      "img": {},
+      "__indexColor": "#68002e",
+      "index": 45,
+      "label": "Isabella Lopez",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "5fdd:5081:716b:3532:cad9:7908:618a:755d"
+    },
+    {
+      "ip": "8cc0:3068:c182:13d5:9401:edfb:49d1:4097",
+      "id": "8cc0:3068:c182:13d5:9401:edfb:49d1:4097",
+      "route_metric_to_exit": 292,
+      "route_metric": 96,
+      "total_payments": "201604119338622530",
+      "debt": "0",
+      "link_cost": 196,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 12.893964,
+          "std_dev": 47.21447
+        },
+        "packet_loss": {
+          "avg": 0.00012170894,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 8,
+      "color": "",
+      "img": {},
+      "__indexColor": "#e8000e",
+      "index": 13,
+      "latlng": {
+        "lat": 46.140952209231884,
+        "lng": -121.96420848379186
+      },
+      "fx": 6.420823994891684,
+      "fy": -106.06136391721606,
+      "lat": 46.140952209231884,
+      "lng": -121.96420848379186,
+      "label": "Emma Little",
+      "iface": "wg123",
+      "prefix": "4f22:0961:6b98:17b7:02a9:1e75:06d9:9808/128",
+      "neigh_ip": "fc24:bc19:f91e:f785:3255:068c:ea81:cade"
+    },
+    {
+      "id": "35ee:a960:3aa7:8123:9580:1164:4164:4312",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "6538:4744:bd4c:041c:5267:c932:d118:7b92",
+      "prefix": "5c97:e7e2:8408:d7c2:713e:6f80:8783:6ad6/128",
+      "metric": 224,
+      "refmetric": 96,
+      "full_path_rtt": 26.532,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 19,
+      "color": "",
+      "img": {},
+      "__indexColor": "#7c002d",
+      "index": 44,
+      "latlng": {
+        "lat": 44.58203462641012,
+        "lng": -123.13223412678492
+      },
+      "fx": 95.66781867786862,
+      "fy": -279.9092753314949,
+      "lat": 44.58203462641012,
+      "lng": -123.13223412678492,
+      "label": "Frederick Potter",
+      "ip": "35ee:a960:3aa7:8123:9580:1164:4164:4312"
+    },
+    {
+      "ip": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+      "id": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+      "route_metric_to_exit": 348,
+      "route_metric": 128,
+      "total_payments": "504131129556434840",
+      "debt": "7000600",
+      "link_cost": 220,
+      "price_to_exit": 0,
+      "speed_limit": 10000,
+      "stats": {
+        "latency": {
+          "avg": 19.742462,
+          "std_dev": 36.584373
+        },
+        "packet_loss": {
+          "avg": 0.0019341852,
+          "five_min_avg": 0.01
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 11,
+      "color": "",
+      "img": {},
+      "__indexColor": "#980012",
+      "index": 17,
+      "latlng": {
+        "lat": 45.90745077474137,
+        "lng": -125.54790510867213
+      },
+      "fx": 110.18032353562336,
+      "fy": 28.769851942238702,
+      "lat": 45.90745077474137,
+      "lng": -125.54790510867213,
+      "label": "Gilbert Bridges",
+      "iface": "wg123",
+      "prefix": "f809:462e:a692:e44d:cc50:c12c:b715:a06c/128",
+      "neigh_ip": "beca:c7f5:b860:e673:0146:71c4:08c8:ddbf"
+    },
+    {
+      "id": "26c4:ce48:cc42:7ebb:fa92:8d81:8427:ecb5",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "5057:fea9:8a2a:afdc:2980:99a3:7517:f1f6",
+      "prefix": "fe77:da64:5aff:1078:6fe9:8326:77bc:ad5c/128",
+      "metric": 307,
+      "refmetric": 211,
+      "full_path_rtt": 31.165,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 26,
+      "color": "",
+      "img": {},
+      "__indexColor": "#90002c",
+      "index": 43,
+      "label": "Addie Gross",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "26c4:ce48:cc42:7ebb:fa92:8d81:8427:ecb5"
+    },
+    {
+      "id": "7413:914e:4d6c:4bc5:971f:e315:95ea:6244",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "2af3:cfe9:0e46:63ac:fc8a:0794:78d2:d3a0",
+      "prefix": "b3c7:5e02:5d68:5495:0e66:1ff4:c955:9edd/128",
+      "metric": 212,
+      "refmetric": 116,
+      "full_path_rtt": 21.572,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 18,
+      "color": "",
+      "img": {},
+      "__indexColor": "#a4002b",
+      "index": 42,
+      "label": "Maria Simon",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "7413:914e:4d6c:4bc5:971f:e315:95ea:6244"
+    },
+    {
+      "ip": "c46f:eceb:69f7:a75f:c7a6:69c5:cf05:092d",
+      "id": "c46f:eceb:69f7:a75f:c7a6:69c5:cf05:092d",
+      "route_metric_to_exit": 371,
+      "route_metric": 128,
+      "total_payments": "504081783701020400",
+      "debt": "1428300",
+      "link_cost": 243,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 20.351812,
+          "std_dev": 13.587189
+        },
+        "packet_loss": {
+          "avg": 0.000017898374,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 11,
+      "color": "",
+      "img": {},
+      "__indexColor": "#340017",
+      "index": 22,
+      "label": "Mason Jensen",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "iface": "wg123",
+      "prefix": "44ab:c17d:f3d2:15d3:a407:69bb:4fd8:2a55/128",
+      "neigh_ip": "833f:e5f5:b1de:6093:391f:9731:d525:4561"
+    },
+    {
+      "id": "7605:4c98:8dc7:b6a1:f2f4:a116:8a69:d060",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "3957:fc1a:a784:1aaa:83ed:1256:c6ac:d5f4",
+      "prefix": "3837:4239:da55:7f46:0bf3:25af:a307:5d01/128",
+      "metric": 192,
+      "refmetric": 96,
+      "full_path_rtt": 18.529,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 16,
+      "color": "",
+      "img": {},
+      "__indexColor": "#b8002a",
+      "index": 41,
+      "label": "Milton Ray",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "7605:4c98:8dc7:b6a1:f2f4:a116:8a69:d060"
+    },
+    {
+      "ip": "257d:ad0e:2394:5ec4:a03e:d751:9ea7:2ac9",
+      "id": "257d:ad0e:2394:5ec4:a03e:d751:9ea7:2ac9",
+      "route_metric_to_exit": 442,
+      "route_metric": 175,
+      "total_payments": "0",
+      "debt": "513900",
+      "link_cost": 267,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 25.56623,
+          "std_dev": 15.058756
+        },
+        "packet_loss": {
+          "avg": 0.00012528861,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 15,
+      "color": "",
+      "img": {},
+      "__indexColor": "#b00004",
+      "index": 3,
+      "latlng": {
+        "lat": 46.01945018883552,
+        "lng": -124.5095004522145
+      },
+      "fx": 39.478120726464475,
+      "fy": -258.4222295934643,
+      "lat": 46.01945018883552,
+      "lng": -124.5095004522145,
+      "label": "Max Riley",
+      "iface": "wg123",
+      "prefix": "a121:75d8:1d43:b82c:518c:ccb7:e7af:de13/128",
+      "neigh_ip": "d510:5736:c4e4:0376:cb01:556f:10ec:e9eb"
+    },
+    {
+      "ip": "8299:5afe:e056:26ca:4d78:0544:dabb:a2c3",
+      "id": "8299:5afe:e056:26ca:4d78:0544:dabb:a2c3",
+      "route_metric_to_exit": 288,
+      "route_metric": 96,
+      "total_payments": "302449232297278200",
+      "debt": "0",
+      "link_cost": 192,
+      "price_to_exit": 0,
+      "speed_limit": 4096,
+      "stats": {
+        "latency": {
+          "avg": 5.3324647,
+          "std_dev": 2.1943865
+        },
+        "packet_loss": {
+          "avg": 0.000010739024,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 8,
+      "color": "",
+      "img": {},
+      "__indexColor": "#d4000f",
+      "index": 14,
+      "latlng": {
+        "lat": 46.82887706555453,
+        "lng": -122.92741790255971
+      },
+      "fx": -136.4839084832662,
+      "fy": -86.40468394285588,
+      "lat": 46.82887706555453,
+      "lng": -122.92741790255971,
+      "label": "Janie Swanson",
+      "iface": "wg123",
+      "prefix": "909c:d439:3e00:1dba:1c80:dcaa:0553:e089/128",
+      "neigh_ip": "832e:151b:0bf6:6515:7574:10ad:1ca4:fa5d"
+    },
+    {
+      "ip": "281f:f787:94f0:d8c4:8443:8e12:6b1e:8d9d",
+      "id": "281f:f787:94f0:d8c4:8443:8e12:6b1e:8d9d",
+      "route_metric_to_exit": 403,
+      "route_metric": 155,
+      "total_payments": "201600457817561200",
+      "debt": "0",
+      "link_cost": 248,
+      "price_to_exit": 0,
+      "speed_limit": 6400,
+      "stats": {
+        "latency": {
+          "avg": 24.28359,
+          "std_dev": 10.73197
+        },
+        "packet_loss": {
+          "avg": 0.0000035796745,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 13,
+      "color": "",
+      "img": {},
+      "__indexColor": "#880006",
+      "index": 5,
+      "latlng": {
+        "lat": 44.94321547674953,
+        "lng": -124.97416633096458
+      },
+      "fx": 58.83762869602325,
+      "fy": -6.80613450580821,
+      "lat": 44.94321547674953,
+      "lng": -124.97416633096458,
+      "label": "Albert Day",
+      "iface": "wg123",
+      "prefix": "df50:d2e7:46ae:6f9a:1839:e726:0112:f6b1/128",
+      "neigh_ip": "0da6:49f0:a1ad:7269:405c:28b8:fa9c:77e7"
+    },
+    {
+      "ip": "22a2:0eb1:253c:3ee1:29f5:9723:7f0d:58f7",
+      "id": "22a2:0eb1:253c:3ee1:29f5:9723:7f0d:58f7",
+      "route_metric_to_exit": 390,
+      "route_metric": 151,
+      "total_payments": "504042327161995100",
+      "debt": "524900",
+      "link_cost": 241,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 23.353434,
+          "std_dev": 19.643295
+        },
+        "packet_loss": {
+          "avg": 0.00021478048,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 13,
+      "color": "",
+      "img": {},
+      "__indexColor": "#10000c",
+      "index": 11,
+      "label": "Gavin Price",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "iface": "wg123",
+      "prefix": "dc5e:1f00:e2a5:aba2:05b8:3973:53fc:fb84/128",
+      "neigh_ip": "fda3:e7dd:c9ca:7c27:7f89:129e:9248:f431"
+    },
+    {
+      "id": "73c1:0750:2bb0:c2ac:9914:30bd:e8e1:761b",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "1928:7ed2:850c:3657:3588:a241:1a40:cc8a",
+      "prefix": "6b02:8ea5:26e1:98e2:c36b:069e:b8e3:8f44/128",
+      "metric": 284,
+      "refmetric": 123,
+      "full_path_rtt": 38.665,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 24,
+      "color": "",
+      "img": {},
+      "__indexColor": "#cc0029",
+      "index": 40,
+      "label": "Henry Graves",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "73c1:0750:2bb0:c2ac:9914:30bd:e8e1:761b"
+    },
+    {
+      "id": "48b3:fc2f:86fc:664b:4aab:00f2:9509:5b7d",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "bb0f:772d:ff64:d87c:a9dd:fd69:d5eb:40fb",
+      "prefix": "5488:d06e:d170:b4ad:6873:2e70:d028:80d4/128",
+      "metric": 243,
+      "refmetric": 147,
+      "full_path_rtt": 31,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 21,
+      "color": "",
+      "img": {},
+      "__indexColor": "#e00028",
+      "index": 39,
+      "label": "Catherine Phelps",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "48b3:fc2f:86fc:664b:4aab:00f2:9509:5b7d"
+    },
+    {
+      "id": "717d:8b24:1d9f:4f5b:ec1a:09a8:494b:fbe9",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "62f0:6249:a2af:3393:8e64:0dc3:f4cc:c42c",
+      "prefix": "18d3:2ee6:a19f:10bd:e8ad:b25d:8260:20e7/128",
+      "metric": 231,
+      "refmetric": 135,
+      "full_path_rtt": 21.731,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 20,
+      "color": "",
+      "img": {},
+      "__indexColor": "#f40027",
+      "index": 38,
+      "label": "Pauline Peters",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "717d:8b24:1d9f:4f5b:ec1a:09a8:494b:fbe9"
+    },
+    {
+      "ip": "93d2:7b67:8695:ff08:4c35:11eb:8a35:818a",
+      "id": "93d2:7b67:8695:ff08:4c35:11eb:8a35:818a",
+      "route_metric_to_exit": 422,
+      "route_metric": 148,
+      "total_payments": "504009593888179300",
+      "debt": "5943000",
+      "link_cost": 264,
+      "price_to_exit": 0,
+      "speed_limit": 10000,
+      "stats": {
+        "latency": {
+          "avg": 24.87532,
+          "std_dev": 34.6659
+        },
+        "packet_loss": {
+          "avg": 0.00015750568,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 13,
+      "color": "",
+      "img": {},
+      "__indexColor": "#5c0015",
+      "index": 20,
+      "label": "Virgie Luna",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "iface": "wg123",
+      "prefix": "12ec:8e31:cce3:a694:c3f1:5d62:3404:cc01/128",
+      "neigh_ip": "5ecf:8b28:398a:c334:2321:1537:5be5:cf3d"
+    },
+    {
+      "id": "faa5:5dbb:521d:841e:db49:ce2f:d37a:f710",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "6c3f:f106:5e25:a6ca:16e9:e7b6:27e1:ed1f",
+      "prefix": "e6b0:fdbb:7a9a:50d9:ed75:d3ae:1e16:3c54/128",
+      "metric": 229,
+      "refmetric": 133,
+      "full_path_rtt": 24.454,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 19,
+      "color": "",
+      "img": {},
+      "__indexColor": "#080026",
+      "index": 37,
+      "label": "Angel Porter",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "faa5:5dbb:521d:841e:db49:ce2f:d37a:f710"
+    },
+    {
+      "id": "9439:1e74:0b8f:70a6:6a75:fcaf:dcc5:ba4a",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "499f:6e3c:d498:95b8:92bc:2cfa:95c4:7d58",
+      "prefix": "2081:b8de:bee9:002f:2cef:c946:45a9:263c/128",
+      "metric": 331,
+      "refmetric": 203,
+      "full_path_rtt": 40.442,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 28,
+      "color": "",
+      "img": {},
+      "__indexColor": "#1c0025",
+      "index": 36,
+      "label": "Samuel Vaughn",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "9439:1e74:0b8f:70a6:6a75:fcaf:dcc5:ba4a"
+    },
+    {
+      "ip": "282c:b80b:6e3b:9d15:495c:6368:1972:a7b6",
+      "id": "282c:b80b:6e3b:9d15:495c:6368:1972:a7b6",
+      "route_metric_to_exit": 392,
+      "route_metric": 152,
+      "total_payments": "504077543155067500",
+      "debt": "0",
+      "link_cost": 240,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 24.75037,
+          "std_dev": 12.358223
+        },
+        "packet_loss": {
+          "avg": 0.023595948,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 13,
+      "color": "",
+      "img": {},
+      "__indexColor": "#c40003",
+      "index": 2,
+      "latlng": {
+        "lat": 46.348924968003004,
+        "lng": -125.30077061514037
+      },
+      "fx": -17.20205134853883,
+      "fy": -146.05462346215384,
+      "lat": 46.348924968003004,
+      "lng": -125.30077061514037,
+      "label": "Ricardo Mendez",
+      "iface": "wg123",
+      "prefix": "fee0:7ebf:410f:0aa4:7550:908c:587c:c55b/128",
+      "neigh_ip": "2e9d:d9bf:be06:3d72:14bb:fa5f:3873:a546"
+    },
+    {
+      "ip": "e6d1:c61d:d89a:27ff:029e:ee34:f34d:b451",
+      "id": "e6d1:c61d:d89a:27ff:029e:ee34:f34d:b451",
+      "route_metric_to_exit": 375,
+      "route_metric": 133,
+      "total_payments": "302403320074877755",
+      "debt": "0",
+      "link_cost": 242,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 23.211134,
+          "std_dev": 8.717491
+        },
+        "packet_loss": {
+          "avg": 0.0000035796745,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 11,
+      "color": "",
+      "img": {},
+      "__indexColor": "#840013",
+      "index": 18,
+      "latlng": {
+        "lat": 45.216864417815046,
+        "lng": -124.84380926868765
+      },
+      "fx": -162.32318288921346,
+      "fy": -66.66432474823506,
+      "lat": 45.216864417815046,
+      "lng": -124.84380926868765,
+      "label": "Franklin Kelley",
+      "iface": "wg123",
+      "prefix": "643b:6e9d:9730:5d66:120b:2b94:f66d:18d4/128",
+      "neigh_ip": "743d:70b5:2bcd:3230:34c3:b456:296f:f32d"
+    },
+    {
+      "id": "de65:2df0:fe9f:467f:4986:bbb7:61c7:7631",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "bf26:af37:3eb7:883c:8ecc:a3bf:55f0:6d47",
+      "prefix": "8837:2783:c151:27ce:787e:b7f8:0d96:2a4c/128",
+      "metric": 236,
+      "refmetric": 103,
+      "full_path_rtt": 29.908,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 20,
+      "color": "",
+      "img": {},
+      "__indexColor": "#300024",
+      "index": 35,
+      "latlng": {
+        "lat": 46.27863933125856,
+        "lng": -124.70013849513633
+      },
+      "fx": -142.33244526032064,
+      "fy": 13.972103850648857,
+      "lat": 46.27863933125856,
+      "lng": -124.70013849513633,
+      "label": "Minerva Martinez",
+      "ip": "de65:2df0:fe9f:467f:4986:bbb7:61c7:7631"
+    },
+    {
+      "ip": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+      "id": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+      "route_metric_to_exit": 288,
+      "route_metric": 96,
+      "total_payments": "0",
+      "debt": "82485069461352500",
+      "link_cost": 192,
+      "price_to_exit": 0,
+      "speed_limit": 57,
+      "stats": {
+        "latency": {
+          "avg": 11.118977,
+          "std_dev": 66.91243
+        },
+        "packet_loss": {
+          "avg": 0.00003937642,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 8,
+      "color": "",
+      "img": {},
+      "__indexColor": "#ac0011",
+      "index": 16,
+      "latlng": {
+        "lat": 48.58013126960083,
+        "lng": -121.98189303676017
+      },
+      "fx": 239.1919865770167,
+      "fy": -712.4692322163395,
+      "lat": 48.58013126960083,
+      "lng": -121.98189303676017,
+      "label": "Ricardo Lewis",
+      "iface": "wg123",
+      "prefix": "5d6f:fa88:01d7:86f3:a902:4cb0:514a:b388/128",
+      "neigh_ip": "12d2:0fbc:fa03:aecb:bb49:a52a:d527:f904"
+    },
+    {
+      "id": "020f:35ff:570a:b44b:d101:c27d:de2a:3db5",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "4639:d5c2:23d0:cec0:85f3:b39b:b9a8:d97b",
+      "prefix": "f57f:cd27:aaca:7ad3:fd65:5daf:5e80:8af5/128",
+      "metric": 241,
+      "refmetric": 145,
+      "full_path_rtt": 26.302,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 20,
+      "color": "",
+      "img": {},
+      "__indexColor": "#440023",
+      "index": 34,
+      "label": "Mason McDonald",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "020f:35ff:570a:b44b:d101:c27d:de2a:3db5"
+    },
+    {
+      "ip": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+      "id": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+      "route_metric_to_exit": 288,
+      "route_metric": 96,
+      "total_payments": "5248213879038471500",
+      "debt": "0",
+      "link_cost": 192,
+      "price_to_exit": 0,
+      "speed_limit": 5120,
+      "stats": {
+        "latency": {
+          "avg": 5.0383067,
+          "std_dev": 22.318157
+        },
+        "packet_loss": {
+          "avg": 0.00003937642,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 8,
+      "color": "",
+      "img": {},
+      "__indexColor": "#740007",
+      "index": 6,
+      "latlng": {
+        "lat": 43.73916455806621,
+        "lng": -121.94652592440949
+      },
+      "fx": 166.69723603917558,
+      "fy": -31.191928724261686,
+      "lat": 43.73916455806621,
+      "lng": -121.94652592440949,
+      "label": "Sam Keller",
+      "iface": "wg123",
+      "prefix": "f5a5:e150:e0f1:cd8e:7d5b:3f20:297b:6767/128",
+      "neigh_ip": "ba05:1598:ae5b:a856:4c57:9344:34e9:29a0"
+    },
+    {
+      "id": "b315:c95d:c7e9:9ba2:82e7:72d3:5102:a563",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "3235:9d3d:49a3:2db3:176f:2236:df43:06f0",
+      "prefix": "40b8:2cc5:11d3:a78d:cc0b:7b81:b2d1:ead6/128",
+      "metric": 192,
+      "refmetric": 96,
+      "full_path_rtt": 17.943,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 16,
+      "color": "",
+      "img": {},
+      "__indexColor": "#580022",
+      "index": 33,
+      "label": "Kathryn Vega",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "b315:c95d:c7e9:9ba2:82e7:72d3:5102:a563"
+    },
+    {
+      "ip": "9408:e1fd:840e:d479:8aa1:e792:d830:ecc7",
+      "id": "9408:e1fd:840e:d479:8aa1:e792:d830:ecc7",
+      "route_metric_to_exit": 420,
+      "route_metric": 156,
+      "total_payments": "0",
+      "debt": "1582100",
+      "link_cost": 264,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 25.371038,
+          "std_dev": 12.058108
+        },
+        "packet_loss": {
+          "avg": 0.000071593495,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 13,
+      "color": "",
+      "img": {},
+      "__indexColor": "#480016",
+      "index": 21,
+      "label": "Harold Alvarez",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "iface": "wg123",
+      "prefix": "3134:a9b0:dea6:df4c:d92e:1a7b:7135:74f9/128",
+      "neigh_ip": "3ba8:53b7:309b:5d2e:db84:d2a2:05ee:3b4a"
+    },
+    {
+      "id": "e942:d127:ed4e:d2d0:1442:be78:840c:8eed",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "f217:9b6f:2e1e:aa50:365f:4b81:dfdd:b64a",
+      "prefix": "b75f:8b3e:e76e:6e24:6ff8:0f4c:1352:0d66/128",
+      "metric": 224,
+      "refmetric": 96,
+      "full_path_rtt": 23.306,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 19,
+      "color": "",
+      "img": {},
+      "__indexColor": "#6c0021",
+      "index": 32,
+      "label": "Ora Palmer",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "e942:d127:ed4e:d2d0:1442:be78:840c:8eed"
+    },
+    {
+      "id": "d677:579e:f337:b209:28dd:6425:23b4:763b",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "736d:424e:1ee0:eb47:2f57:ab8a:a1c4:2d03",
+      "prefix": "15ae:62ab:31a2:8d34:a5d2:872d:51d6:442d/128",
+      "metric": 213,
+      "refmetric": 117,
+      "full_path_rtt": 19.735,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 18,
+      "color": "",
+      "img": {},
+      "__indexColor": "#800020",
+      "index": 31,
+      "label": "Addie Duncan",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "d677:579e:f337:b209:28dd:6425:23b4:763b"
+    },
+    {
+      "id": "4a7a:a044:270f:937f:48d6:228a:edc0:35b3",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "4072:332a:4d4c:a63b:1d05:be7b:6665:f436",
+      "prefix": "5c66:6b71:0216:0d82:6f45:c964:11ed:d309/128",
+      "metric": 192,
+      "refmetric": 96,
+      "full_path_rtt": 16.589,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 16,
+      "color": "",
+      "img": {},
+      "__indexColor": "#94001f",
+      "index": 30,
+      "latlng": {
+        "lat": 45.57009588572603,
+        "lng": -123.6078407107998
+      },
+      "fx": 49.43024372889708,
+      "fy": 144.8597533692756,
+      "lat": 45.57009588572603,
+      "lng": -123.6078407107998,
+      "label": "Don Austin",
+      "ip": "4a7a:a044:270f:937f:48d6:228a:edc0:35b3"
+    },
+    {
+      "id": "a7d1:a196:7007:e00f:3a25:4b9d:d931:54f1",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "414a:f1f7:725a:fbaa:8322:b331:4e19:73f7",
+      "prefix": "c4b1:3856:bc0f:e0e4:16ce:ccb7:b8fd:565b/128",
+      "metric": 215,
+      "refmetric": 119,
+      "full_path_rtt": 24.966,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 18,
+      "color": "",
+      "img": {},
+      "__indexColor": "#a8001e",
+      "index": 29,
+      "label": "Emma Henry",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "a7d1:a196:7007:e00f:3a25:4b9d:d931:54f1"
+    },
+    {
+      "id": "4223:9d11:54f5:9e4a:b62f:eed7:3c33:8c8d",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "8210:7096:4fe1:c021:63d0:3119:d5d8:58c4",
+      "prefix": "fdbb:c86d:71fd:fcd9:0e98:f3c2:e0a4:7735/128",
+      "metric": 192,
+      "refmetric": 96,
+      "full_path_rtt": 17.016,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 16,
+      "color": "",
+      "img": {},
+      "__indexColor": "#bc001d",
+      "index": 28,
+      "label": "Fanny Alexander",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "4223:9d11:54f5:9e4a:b62f:eed7:3c33:8c8d"
+    },
+    {
+      "id": "d27b:3ab8:5f74:0834:e5a7:7031:0123:30c2",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "a03a:8df4:4e17:1ace:5da1:d76d:7e1a:bb17",
+      "prefix": "05fd:0380:61cf:1aed:8d2b:8d6a:77c4:a033/128",
+      "metric": 283,
+      "refmetric": 122,
+      "full_path_rtt": 40.782,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 24,
+      "color": "",
+      "img": {},
+      "__indexColor": "#d0001c",
+      "index": 27,
+      "label": "Estelle Bennett",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "d27b:3ab8:5f74:0834:e5a7:7031:0123:30c2"
+    },
+    {
+      "id": "2176:a110:71e2:4ffe:1498:15e1:3b34:25db",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "3a05:21b4:bf3f:95f3:6a02:47d8:bf3e:71f1",
+      "prefix": "861a:0163:0388:4791:d533:cbfb:6120:c3f1/128",
+      "metric": 224,
+      "refmetric": 96,
+      "full_path_rtt": 22.589,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 19,
+      "color": "",
+      "img": {},
+      "__indexColor": "#e4001b",
+      "index": 26,
+      "label": "Susan Watkins",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "2176:a110:71e2:4ffe:1498:15e1:3b34:25db"
+    },
+    {
+      "id": "2bb9:4034:da7e:3cbe:8ffe:4f3c:a6b6:71e4",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "66e2:a9b3:054a:a877:7837:068c:4a5e:c4e5",
+      "prefix": "69a8:8c7f:257c:77e5:966e:0b05:c927:d655/128",
+      "metric": 288,
+      "refmetric": 192,
+      "full_path_rtt": 22.884,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 24,
+      "color": "",
+      "img": {},
+      "__indexColor": "#f8001a",
+      "index": 25,
+      "label": "Sarah Williamson",
+      "fx": null,
+      "fy": null,
+      "lat": null,
+      "lng": null,
+      "latlng": {
+        "lat": null,
+        "lng": null
+      },
+      "ip": "2bb9:4034:da7e:3cbe:8ffe:4f3c:a6b6:71e4"
+    },
+    {
+      "ip": "aac1:6e30:aecb:bf50:b071:f932:86d9:e95d",
+      "id": "aac1:6e30:aecb:bf50:b071:f932:86d9:e95d",
+      "route_metric_to_exit": 417,
+      "route_metric": 142,
+      "total_payments": "806477810693542000",
+      "debt": "5101000",
+      "link_cost": 275,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 19.43366,
+          "std_dev": 21.578798
+        },
+        "packet_loss": {
+          "avg": 0.0011813138,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 12,
+      "color": "",
+      "img": {},
+      "__indexColor": "#200018",
+      "index": 23,
+      "latlng": {
+        "lat": 47.227778056388445,
+        "lng": -124.99620827783596
+      },
+      "fx": -148.95752183834094,
+      "fy": -0.614749396931316,
+      "lat": 47.227778056388445,
+      "lng": -124.99620827783596,
+      "label": "Micheal Watts",
+      "iface": "wg123",
+      "prefix": "43bc:bd8d:2899:4734:eec5:fe77:1266:c40f/128",
+      "neigh_ip": "9972:8b45:a023:769c:e5db:c261:0487:25dc"
+    },
+    {
+      "ip": "06e3:f933:4c41:036b:1605:1ccc:e5a2:fc79",
+      "id": "06e3:f933:4c41:036b:1605:1ccc:e5a2:fc79",
+      "route_metric_to_exit": 440,
+      "route_metric": 149,
+      "total_payments": "2497453666535420200",
+      "debt": "208906500",
+      "link_cost": 291,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 23.205793,
+          "std_dev": 20.78754
+        },
+        "packet_loss": {
+          "avg": 0.00027563496,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 13,
+      "color": "",
+      "img": {},
+      "__indexColor": "#fc000d",
+      "index": 12,
+      "latlng": {
+        "lat": 45.50765229339784,
+        "lng": -125.43426643672815
+      },
+      "fx": -29.62673485111361,
+      "fy": -67.03662762177625,
+      "lat": 45.50765229339784,
+      "lng": -125.43426643672815,
+      "label": "Sadie Griffith",
+      "iface": "wg123",
+      "prefix": "e753:12a0:a239:dfd0:a41a:da24:389f:8fe8/128",
+      "neigh_ip": "ddf0:d459:046b:2ce9:90ce:da94:837c:2ec6"
+    },
+    {
+      "ip": "826a:283c:c831:bca0:572d:2ad5:8b22:f0a7",
+      "id": "826a:283c:c831:bca0:572d:2ad5:8b22:f0a7",
+      "route_metric_to_exit": 288,
+      "route_metric": 425,
+      "total_payments": "0",
+      "debt": "19542707297683300",
+      "link_cost": 192,
+      "price_to_exit": 0,
+      "speed_limit": null,
+      "stats": {
+        "latency": {
+          "avg": 5.0383067,
+          "std_dev": 22.318157
+        },
+        "packet_loss": {
+          "avg": 0.00003937642,
+          "five_min_avg": 0
+        }
+      },
+      "level": 2,
+      "neighbor": true,
+      "normalizedMetric": 36,
+      "color": "",
+      "img": {},
+      "__indexColor": "#c00010",
+      "index": 15,
+      "latlng": {
+        "lat": 46.59900392242601,
+        "lng": -125.19355363057682
+      },
+      "fx": 59.66192617514906,
+      "fy": 105.86085479751138,
+      "lat": 46.59900392242601,
+      "lng": -125.19355363057682,
+      "label": "Jackson Anderson",
+      "iface": "wg123",
+      "prefix": "ac40:d3f8:9530:a70c:aed8:41c0:ad20:66a8/128",
+      "neigh_ip": "885b:03cf:b34a:db2f:988a:27b1:b8f3:f3e7"
+    },
+    {
+      "id": "4e33:f824:1e69:a87a:fcef:345b:7c5b:091c",
+      "iface": "wg123",
+      "xroute": false,
+      "installed": true,
+      "neigh_ip": "b53a:c4d4:9ab6:aab7:0a42:a394:e143:00a5",
+      "prefix": "8dc9:3649:7906:c4f9:cacd:ec8a:a617:ae53/128",
+      "metric": 204,
+      "refmetric": 108,
+      "full_path_rtt": 19.251,
+      "price": 0,
+      "fee": 0,
+      "level": 3,
+      "route": true,
+      "normalizedMetric": 17,
+      "color": "",
+      "img": {},
+      "__indexColor": "#0c0019",
+      "index": 24,
+      "latlng": {
+        "lat": 46.03190690549358,
+        "lng": -125.32511182919657
+      },
+      "fx": -92.53822316485414,
+      "fy": -44.65771582851016,
+      "lat": 46.03190690549358,
+      "lng": -125.32511182919657,
+      "label": "Brian Hunter",
+      "ip": "4e33:f824:1e69:a87a:fcef:345b:7c5b:091c"
+    }
+  ],
+  "links": [
+    {
+      "target": {
+        "ip": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+        "id": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+        "route_metric_to_exit": 348,
+        "route_metric": 128,
+        "total_payments": "504131129556434840",
+        "debt": "7000600",
+        "link_cost": 220,
+        "price_to_exit": 0,
+        "speed_limit": 10000,
+        "stats": {
+          "latency": {
+            "avg": 19.742462,
+            "std_dev": 36.584373
+          },
+          "packet_loss": {
+            "avg": 0.0019341852,
+            "five_min_avg": 0.01
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#980012",
+        "index": 17,
+        "latlng": {
+          "lat": 45.90745077474137,
+          "lng": -125.54790510867213
+        },
+        "fx": 110.18032353562336,
+        "fy": 28.769851942238702,
+        "lat": 45.90745077474137,
+        "lng": -125.54790510867213,
+        "label": "Gilbert Bridges",
+        "iface": "wg123",
+        "prefix": "f809:462e:a692:e44d:cc50:c12c:b715:a06c/128",
+        "neigh_ip": "beca:c7f5:b860:e673:0146:71c4:08c8:ddbf"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "282c:b80b:6e3b:9d15:495c:6368:1972:a7b6",
+        "id": "282c:b80b:6e3b:9d15:495c:6368:1972:a7b6",
+        "route_metric_to_exit": 392,
+        "route_metric": 152,
+        "total_payments": "504077543155067500",
+        "debt": "0",
+        "link_cost": 240,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 24.75037,
+            "std_dev": 12.358223
+          },
+          "packet_loss": {
+            "avg": 0.023595948,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 13,
+        "color": "",
+        "img": {},
+        "__indexColor": "#c40003",
+        "index": 2,
+        "latlng": {
+          "lat": 46.348924968003004,
+          "lng": -125.30077061514037
+        },
+        "fx": -17.20205134853883,
+        "fy": -146.05462346215384,
+        "lat": 46.348924968003004,
+        "lng": -125.30077061514037,
+        "label": "Ricardo Mendez",
+        "iface": "wg123",
+        "prefix": "fee0:7ebf:410f:0aa4:7550:908c:587c:c55b/128",
+        "neigh_ip": "2e9d:d9bf:be06:3d72:14bb:fa5f:3873:a546"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "id": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "5248213879038471500",
+        "debt": "0",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 5120,
+        "stats": {
+          "latency": {
+            "avg": 5.0383067,
+            "std_dev": 22.318157
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#740007",
+        "index": 6,
+        "latlng": {
+          "lat": 43.73916455806621,
+          "lng": -121.94652592440949
+        },
+        "fx": 166.69723603917558,
+        "fy": -31.191928724261686,
+        "lat": 43.73916455806621,
+        "lng": -121.94652592440949,
+        "label": "Sam Keller",
+        "iface": "wg123",
+        "prefix": "f5a5:e150:e0f1:cd8e:7d5b:3f20:297b:6767/128",
+        "neigh_ip": "ba05:1598:ae5b:a856:4c57:9344:34e9:29a0"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "16da:064c:7d8e:7f09:5748:1cc2:e719:f0a2",
+        "id": "16da:064c:7d8e:7f09:5748:1cc2:e719:f0a2",
+        "route_metric_to_exit": 404,
+        "route_metric": 153,
+        "total_payments": "403219091290907200",
+        "debt": "2928200",
+        "link_cost": 251,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 24.301489,
+            "std_dev": 12.957277
+          },
+          "packet_loss": {
+            "avg": 0.0006668818,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 13,
+        "color": "",
+        "img": {},
+        "__indexColor": "#700014",
+        "index": 19,
+        "label": "Madge Rose",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "iface": "wg123",
+        "prefix": "e389:e62f:13e2:2b1c:3d51:5ebb:af36:ed21/128",
+        "neigh_ip": "f731:98bf:9626:b056:7c67:5c9b:0242:5048"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "644d:9c27:edc3:2be8:3d46:c43a:6735:458a",
+        "id": "644d:9c27:edc3:2be8:3d46:c43a:6735:458a",
+        "route_metric_to_exit": 417,
+        "route_metric": 166,
+        "total_payments": "201600706194428400",
+        "debt": "0",
+        "link_cost": 251,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 24.416582,
+            "std_dev": 11.173933
+          },
+          "packet_loss": {
+            "avg": 0.000014318698,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 14,
+        "color": "",
+        "img": {},
+        "__indexColor": "#d80002",
+        "index": 1,
+        "label": "Ralph Willis",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "iface": "wg123",
+        "prefix": "f623:d8cd:803e:82f2:818e:b4f2:9349:843e/128",
+        "neigh_ip": "9396:5413:f422:ea35:b574:d453:7a1f:a297"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "257d:ad0e:2394:5ec4:a03e:d751:9ea7:2ac9",
+        "id": "257d:ad0e:2394:5ec4:a03e:d751:9ea7:2ac9",
+        "route_metric_to_exit": 442,
+        "route_metric": 175,
+        "total_payments": "0",
+        "debt": "513900",
+        "link_cost": 267,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 25.56623,
+            "std_dev": 15.058756
+          },
+          "packet_loss": {
+            "avg": 0.00012528861,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 15,
+        "color": "",
+        "img": {},
+        "__indexColor": "#b00004",
+        "index": 3,
+        "latlng": {
+          "lat": 46.01945018883552,
+          "lng": -124.5095004522145
+        },
+        "fx": 39.478120726464475,
+        "fy": -258.4222295934643,
+        "lat": 46.01945018883552,
+        "lng": -124.5095004522145,
+        "label": "Max Riley",
+        "iface": "wg123",
+        "prefix": "a121:75d8:1d43:b82c:518c:ccb7:e7af:de13/128",
+        "neigh_ip": "d510:5736:c4e4:0376:cb01:556f:10ec:e9eb"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "9408:e1fd:840e:d479:8aa1:e792:d830:ecc7",
+        "id": "9408:e1fd:840e:d479:8aa1:e792:d830:ecc7",
+        "route_metric_to_exit": 420,
+        "route_metric": 156,
+        "total_payments": "0",
+        "debt": "1582100",
+        "link_cost": 264,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 25.371038,
+            "std_dev": 12.058108
+          },
+          "packet_loss": {
+            "avg": 0.000071593495,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 13,
+        "color": "",
+        "img": {},
+        "__indexColor": "#480016",
+        "index": 21,
+        "label": "Harold Alvarez",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "iface": "wg123",
+        "prefix": "3134:a9b0:dea6:df4c:d92e:1a7b:7135:74f9/128",
+        "neigh_ip": "3ba8:53b7:309b:5d2e:db84:d2a2:05ee:3b4a"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "4f87:dd86:7dd3:2502:006f:17cc:bcbf:bef9",
+        "id": "4f87:dd86:7dd3:2502:006f:17cc:bcbf:bef9",
+        "route_metric_to_exit": 414,
+        "route_metric": 154,
+        "total_payments": "201601143301009200",
+        "debt": "0",
+        "link_cost": 260,
+        "price_to_exit": 0,
+        "speed_limit": 10000,
+        "stats": {
+          "latency": {
+            "avg": 24.456707,
+            "std_dev": 10.258895
+          },
+          "packet_loss": {
+            "avg": 0.00003221707,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 13,
+        "color": "",
+        "img": {},
+        "__indexColor": "#38000a",
+        "index": 9,
+        "label": "Rosetta Frazier",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "iface": "wg123",
+        "prefix": "fdf4:cdc1:d5e5:aff0:98db:002f:9c6e:4a63/128",
+        "neigh_ip": "ff74:696f:2448:53c0:ead1:7b83:718f:de1e"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "c46f:eceb:69f7:a75f:c7a6:69c5:cf05:092d",
+        "id": "c46f:eceb:69f7:a75f:c7a6:69c5:cf05:092d",
+        "route_metric_to_exit": 371,
+        "route_metric": 128,
+        "total_payments": "504081783701020400",
+        "debt": "1428300",
+        "link_cost": 243,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 20.351812,
+            "std_dev": 13.587189
+          },
+          "packet_loss": {
+            "avg": 0.000017898374,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#340017",
+        "index": 22,
+        "label": "Mason Jensen",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "iface": "wg123",
+        "prefix": "44ab:c17d:f3d2:15d3:a407:69bb:4fd8:2a55/128",
+        "neigh_ip": "833f:e5f5:b1de:6093:391f:9731:d525:4561"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "281f:f787:94f0:d8c4:8443:8e12:6b1e:8d9d",
+        "id": "281f:f787:94f0:d8c4:8443:8e12:6b1e:8d9d",
+        "route_metric_to_exit": 403,
+        "route_metric": 155,
+        "total_payments": "201600457817561200",
+        "debt": "0",
+        "link_cost": 248,
+        "price_to_exit": 0,
+        "speed_limit": 6400,
+        "stats": {
+          "latency": {
+            "avg": 24.28359,
+            "std_dev": 10.73197
+          },
+          "packet_loss": {
+            "avg": 0.0000035796745,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 13,
+        "color": "",
+        "img": {},
+        "__indexColor": "#880006",
+        "index": 5,
+        "latlng": {
+          "lat": 44.94321547674953,
+          "lng": -124.97416633096458
+        },
+        "fx": 58.83762869602325,
+        "fy": -6.80613450580821,
+        "lat": 44.94321547674953,
+        "lng": -124.97416633096458,
+        "label": "Albert Day",
+        "iface": "wg123",
+        "prefix": "df50:d2e7:46ae:6f9a:1839:e726:0112:f6b1/128",
+        "neigh_ip": "0da6:49f0:a1ad:7269:405c:28b8:fa9c:77e7"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "8cc0:3068:c182:13d5:9401:edfb:49d1:4097",
+        "id": "8cc0:3068:c182:13d5:9401:edfb:49d1:4097",
+        "route_metric_to_exit": 292,
+        "route_metric": 96,
+        "total_payments": "201604119338622530",
+        "debt": "0",
+        "link_cost": 196,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 12.893964,
+            "std_dev": 47.21447
+          },
+          "packet_loss": {
+            "avg": 0.00012170894,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#e8000e",
+        "index": 13,
+        "latlng": {
+          "lat": 46.140952209231884,
+          "lng": -121.96420848379186
+        },
+        "fx": 6.420823994891684,
+        "fy": -106.06136391721606,
+        "lat": 46.140952209231884,
+        "lng": -121.96420848379186,
+        "label": "Emma Little",
+        "iface": "wg123",
+        "prefix": "4f22:0961:6b98:17b7:02a9:1e75:06d9:9808/128",
+        "neigh_ip": "fc24:bc19:f91e:f785:3255:068c:ea81:cade"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "22a2:0eb1:253c:3ee1:29f5:9723:7f0d:58f7",
+        "id": "22a2:0eb1:253c:3ee1:29f5:9723:7f0d:58f7",
+        "route_metric_to_exit": 390,
+        "route_metric": 151,
+        "total_payments": "504042327161995100",
+        "debt": "524900",
+        "link_cost": 241,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 23.353434,
+            "std_dev": 19.643295
+          },
+          "packet_loss": {
+            "avg": 0.00021478048,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 13,
+        "color": "",
+        "img": {},
+        "__indexColor": "#10000c",
+        "index": 11,
+        "label": "Gavin Price",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "iface": "wg123",
+        "prefix": "dc5e:1f00:e2a5:aba2:05b8:3973:53fc:fb84/128",
+        "neigh_ip": "fda3:e7dd:c9ca:7c27:7f89:129e:9248:f431"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "826a:283c:c831:bca0:572d:2ad5:8b22:f0a7",
+        "id": "826a:283c:c831:bca0:572d:2ad5:8b22:f0a7",
+        "route_metric_to_exit": 288,
+        "route_metric": 425,
+        "total_payments": "0",
+        "debt": "19542707297683300",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 5.0383067,
+            "std_dev": 22.318157
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 36,
+        "color": "",
+        "img": {},
+        "__indexColor": "#c00010",
+        "index": 15,
+        "latlng": {
+          "lat": 46.59900392242601,
+          "lng": -125.19355363057682
+        },
+        "fx": 59.66192617514906,
+        "fy": 105.86085479751138,
+        "lat": 46.59900392242601,
+        "lng": -125.19355363057682,
+        "label": "Jackson Anderson",
+        "iface": "wg123",
+        "prefix": "ac40:d3f8:9530:a70c:aed8:41c0:ad20:66a8/128",
+        "neigh_ip": "885b:03cf:b34a:db2f:988a:27b1:b8f3:f3e7"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "id": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "0",
+        "debt": "82485069461352500",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 57,
+        "stats": {
+          "latency": {
+            "avg": 11.118977,
+            "std_dev": 66.91243
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ac0011",
+        "index": 16,
+        "latlng": {
+          "lat": 48.58013126960083,
+          "lng": -121.98189303676017
+        },
+        "fx": 239.1919865770167,
+        "fy": -712.4692322163395,
+        "lat": 48.58013126960083,
+        "lng": -121.98189303676017,
+        "label": "Ricardo Lewis",
+        "iface": "wg123",
+        "prefix": "5d6f:fa88:01d7:86f3:a902:4cb0:514a:b388/128",
+        "neigh_ip": "12d2:0fbc:fa03:aecb:bb49:a52a:d527:f904"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "8299:5afe:e056:26ca:4d78:0544:dabb:a2c3",
+        "id": "8299:5afe:e056:26ca:4d78:0544:dabb:a2c3",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "302449232297278200",
+        "debt": "0",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 4096,
+        "stats": {
+          "latency": {
+            "avg": 5.3324647,
+            "std_dev": 2.1943865
+          },
+          "packet_loss": {
+            "avg": 0.000010739024,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#d4000f",
+        "index": 14,
+        "latlng": {
+          "lat": 46.82887706555453,
+          "lng": -122.92741790255971
+        },
+        "fx": -136.4839084832662,
+        "fy": -86.40468394285588,
+        "lat": 46.82887706555453,
+        "lng": -122.92741790255971,
+        "label": "Janie Swanson",
+        "iface": "wg123",
+        "prefix": "909c:d439:3e00:1dba:1c80:dcaa:0553:e089/128",
+        "neigh_ip": "832e:151b:0bf6:6515:7574:10ad:1ca4:fa5d"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "d9ef:5561:ab26:81af:f2f6:eed1:e182:1648",
+        "id": "d9ef:5561:ab26:81af:f2f6:eed1:e182:1648",
+        "route_metric_to_exit": 443,
+        "route_metric": 198,
+        "total_payments": "201600880208244460",
+        "debt": "634500",
+        "link_cost": 245,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 24.597664,
+            "std_dev": 14.117777
+          },
+          "packet_loss": {
+            "avg": 0.00015750568,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 17,
+        "color": "",
+        "img": {},
+        "__indexColor": "#600008",
+        "index": 7,
+        "latlng": {
+          "lat": 46.805885124675555,
+          "lng": -124.51451762475462
+        },
+        "fx": 217.55746936770302,
+        "fy": -707.4213603342622,
+        "lat": 46.805885124675555,
+        "lng": -124.51451762475462,
+        "label": "Rosa Smith",
+        "iface": "wg123",
+        "prefix": "5749:02ce:1a07:ede7:ec9e:c5e8:c060:6e5f/128",
+        "neigh_ip": "d407:d3fc:1e3c:df04:fe79:0c66:8406:9f51"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "93d2:7b67:8695:ff08:4c35:11eb:8a35:818a",
+        "id": "93d2:7b67:8695:ff08:4c35:11eb:8a35:818a",
+        "route_metric_to_exit": 422,
+        "route_metric": 148,
+        "total_payments": "504009593888179300",
+        "debt": "5943000",
+        "link_cost": 264,
+        "price_to_exit": 0,
+        "speed_limit": 10000,
+        "stats": {
+          "latency": {
+            "avg": 24.87532,
+            "std_dev": 34.6659
+          },
+          "packet_loss": {
+            "avg": 0.00015750568,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 13,
+        "color": "",
+        "img": {},
+        "__indexColor": "#5c0015",
+        "index": 20,
+        "label": "Virgie Luna",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "iface": "wg123",
+        "prefix": "12ec:8e31:cce3:a694:c3f1:5d62:3404:cc01/128",
+        "neigh_ip": "5ecf:8b28:398a:c334:2321:1537:5be5:cf3d"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "e6d1:c61d:d89a:27ff:029e:ee34:f34d:b451",
+        "id": "e6d1:c61d:d89a:27ff:029e:ee34:f34d:b451",
+        "route_metric_to_exit": 375,
+        "route_metric": 133,
+        "total_payments": "302403320074877755",
+        "debt": "0",
+        "link_cost": 242,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 23.211134,
+            "std_dev": 8.717491
+          },
+          "packet_loss": {
+            "avg": 0.0000035796745,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#840013",
+        "index": 18,
+        "latlng": {
+          "lat": 45.216864417815046,
+          "lng": -124.84380926868765
+        },
+        "fx": -162.32318288921346,
+        "fy": -66.66432474823506,
+        "lat": 45.216864417815046,
+        "lng": -124.84380926868765,
+        "label": "Franklin Kelley",
+        "iface": "wg123",
+        "prefix": "643b:6e9d:9730:5d66:120b:2b94:f66d:18d4/128",
+        "neigh_ip": "743d:70b5:2bcd:3230:34c3:b456:296f:f32d"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "bce5:6a8e:a8e4:4b3d:1f2f:08ac:3254:7584",
+        "id": "bce5:6a8e:a8e4:4b3d:1f2f:08ac:3254:7584",
+        "route_metric_to_exit": 415,
+        "route_metric": 179,
+        "total_payments": "2017191349571717700",
+        "debt": "3724400",
+        "link_cost": 236,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 22.905514,
+            "std_dev": 19.166548
+          },
+          "packet_loss": {
+            "avg": 0.0013331661,
+            "five_min_avg": 0.01
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 15,
+        "color": "",
+        "img": {},
+        "__indexColor": "#9c0005",
+        "index": 4,
+        "label": "Laura Gray",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "iface": "wg123",
+        "prefix": "79f1:5237:dcbb:fa9b:260d:bcc1:cde0:1ac9/128",
+        "neigh_ip": "3455:a65e:52bc:5a4b:9884:7cbb:8585:408a"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "06e3:f933:4c41:036b:1605:1ccc:e5a2:fc79",
+        "id": "06e3:f933:4c41:036b:1605:1ccc:e5a2:fc79",
+        "route_metric_to_exit": 440,
+        "route_metric": 149,
+        "total_payments": "2497453666535420200",
+        "debt": "208906500",
+        "link_cost": 291,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 23.205793,
+            "std_dev": 20.78754
+          },
+          "packet_loss": {
+            "avg": 0.00027563496,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 13,
+        "color": "",
+        "img": {},
+        "__indexColor": "#fc000d",
+        "index": 12,
+        "latlng": {
+          "lat": 45.50765229339784,
+          "lng": -125.43426643672815
+        },
+        "fx": -29.62673485111361,
+        "fy": -67.03662762177625,
+        "lat": 45.50765229339784,
+        "lng": -125.43426643672815,
+        "label": "Sadie Griffith",
+        "iface": "wg123",
+        "prefix": "e753:12a0:a239:dfd0:a41a:da24:389f:8fe8/128",
+        "neigh_ip": "ddf0:d459:046b:2ce9:90ce:da94:837c:2ec6"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "aac1:6e30:aecb:bf50:b071:f932:86d9:e95d",
+        "id": "aac1:6e30:aecb:bf50:b071:f932:86d9:e95d",
+        "route_metric_to_exit": 417,
+        "route_metric": 142,
+        "total_payments": "806477810693542000",
+        "debt": "5101000",
+        "link_cost": 275,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 19.43366,
+            "std_dev": 21.578798
+          },
+          "packet_loss": {
+            "avg": 0.0011813138,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 12,
+        "color": "",
+        "img": {},
+        "__indexColor": "#200018",
+        "index": 23,
+        "latlng": {
+          "lat": 47.227778056388445,
+          "lng": -124.99620827783596
+        },
+        "fx": -148.95752183834094,
+        "fy": -0.614749396931316,
+        "lat": 47.227778056388445,
+        "lng": -124.99620827783596,
+        "label": "Micheal Watts",
+        "iface": "wg123",
+        "prefix": "43bc:bd8d:2899:4734:eec5:fe77:1266:c40f/128",
+        "neigh_ip": "9972:8b45:a023:769c:e5db:c261:0487:25dc"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "55ff:8792:a7d5:7714:7943:1a9f:e2b0:96e8",
+        "id": "55ff:8792:a7d5:7714:7943:1a9f:e2b0:96e8",
+        "route_metric_to_exit": 391,
+        "route_metric": 144,
+        "total_payments": "244555352633692700",
+        "debt": "485000",
+        "link_cost": 236,
+        "price_to_exit": 0,
+        "speed_limit": 10000,
+        "stats": {
+          "latency": {
+            "avg": 25.37535,
+            "std_dev": 20.010143
+          },
+          "packet_loss": {
+            "avg": 0.00007875284,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 12,
+        "color": "",
+        "img": {},
+        "__indexColor": "#4c0009",
+        "index": 8,
+        "label": "Alfred Lindsey",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "iface": "wg123",
+        "prefix": "22a9:3902:c991:da0e:5459:2d96:bd3c:e11b/128",
+        "neigh_ip": "18f2:b2dc:4937:9aa1:0428:3d75:823e:af9d"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "ip": "42e0:690e:4181:4319:09a5:717a:ba29:c219",
+        "id": "42e0:690e:4181:4319:09a5:717a:ba29:c219",
+        "route_metric_to_exit": 413,
+        "route_metric": 161,
+        "total_payments": "0",
+        "debt": "50207773076156400",
+        "link_cost": 252,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 25.620808,
+            "std_dev": 72.34988
+          },
+          "packet_loss": {
+            "avg": 0.00062644307,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 14,
+        "color": "",
+        "img": {},
+        "__indexColor": "#24000b",
+        "index": 10,
+        "latlng": {
+          "lat": 44.464090110431385,
+          "lng": -121.29017319422732
+        },
+        "fx": -210.1458512490538,
+        "fy": -408.240417327292,
+        "lat": 44.464090110431385,
+        "lng": -121.29017319422732,
+        "label": "Leah Carson",
+        "iface": "wg123",
+        "prefix": "ec40:a9f7:d234:c7a1:74c2:eca3:f326:ec4d/128",
+        "neigh_ip": "e769:aa83:36b6:a045:c42b:d168:5a8c:ca8d"
+      },
+      "source": {
+        "level": 1,
+        "group": 1,
+        "id": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "neighbor": false,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ec0001",
+        "index": 0,
+        "latlng": {
+          "lat": 48.553512274434446,
+          "lng": -121.32436852764914
+        },
+        "fx": -159.32985078363575,
+        "fy": -1.3712493988658423,
+        "lat": 48.553512274434446,
+        "lng": -121.32436852764914,
+        "label": "Ina Norris",
+        "iface": "wg123",
+        "ip": "992e:45d4:71fb:1403:a08a:f18e:552e:700b",
+        "prefix": "372e:e7c2:d7dd:1b26:0fd4:5fed:03ad:b0de/128",
+        "neigh_ip": "d6c7:373d:b0fd:bd25:8b59:a294:e55a:d9b8"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "4e33:f824:1e69:a87a:fcef:345b:7c5b:091c",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "b53a:c4d4:9ab6:aab7:0a42:a394:e143:00a5",
+        "prefix": "8dc9:3649:7906:c4f9:cacd:ec8a:a617:ae53/128",
+        "metric": 204,
+        "refmetric": 108,
+        "full_path_rtt": 19.251,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 17,
+        "color": "",
+        "img": {},
+        "__indexColor": "#0c0019",
+        "index": 24,
+        "latlng": {
+          "lat": 46.03190690549358,
+          "lng": -125.32511182919657
+        },
+        "fx": -92.53822316485414,
+        "fy": -44.65771582851016,
+        "lat": 46.03190690549358,
+        "lng": -125.32511182919657,
+        "label": "Brian Hunter",
+        "ip": "4e33:f824:1e69:a87a:fcef:345b:7c5b:091c"
+      },
+      "source": {
+        "ip": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "id": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "5248213879038471500",
+        "debt": "0",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 5120,
+        "stats": {
+          "latency": {
+            "avg": 5.0383067,
+            "std_dev": 22.318157
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#740007",
+        "index": 6,
+        "latlng": {
+          "lat": 43.73916455806621,
+          "lng": -121.94652592440949
+        },
+        "fx": 166.69723603917558,
+        "fy": -31.191928724261686,
+        "lat": 43.73916455806621,
+        "lng": -121.94652592440949,
+        "label": "Sam Keller",
+        "iface": "wg123",
+        "prefix": "f5a5:e150:e0f1:cd8e:7d5b:3f20:297b:6767/128",
+        "neigh_ip": "ba05:1598:ae5b:a856:4c57:9344:34e9:29a0"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "2bb9:4034:da7e:3cbe:8ffe:4f3c:a6b6:71e4",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "66e2:a9b3:054a:a877:7837:068c:4a5e:c4e5",
+        "prefix": "69a8:8c7f:257c:77e5:966e:0b05:c927:d655/128",
+        "metric": 288,
+        "refmetric": 192,
+        "full_path_rtt": 22.884,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 24,
+        "color": "",
+        "img": {},
+        "__indexColor": "#f8001a",
+        "index": 25,
+        "label": "Sarah Williamson",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "2bb9:4034:da7e:3cbe:8ffe:4f3c:a6b6:71e4"
+      },
+      "source": {
+        "ip": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "id": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "0",
+        "debt": "82485069461352500",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 57,
+        "stats": {
+          "latency": {
+            "avg": 11.118977,
+            "std_dev": 66.91243
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ac0011",
+        "index": 16,
+        "latlng": {
+          "lat": 48.58013126960083,
+          "lng": -121.98189303676017
+        },
+        "fx": 239.1919865770167,
+        "fy": -712.4692322163395,
+        "lat": 48.58013126960083,
+        "lng": -121.98189303676017,
+        "label": "Ricardo Lewis",
+        "iface": "wg123",
+        "prefix": "5d6f:fa88:01d7:86f3:a902:4cb0:514a:b388/128",
+        "neigh_ip": "12d2:0fbc:fa03:aecb:bb49:a52a:d527:f904"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "2176:a110:71e2:4ffe:1498:15e1:3b34:25db",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "3a05:21b4:bf3f:95f3:6a02:47d8:bf3e:71f1",
+        "prefix": "861a:0163:0388:4791:d533:cbfb:6120:c3f1/128",
+        "metric": 224,
+        "refmetric": 96,
+        "full_path_rtt": 22.589,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 19,
+        "color": "",
+        "img": {},
+        "__indexColor": "#e4001b",
+        "index": 26,
+        "label": "Susan Watkins",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "2176:a110:71e2:4ffe:1498:15e1:3b34:25db"
+      },
+      "source": {
+        "ip": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+        "id": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+        "route_metric_to_exit": 348,
+        "route_metric": 128,
+        "total_payments": "504131129556434840",
+        "debt": "7000600",
+        "link_cost": 220,
+        "price_to_exit": 0,
+        "speed_limit": 10000,
+        "stats": {
+          "latency": {
+            "avg": 19.742462,
+            "std_dev": 36.584373
+          },
+          "packet_loss": {
+            "avg": 0.0019341852,
+            "five_min_avg": 0.01
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#980012",
+        "index": 17,
+        "latlng": {
+          "lat": 45.90745077474137,
+          "lng": -125.54790510867213
+        },
+        "fx": 110.18032353562336,
+        "fy": 28.769851942238702,
+        "lat": 45.90745077474137,
+        "lng": -125.54790510867213,
+        "label": "Gilbert Bridges",
+        "iface": "wg123",
+        "prefix": "f809:462e:a692:e44d:cc50:c12c:b715:a06c/128",
+        "neigh_ip": "beca:c7f5:b860:e673:0146:71c4:08c8:ddbf"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "d27b:3ab8:5f74:0834:e5a7:7031:0123:30c2",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "a03a:8df4:4e17:1ace:5da1:d76d:7e1a:bb17",
+        "prefix": "05fd:0380:61cf:1aed:8d2b:8d6a:77c4:a033/128",
+        "metric": 283,
+        "refmetric": 122,
+        "full_path_rtt": 40.782,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 24,
+        "color": "",
+        "img": {},
+        "__indexColor": "#d0001c",
+        "index": 27,
+        "label": "Estelle Bennett",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "d27b:3ab8:5f74:0834:e5a7:7031:0123:30c2"
+      },
+      "source": {
+        "ip": "42e0:690e:4181:4319:09a5:717a:ba29:c219",
+        "id": "42e0:690e:4181:4319:09a5:717a:ba29:c219",
+        "route_metric_to_exit": 413,
+        "route_metric": 161,
+        "total_payments": "0",
+        "debt": "50207773076156400",
+        "link_cost": 252,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 25.620808,
+            "std_dev": 72.34988
+          },
+          "packet_loss": {
+            "avg": 0.00062644307,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 14,
+        "color": "",
+        "img": {},
+        "__indexColor": "#24000b",
+        "index": 10,
+        "latlng": {
+          "lat": 44.464090110431385,
+          "lng": -121.29017319422732
+        },
+        "fx": -210.1458512490538,
+        "fy": -408.240417327292,
+        "lat": 44.464090110431385,
+        "lng": -121.29017319422732,
+        "label": "Leah Carson",
+        "iface": "wg123",
+        "prefix": "ec40:a9f7:d234:c7a1:74c2:eca3:f326:ec4d/128",
+        "neigh_ip": "e769:aa83:36b6:a045:c42b:d168:5a8c:ca8d"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "4223:9d11:54f5:9e4a:b62f:eed7:3c33:8c8d",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "8210:7096:4fe1:c021:63d0:3119:d5d8:58c4",
+        "prefix": "fdbb:c86d:71fd:fcd9:0e98:f3c2:e0a4:7735/128",
+        "metric": 192,
+        "refmetric": 96,
+        "full_path_rtt": 17.016,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 16,
+        "color": "",
+        "img": {},
+        "__indexColor": "#bc001d",
+        "index": 28,
+        "label": "Fanny Alexander",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "4223:9d11:54f5:9e4a:b62f:eed7:3c33:8c8d"
+      },
+      "source": {
+        "ip": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "id": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "0",
+        "debt": "82485069461352500",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 57,
+        "stats": {
+          "latency": {
+            "avg": 11.118977,
+            "std_dev": 66.91243
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ac0011",
+        "index": 16,
+        "latlng": {
+          "lat": 48.58013126960083,
+          "lng": -121.98189303676017
+        },
+        "fx": 239.1919865770167,
+        "fy": -712.4692322163395,
+        "lat": 48.58013126960083,
+        "lng": -121.98189303676017,
+        "label": "Ricardo Lewis",
+        "iface": "wg123",
+        "prefix": "5d6f:fa88:01d7:86f3:a902:4cb0:514a:b388/128",
+        "neigh_ip": "12d2:0fbc:fa03:aecb:bb49:a52a:d527:f904"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "a7d1:a196:7007:e00f:3a25:4b9d:d931:54f1",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "414a:f1f7:725a:fbaa:8322:b331:4e19:73f7",
+        "prefix": "c4b1:3856:bc0f:e0e4:16ce:ccb7:b8fd:565b/128",
+        "metric": 215,
+        "refmetric": 119,
+        "full_path_rtt": 24.966,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 18,
+        "color": "",
+        "img": {},
+        "__indexColor": "#a8001e",
+        "index": 29,
+        "label": "Emma Henry",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "a7d1:a196:7007:e00f:3a25:4b9d:d931:54f1"
+      },
+      "source": {
+        "ip": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "id": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "0",
+        "debt": "82485069461352500",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 57,
+        "stats": {
+          "latency": {
+            "avg": 11.118977,
+            "std_dev": 66.91243
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ac0011",
+        "index": 16,
+        "latlng": {
+          "lat": 48.58013126960083,
+          "lng": -121.98189303676017
+        },
+        "fx": 239.1919865770167,
+        "fy": -712.4692322163395,
+        "lat": 48.58013126960083,
+        "lng": -121.98189303676017,
+        "label": "Ricardo Lewis",
+        "iface": "wg123",
+        "prefix": "5d6f:fa88:01d7:86f3:a902:4cb0:514a:b388/128",
+        "neigh_ip": "12d2:0fbc:fa03:aecb:bb49:a52a:d527:f904"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "4a7a:a044:270f:937f:48d6:228a:edc0:35b3",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "4072:332a:4d4c:a63b:1d05:be7b:6665:f436",
+        "prefix": "5c66:6b71:0216:0d82:6f45:c964:11ed:d309/128",
+        "metric": 192,
+        "refmetric": 96,
+        "full_path_rtt": 16.589,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 16,
+        "color": "",
+        "img": {},
+        "__indexColor": "#94001f",
+        "index": 30,
+        "latlng": {
+          "lat": 45.57009588572603,
+          "lng": -123.6078407107998
+        },
+        "fx": 49.43024372889708,
+        "fy": 144.8597533692756,
+        "lat": 45.57009588572603,
+        "lng": -123.6078407107998,
+        "label": "Don Austin",
+        "ip": "4a7a:a044:270f:937f:48d6:228a:edc0:35b3"
+      },
+      "source": {
+        "ip": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "id": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "5248213879038471500",
+        "debt": "0",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 5120,
+        "stats": {
+          "latency": {
+            "avg": 5.0383067,
+            "std_dev": 22.318157
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#740007",
+        "index": 6,
+        "latlng": {
+          "lat": 43.73916455806621,
+          "lng": -121.94652592440949
+        },
+        "fx": 166.69723603917558,
+        "fy": -31.191928724261686,
+        "lat": 43.73916455806621,
+        "lng": -121.94652592440949,
+        "label": "Sam Keller",
+        "iface": "wg123",
+        "prefix": "f5a5:e150:e0f1:cd8e:7d5b:3f20:297b:6767/128",
+        "neigh_ip": "ba05:1598:ae5b:a856:4c57:9344:34e9:29a0"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "d677:579e:f337:b209:28dd:6425:23b4:763b",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "736d:424e:1ee0:eb47:2f57:ab8a:a1c4:2d03",
+        "prefix": "15ae:62ab:31a2:8d34:a5d2:872d:51d6:442d/128",
+        "metric": 213,
+        "refmetric": 117,
+        "full_path_rtt": 19.735,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 18,
+        "color": "",
+        "img": {},
+        "__indexColor": "#800020",
+        "index": 31,
+        "label": "Addie Duncan",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "d677:579e:f337:b209:28dd:6425:23b4:763b"
+      },
+      "source": {
+        "ip": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "id": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "5248213879038471500",
+        "debt": "0",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 5120,
+        "stats": {
+          "latency": {
+            "avg": 5.0383067,
+            "std_dev": 22.318157
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#740007",
+        "index": 6,
+        "latlng": {
+          "lat": 43.73916455806621,
+          "lng": -121.94652592440949
+        },
+        "fx": 166.69723603917558,
+        "fy": -31.191928724261686,
+        "lat": 43.73916455806621,
+        "lng": -121.94652592440949,
+        "label": "Sam Keller",
+        "iface": "wg123",
+        "prefix": "f5a5:e150:e0f1:cd8e:7d5b:3f20:297b:6767/128",
+        "neigh_ip": "ba05:1598:ae5b:a856:4c57:9344:34e9:29a0"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "e942:d127:ed4e:d2d0:1442:be78:840c:8eed",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "f217:9b6f:2e1e:aa50:365f:4b81:dfdd:b64a",
+        "prefix": "b75f:8b3e:e76e:6e24:6ff8:0f4c:1352:0d66/128",
+        "metric": 224,
+        "refmetric": 96,
+        "full_path_rtt": 23.306,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 19,
+        "color": "",
+        "img": {},
+        "__indexColor": "#6c0021",
+        "index": 32,
+        "label": "Ora Palmer",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "e942:d127:ed4e:d2d0:1442:be78:840c:8eed"
+      },
+      "source": {
+        "ip": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+        "id": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+        "route_metric_to_exit": 348,
+        "route_metric": 128,
+        "total_payments": "504131129556434840",
+        "debt": "7000600",
+        "link_cost": 220,
+        "price_to_exit": 0,
+        "speed_limit": 10000,
+        "stats": {
+          "latency": {
+            "avg": 19.742462,
+            "std_dev": 36.584373
+          },
+          "packet_loss": {
+            "avg": 0.0019341852,
+            "five_min_avg": 0.01
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#980012",
+        "index": 17,
+        "latlng": {
+          "lat": 45.90745077474137,
+          "lng": -125.54790510867213
+        },
+        "fx": 110.18032353562336,
+        "fy": 28.769851942238702,
+        "lat": 45.90745077474137,
+        "lng": -125.54790510867213,
+        "label": "Gilbert Bridges",
+        "iface": "wg123",
+        "prefix": "f809:462e:a692:e44d:cc50:c12c:b715:a06c/128",
+        "neigh_ip": "beca:c7f5:b860:e673:0146:71c4:08c8:ddbf"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "b315:c95d:c7e9:9ba2:82e7:72d3:5102:a563",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "3235:9d3d:49a3:2db3:176f:2236:df43:06f0",
+        "prefix": "40b8:2cc5:11d3:a78d:cc0b:7b81:b2d1:ead6/128",
+        "metric": 192,
+        "refmetric": 96,
+        "full_path_rtt": 17.943,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 16,
+        "color": "",
+        "img": {},
+        "__indexColor": "#580022",
+        "index": 33,
+        "label": "Kathryn Vega",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "b315:c95d:c7e9:9ba2:82e7:72d3:5102:a563"
+      },
+      "source": {
+        "ip": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "id": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "0",
+        "debt": "82485069461352500",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 57,
+        "stats": {
+          "latency": {
+            "avg": 11.118977,
+            "std_dev": 66.91243
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ac0011",
+        "index": 16,
+        "latlng": {
+          "lat": 48.58013126960083,
+          "lng": -121.98189303676017
+        },
+        "fx": 239.1919865770167,
+        "fy": -712.4692322163395,
+        "lat": 48.58013126960083,
+        "lng": -121.98189303676017,
+        "label": "Ricardo Lewis",
+        "iface": "wg123",
+        "prefix": "5d6f:fa88:01d7:86f3:a902:4cb0:514a:b388/128",
+        "neigh_ip": "12d2:0fbc:fa03:aecb:bb49:a52a:d527:f904"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "020f:35ff:570a:b44b:d101:c27d:de2a:3db5",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "4639:d5c2:23d0:cec0:85f3:b39b:b9a8:d97b",
+        "prefix": "f57f:cd27:aaca:7ad3:fd65:5daf:5e80:8af5/128",
+        "metric": 241,
+        "refmetric": 145,
+        "full_path_rtt": 26.302,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 20,
+        "color": "",
+        "img": {},
+        "__indexColor": "#440023",
+        "index": 34,
+        "label": "Mason McDonald",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "020f:35ff:570a:b44b:d101:c27d:de2a:3db5"
+      },
+      "source": {
+        "ip": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "id": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "5248213879038471500",
+        "debt": "0",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 5120,
+        "stats": {
+          "latency": {
+            "avg": 5.0383067,
+            "std_dev": 22.318157
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#740007",
+        "index": 6,
+        "latlng": {
+          "lat": 43.73916455806621,
+          "lng": -121.94652592440949
+        },
+        "fx": 166.69723603917558,
+        "fy": -31.191928724261686,
+        "lat": 43.73916455806621,
+        "lng": -121.94652592440949,
+        "label": "Sam Keller",
+        "iface": "wg123",
+        "prefix": "f5a5:e150:e0f1:cd8e:7d5b:3f20:297b:6767/128",
+        "neigh_ip": "ba05:1598:ae5b:a856:4c57:9344:34e9:29a0"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "de65:2df0:fe9f:467f:4986:bbb7:61c7:7631",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "bf26:af37:3eb7:883c:8ecc:a3bf:55f0:6d47",
+        "prefix": "8837:2783:c151:27ce:787e:b7f8:0d96:2a4c/128",
+        "metric": 236,
+        "refmetric": 103,
+        "full_path_rtt": 29.908,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 20,
+        "color": "",
+        "img": {},
+        "__indexColor": "#300024",
+        "index": 35,
+        "latlng": {
+          "lat": 46.27863933125856,
+          "lng": -124.70013849513633
+        },
+        "fx": -142.33244526032064,
+        "fy": 13.972103850648857,
+        "lat": 46.27863933125856,
+        "lng": -124.70013849513633,
+        "label": "Minerva Martinez",
+        "ip": "de65:2df0:fe9f:467f:4986:bbb7:61c7:7631"
+      },
+      "source": {
+        "ip": "e6d1:c61d:d89a:27ff:029e:ee34:f34d:b451",
+        "id": "e6d1:c61d:d89a:27ff:029e:ee34:f34d:b451",
+        "route_metric_to_exit": 375,
+        "route_metric": 133,
+        "total_payments": "302403320074877755",
+        "debt": "0",
+        "link_cost": 242,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 23.211134,
+            "std_dev": 8.717491
+          },
+          "packet_loss": {
+            "avg": 0.0000035796745,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#840013",
+        "index": 18,
+        "latlng": {
+          "lat": 45.216864417815046,
+          "lng": -124.84380926868765
+        },
+        "fx": -162.32318288921346,
+        "fy": -66.66432474823506,
+        "lat": 45.216864417815046,
+        "lng": -124.84380926868765,
+        "label": "Franklin Kelley",
+        "iface": "wg123",
+        "prefix": "643b:6e9d:9730:5d66:120b:2b94:f66d:18d4/128",
+        "neigh_ip": "743d:70b5:2bcd:3230:34c3:b456:296f:f32d"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "9439:1e74:0b8f:70a6:6a75:fcaf:dcc5:ba4a",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "499f:6e3c:d498:95b8:92bc:2cfa:95c4:7d58",
+        "prefix": "2081:b8de:bee9:002f:2cef:c946:45a9:263c/128",
+        "metric": 331,
+        "refmetric": 203,
+        "full_path_rtt": 40.442,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 28,
+        "color": "",
+        "img": {},
+        "__indexColor": "#1c0025",
+        "index": 36,
+        "label": "Samuel Vaughn",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "9439:1e74:0b8f:70a6:6a75:fcaf:dcc5:ba4a"
+      },
+      "source": {
+        "ip": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+        "id": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+        "route_metric_to_exit": 348,
+        "route_metric": 128,
+        "total_payments": "504131129556434840",
+        "debt": "7000600",
+        "link_cost": 220,
+        "price_to_exit": 0,
+        "speed_limit": 10000,
+        "stats": {
+          "latency": {
+            "avg": 19.742462,
+            "std_dev": 36.584373
+          },
+          "packet_loss": {
+            "avg": 0.0019341852,
+            "five_min_avg": 0.01
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#980012",
+        "index": 17,
+        "latlng": {
+          "lat": 45.90745077474137,
+          "lng": -125.54790510867213
+        },
+        "fx": 110.18032353562336,
+        "fy": 28.769851942238702,
+        "lat": 45.90745077474137,
+        "lng": -125.54790510867213,
+        "label": "Gilbert Bridges",
+        "iface": "wg123",
+        "prefix": "f809:462e:a692:e44d:cc50:c12c:b715:a06c/128",
+        "neigh_ip": "beca:c7f5:b860:e673:0146:71c4:08c8:ddbf"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "faa5:5dbb:521d:841e:db49:ce2f:d37a:f710",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "6c3f:f106:5e25:a6ca:16e9:e7b6:27e1:ed1f",
+        "prefix": "e6b0:fdbb:7a9a:50d9:ed75:d3ae:1e16:3c54/128",
+        "metric": 229,
+        "refmetric": 133,
+        "full_path_rtt": 24.454,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 19,
+        "color": "",
+        "img": {},
+        "__indexColor": "#080026",
+        "index": 37,
+        "label": "Angel Porter",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "faa5:5dbb:521d:841e:db49:ce2f:d37a:f710"
+      },
+      "source": {
+        "ip": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "id": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "5248213879038471500",
+        "debt": "0",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 5120,
+        "stats": {
+          "latency": {
+            "avg": 5.0383067,
+            "std_dev": 22.318157
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#740007",
+        "index": 6,
+        "latlng": {
+          "lat": 43.73916455806621,
+          "lng": -121.94652592440949
+        },
+        "fx": 166.69723603917558,
+        "fy": -31.191928724261686,
+        "lat": 43.73916455806621,
+        "lng": -121.94652592440949,
+        "label": "Sam Keller",
+        "iface": "wg123",
+        "prefix": "f5a5:e150:e0f1:cd8e:7d5b:3f20:297b:6767/128",
+        "neigh_ip": "ba05:1598:ae5b:a856:4c57:9344:34e9:29a0"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "717d:8b24:1d9f:4f5b:ec1a:09a8:494b:fbe9",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "62f0:6249:a2af:3393:8e64:0dc3:f4cc:c42c",
+        "prefix": "18d3:2ee6:a19f:10bd:e8ad:b25d:8260:20e7/128",
+        "metric": 231,
+        "refmetric": 135,
+        "full_path_rtt": 21.731,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 20,
+        "color": "",
+        "img": {},
+        "__indexColor": "#f40027",
+        "index": 38,
+        "label": "Pauline Peters",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "717d:8b24:1d9f:4f5b:ec1a:09a8:494b:fbe9"
+      },
+      "source": {
+        "ip": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "id": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "5248213879038471500",
+        "debt": "0",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 5120,
+        "stats": {
+          "latency": {
+            "avg": 5.0383067,
+            "std_dev": 22.318157
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#740007",
+        "index": 6,
+        "latlng": {
+          "lat": 43.73916455806621,
+          "lng": -121.94652592440949
+        },
+        "fx": 166.69723603917558,
+        "fy": -31.191928724261686,
+        "lat": 43.73916455806621,
+        "lng": -121.94652592440949,
+        "label": "Sam Keller",
+        "iface": "wg123",
+        "prefix": "f5a5:e150:e0f1:cd8e:7d5b:3f20:297b:6767/128",
+        "neigh_ip": "ba05:1598:ae5b:a856:4c57:9344:34e9:29a0"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "48b3:fc2f:86fc:664b:4aab:00f2:9509:5b7d",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "bb0f:772d:ff64:d87c:a9dd:fd69:d5eb:40fb",
+        "prefix": "5488:d06e:d170:b4ad:6873:2e70:d028:80d4/128",
+        "metric": 243,
+        "refmetric": 147,
+        "full_path_rtt": 31,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 21,
+        "color": "",
+        "img": {},
+        "__indexColor": "#e00028",
+        "index": 39,
+        "label": "Catherine Phelps",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "48b3:fc2f:86fc:664b:4aab:00f2:9509:5b7d"
+      },
+      "source": {
+        "ip": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "id": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "0",
+        "debt": "82485069461352500",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 57,
+        "stats": {
+          "latency": {
+            "avg": 11.118977,
+            "std_dev": 66.91243
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ac0011",
+        "index": 16,
+        "latlng": {
+          "lat": 48.58013126960083,
+          "lng": -121.98189303676017
+        },
+        "fx": 239.1919865770167,
+        "fy": -712.4692322163395,
+        "lat": 48.58013126960083,
+        "lng": -121.98189303676017,
+        "label": "Ricardo Lewis",
+        "iface": "wg123",
+        "prefix": "5d6f:fa88:01d7:86f3:a902:4cb0:514a:b388/128",
+        "neigh_ip": "12d2:0fbc:fa03:aecb:bb49:a52a:d527:f904"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "73c1:0750:2bb0:c2ac:9914:30bd:e8e1:761b",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "1928:7ed2:850c:3657:3588:a241:1a40:cc8a",
+        "prefix": "6b02:8ea5:26e1:98e2:c36b:069e:b8e3:8f44/128",
+        "metric": 284,
+        "refmetric": 123,
+        "full_path_rtt": 38.665,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 24,
+        "color": "",
+        "img": {},
+        "__indexColor": "#cc0029",
+        "index": 40,
+        "label": "Henry Graves",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "73c1:0750:2bb0:c2ac:9914:30bd:e8e1:761b"
+      },
+      "source": {
+        "ip": "42e0:690e:4181:4319:09a5:717a:ba29:c219",
+        "id": "42e0:690e:4181:4319:09a5:717a:ba29:c219",
+        "route_metric_to_exit": 413,
+        "route_metric": 161,
+        "total_payments": "0",
+        "debt": "50207773076156400",
+        "link_cost": 252,
+        "price_to_exit": 0,
+        "speed_limit": null,
+        "stats": {
+          "latency": {
+            "avg": 25.620808,
+            "std_dev": 72.34988
+          },
+          "packet_loss": {
+            "avg": 0.00062644307,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 14,
+        "color": "",
+        "img": {},
+        "__indexColor": "#24000b",
+        "index": 10,
+        "latlng": {
+          "lat": 44.464090110431385,
+          "lng": -121.29017319422732
+        },
+        "fx": -210.1458512490538,
+        "fy": -408.240417327292,
+        "lat": 44.464090110431385,
+        "lng": -121.29017319422732,
+        "label": "Leah Carson",
+        "iface": "wg123",
+        "prefix": "ec40:a9f7:d234:c7a1:74c2:eca3:f326:ec4d/128",
+        "neigh_ip": "e769:aa83:36b6:a045:c42b:d168:5a8c:ca8d"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "7605:4c98:8dc7:b6a1:f2f4:a116:8a69:d060",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "3957:fc1a:a784:1aaa:83ed:1256:c6ac:d5f4",
+        "prefix": "3837:4239:da55:7f46:0bf3:25af:a307:5d01/128",
+        "metric": 192,
+        "refmetric": 96,
+        "full_path_rtt": 18.529,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 16,
+        "color": "",
+        "img": {},
+        "__indexColor": "#b8002a",
+        "index": 41,
+        "label": "Milton Ray",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "7605:4c98:8dc7:b6a1:f2f4:a116:8a69:d060"
+      },
+      "source": {
+        "ip": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "id": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "0",
+        "debt": "82485069461352500",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 57,
+        "stats": {
+          "latency": {
+            "avg": 11.118977,
+            "std_dev": 66.91243
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ac0011",
+        "index": 16,
+        "latlng": {
+          "lat": 48.58013126960083,
+          "lng": -121.98189303676017
+        },
+        "fx": 239.1919865770167,
+        "fy": -712.4692322163395,
+        "lat": 48.58013126960083,
+        "lng": -121.98189303676017,
+        "label": "Ricardo Lewis",
+        "iface": "wg123",
+        "prefix": "5d6f:fa88:01d7:86f3:a902:4cb0:514a:b388/128",
+        "neigh_ip": "12d2:0fbc:fa03:aecb:bb49:a52a:d527:f904"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "7413:914e:4d6c:4bc5:971f:e315:95ea:6244",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "2af3:cfe9:0e46:63ac:fc8a:0794:78d2:d3a0",
+        "prefix": "b3c7:5e02:5d68:5495:0e66:1ff4:c955:9edd/128",
+        "metric": 212,
+        "refmetric": 116,
+        "full_path_rtt": 21.572,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 18,
+        "color": "",
+        "img": {},
+        "__indexColor": "#a4002b",
+        "index": 42,
+        "label": "Maria Simon",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "7413:914e:4d6c:4bc5:971f:e315:95ea:6244"
+      },
+      "source": {
+        "ip": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "id": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "5248213879038471500",
+        "debt": "0",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 5120,
+        "stats": {
+          "latency": {
+            "avg": 5.0383067,
+            "std_dev": 22.318157
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#740007",
+        "index": 6,
+        "latlng": {
+          "lat": 43.73916455806621,
+          "lng": -121.94652592440949
+        },
+        "fx": 166.69723603917558,
+        "fy": -31.191928724261686,
+        "lat": 43.73916455806621,
+        "lng": -121.94652592440949,
+        "label": "Sam Keller",
+        "iface": "wg123",
+        "prefix": "f5a5:e150:e0f1:cd8e:7d5b:3f20:297b:6767/128",
+        "neigh_ip": "ba05:1598:ae5b:a856:4c57:9344:34e9:29a0"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "26c4:ce48:cc42:7ebb:fa92:8d81:8427:ecb5",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "5057:fea9:8a2a:afdc:2980:99a3:7517:f1f6",
+        "prefix": "fe77:da64:5aff:1078:6fe9:8326:77bc:ad5c/128",
+        "metric": 307,
+        "refmetric": 211,
+        "full_path_rtt": 31.165,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 26,
+        "color": "",
+        "img": {},
+        "__indexColor": "#90002c",
+        "index": 43,
+        "label": "Addie Gross",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "26c4:ce48:cc42:7ebb:fa92:8d81:8427:ecb5"
+      },
+      "source": {
+        "ip": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "id": "dd56:ba20:264a:ee68:ccda:e55c:ebf5:f9e8",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "5248213879038471500",
+        "debt": "0",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 5120,
+        "stats": {
+          "latency": {
+            "avg": 5.0383067,
+            "std_dev": 22.318157
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#740007",
+        "index": 6,
+        "latlng": {
+          "lat": 43.73916455806621,
+          "lng": -121.94652592440949
+        },
+        "fx": 166.69723603917558,
+        "fy": -31.191928724261686,
+        "lat": 43.73916455806621,
+        "lng": -121.94652592440949,
+        "label": "Sam Keller",
+        "iface": "wg123",
+        "prefix": "f5a5:e150:e0f1:cd8e:7d5b:3f20:297b:6767/128",
+        "neigh_ip": "ba05:1598:ae5b:a856:4c57:9344:34e9:29a0"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "35ee:a960:3aa7:8123:9580:1164:4164:4312",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "6538:4744:bd4c:041c:5267:c932:d118:7b92",
+        "prefix": "5c97:e7e2:8408:d7c2:713e:6f80:8783:6ad6/128",
+        "metric": 224,
+        "refmetric": 96,
+        "full_path_rtt": 26.532,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 19,
+        "color": "",
+        "img": {},
+        "__indexColor": "#7c002d",
+        "index": 44,
+        "latlng": {
+          "lat": 44.58203462641012,
+          "lng": -123.13223412678492
+        },
+        "fx": 95.66781867786862,
+        "fy": -279.9092753314949,
+        "lat": 44.58203462641012,
+        "lng": -123.13223412678492,
+        "label": "Frederick Potter",
+        "ip": "35ee:a960:3aa7:8123:9580:1164:4164:4312"
+      },
+      "source": {
+        "ip": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+        "id": "4d1a:ec6b:624d:6be4:2c2f:8335:ba62:d54a",
+        "route_metric_to_exit": 348,
+        "route_metric": 128,
+        "total_payments": "504131129556434840",
+        "debt": "7000600",
+        "link_cost": 220,
+        "price_to_exit": 0,
+        "speed_limit": 10000,
+        "stats": {
+          "latency": {
+            "avg": 19.742462,
+            "std_dev": 36.584373
+          },
+          "packet_loss": {
+            "avg": 0.0019341852,
+            "five_min_avg": 0.01
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 11,
+        "color": "",
+        "img": {},
+        "__indexColor": "#980012",
+        "index": 17,
+        "latlng": {
+          "lat": 45.90745077474137,
+          "lng": -125.54790510867213
+        },
+        "fx": 110.18032353562336,
+        "fy": 28.769851942238702,
+        "lat": 45.90745077474137,
+        "lng": -125.54790510867213,
+        "label": "Gilbert Bridges",
+        "iface": "wg123",
+        "prefix": "f809:462e:a692:e44d:cc50:c12c:b715:a06c/128",
+        "neigh_ip": "beca:c7f5:b860:e673:0146:71c4:08c8:ddbf"
+      },
+      "color": ""
+    },
+    {
+      "target": {
+        "id": "5fdd:5081:716b:3532:cad9:7908:618a:755d",
+        "iface": "wg123",
+        "xroute": false,
+        "installed": true,
+        "neigh_ip": "867f:533e:e0c3:d6fd:2a1e:d397:9171:cb4b",
+        "prefix": "cf33:c007:7fbb:29d1:ef53:2a62:fa5f:2234/128",
+        "metric": 223,
+        "refmetric": 127,
+        "full_path_rtt": 26.69,
+        "price": 0,
+        "fee": 0,
+        "level": 3,
+        "route": true,
+        "normalizedMetric": 19,
+        "color": "",
+        "img": {},
+        "__indexColor": "#68002e",
+        "index": 45,
+        "label": "Isabella Lopez",
+        "fx": null,
+        "fy": null,
+        "lat": null,
+        "lng": null,
+        "latlng": {
+          "lat": null,
+          "lng": null
+        },
+        "ip": "5fdd:5081:716b:3532:cad9:7908:618a:755d"
+      },
+      "source": {
+        "ip": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "id": "37a8:cbf4:95c4:dbfc:c03b:cc0a:8571:cf99",
+        "route_metric_to_exit": 288,
+        "route_metric": 96,
+        "total_payments": "0",
+        "debt": "82485069461352500",
+        "link_cost": 192,
+        "price_to_exit": 0,
+        "speed_limit": 57,
+        "stats": {
+          "latency": {
+            "avg": 11.118977,
+            "std_dev": 66.91243
+          },
+          "packet_loss": {
+            "avg": 0.00003937642,
+            "five_min_avg": 0
+          }
+        },
+        "level": 2,
+        "neighbor": true,
+        "normalizedMetric": 8,
+        "color": "",
+        "img": {},
+        "__indexColor": "#ac0011",
+        "index": 16,
+        "latlng": {
+          "lat": 48.58013126960083,
+          "lng": -121.98189303676017
+        },
+        "fx": 239.1919865770167,
+        "fy": -712.4692322163395,
+        "lat": 48.58013126960083,
+        "lng": -121.98189303676017,
+        "label": "Ricardo Lewis",
+        "iface": "wg123",
+        "prefix": "5d6f:fa88:01d7:86f3:a902:4cb0:514a:b388/128",
+        "neigh_ip": "12d2:0fbc:fa03:aecb:bb49:a52a:d527:f904"
+      },
+      "color": ""
+    }
+  ]
+}
