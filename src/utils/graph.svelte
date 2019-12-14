@@ -141,35 +141,23 @@
       return 4;
     },
     nodeCanvasObject(node, ctx, globalScale) {
-      const { x, y, label, img, id, latlng } = node;
+      const { x, y, label, img, id, latlng, offline } = node;
       const size = 36;
       const fontSize = 16 / globalScale;
 
       let text = label || id.substr(-4);
       const textWidth = ctx.measureText(text).width;
 
-      ctx.scale(0.25, 0.25);
-      ctx.font = `${id === $selected ? "bold" : ""} ${fontSize *
-        4}px Sans-Serif`;
+      ctx.fillStyle = offline ? "#fc8181" : "#F5EFD3";
+      ctx.fillRect(x - 6 / $zoom, y - 6 / $zoom, 22 / $zoom, 16 / $zoom);
+      ctx.beginPath(); ctx.moveTo(x + 5 / $zoom, y - 18 / $zoom); ctx.lineTo(x - 10 / $zoom, y - 5 / $zoom); ctx.lineTo(x + 20 / $zoom, y - 5 / $zoom); ctx.fill();
+      ctx.fillStyle = "white";
+      ctx.fillRect(x - (((fontSize / 2 * text.length) / 2) + 1), y + 12/$zoom, (fontSize / 2 * (text.length + 2)), 24 / $zoom);
+      ctx.font = `${id === $selected ? "bold" : ""} ${fontSize}px Sans-Serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.strokeStyle = "white";
-      ctx.lineWidth = 16;
-      ctx.strokeText(text, x * 4, (y + 40 / $zoom) * 4);
-      ctx.miterLimit = 2;
       ctx.fillStyle = "black";
-      ctx.fillText(text, x * 4, (y + 40 / $zoom) * 4);
-      ctx.fillStyle = "#51AFEF";
-      ctx.scale(4, 4);
-
-      if (img)
-        ctx.drawImage(
-          img,
-          x - 36 / $zoom / 2,
-          y - 48 / $zoom / 2,
-          36 / $zoom,
-          48 / $zoom
-        );
+      ctx.fillText(text, x + 6/$zoom, y + 24/$zoom);
 
       if (id === $selected && !$zooming) {
         $zooming = true;
