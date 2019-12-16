@@ -91,6 +91,10 @@ const delNode = id => {
 } 
 </script>
 
+<style>
+  .card { min-width: 550px; } 
+</style>
+
 <div class="w-full">
   <input bind:value={node} placeholder="WG Pubkey" />
   <button on:click={addNode}>Add Node</button>

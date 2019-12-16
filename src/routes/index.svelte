@@ -29,8 +29,8 @@
   let graphReady = false;
   let loginFailed = false;
   let needPassword = false;
-  let noConnection = true;
   let password;
+  let message = "Loading";
 
   const loadImage = n => {
     n.img = images[0];
@@ -109,23 +109,41 @@
   const getData = async () => {
     if (!window.location.href.includes("althea.net")) baseUrl = "/api";
 
-    let Authorization = window.sessionStorage.getItem("Authorization");
-    let headers = { Authorization };
+    const controller = new AbortController();
+    const signal = controller.signal;
+    let timeout = setTimeout(() => controller.abort(), 5000);
 
-    let res = await fetch(`${baseUrl}/neighbors`, { headers });
-    if (!res.ok) {
-      noConnection = true;
-      if (res.status === 403) needPassword = true;
+    let Authorization = window.sessionStorage.getItem("Authorization");
+    let options = { headers: { Authorization }, signal };
+
+    let res;
+    let neighbors;
+
+    try {
+      res = await fetch(`${baseUrl}/neighbors`, options);
+
+      message = null;
+
+      if (!res.ok && res.status === 403) {
+        needPassword = true;
+        return;
+      } 
+
+      neighbors = await res.json();
+    } catch (e) {
+      window.localStorage.setItem("devmode", true);
+      message = "Could not connect to router";
+      setTimeout(() => window.location.reload(), 1000);
       return;
     }
 
-    const neighbors = await res.json();
-
-    res = await fetch(`${baseUrl}/routes`, { headers });
+    res = await fetch(`${baseUrl}/routes`, options);
     const routes = await res.json();
 
-    res = await fetch(`${baseUrl}/mesh_ip`, { headers });
+    res = await fetch(`${baseUrl}/mesh_ip`, options);
     $ip = (await res.json()).mesh_ip;
+
+    clearTimeout(timeout);
 
     const d = data($ip, neighbors, routes);
     $links = d.links;
@@ -182,7 +200,7 @@
     setColors();
   };
 
-const setColors = () => {
+  const setColors = () => {
     let a = 0;
     let b = 5;
     const normalize = (val, min, max) => {
@@ -190,18 +208,15 @@ const setColors = () => {
       return a + ((val - min) * (b - a)) / (max - min);
     };
 
-    let metrics = [
-      ...new Set(
-        $nodes.map(n => n.metric).filter(n => n < 2000)
-      )
-    ];
+    let metrics = [...new Set($nodes.map(n => n.metric).filter(n => n < 2000))];
 
     let latencies = [
       ...new Set(
-        $nodes.map(n => n.stats ? n.stats.latency.avg : undefined).filter(n => n)
+        $nodes
+          .map(n => (n.stats ? n.stats.latency.avg : undefined))
+          .filter(n => n)
       )
     ];
-
 
     let gradient = chroma
       .scale(["#F5EFD3", "#d66711"])
@@ -210,14 +225,29 @@ const setColors = () => {
 
     $links.map(link => {
       let n = link.target;
-      if (n.metric) 
-        link.color = gradient[Math.floor(normalize(n.metric, Math.min(...metrics), Math.max(...metrics)))];
+      if (n.metric)
+        link.color =
+          gradient[
+            Math.floor(
+              normalize(n.metric, Math.min(...metrics), Math.max(...metrics))
+            )
+          ];
       else if (n.stats)
-        link.color = gradient[Math.floor(normalize(n.stats.latency.avg, Math.min(...latencies), Math.max(...latencies)))];
+        link.color =
+          gradient[
+            Math.floor(
+              normalize(
+                n.stats.latency.avg,
+                Math.min(...latencies),
+                Math.max(...latencies)
+              )
+            )
+          ];
     });
-} 
+  };
 
   const doImport = async () => {
+    message = null;
     $nodes = JSON.parse(window.localStorage.getItem("nodes")) || [];
     const res = await fetch("network.json");
     const json = await res.json();
@@ -259,6 +289,12 @@ const setColors = () => {
   };
 </script>
 
+<svelte:head>
+  <style>
+    body { background: #0FB36F; } 
+  </style>
+</svelte:head>
+
 <style>
   .menu {
     position: absolute;
@@ -280,6 +316,14 @@ const setColors = () => {
     width: 30px;
   }
 </style>
+
+{#if message}
+  <div class="w-full flex h-screen">
+    <div class="m-auto bg-white p-4">
+      {message}
+    </div>
+  </div>
+{/if}
 
 {#if needPassword}
   <div class="flex w-100">

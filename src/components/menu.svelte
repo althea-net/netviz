@@ -59,6 +59,6 @@
             <button class="bg-green-500" on:click={() => ($importing = !$importing)}>Import</button>
             <button class="bg-orange-500" on:click={confirm}>Reset</button>
             <button class="bg-yellow-500" on:click={toggleDevMode}>
-              {devmode ? 'Live Mode' : 'Dev Mode'}
+              {devmode ? 'Live Mode' : 'Demo Mode'}
             </button>
           </div>
