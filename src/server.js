@@ -4,10 +4,8 @@ import compression from "compression";
 import * as sapper from "@sapper/server";
 import fs from "fs";
 import Airtable from "airtable";
-import { config } from "dotenv";
 import { json } from "body-parser";
-
-config();
+import config from "./config";
 
 import "./styles.css";
 
@@ -18,16 +16,21 @@ const dev = NODE_ENV === "development";
 let nodes = {};
 
 const handler = async (req, res, next) => {
+  const { nodes: list, organizer, password } = req.body;
+
   switch (req.path) {
     case "/nodes":
       const filter = {};
-      if (req.body.nodes)
-        req.body.nodes.map(n => (filter[n] = nodes[n]))
+      if (list)
+        list.map(n => (filter[n] = nodes[n]))
       res.end(JSON.stringify(filter));
       break;
     case "/names":
-      const base = new Airtable({ apiKey: process.env.AIRTABLE_KEY }).base(
-        process.env.AIRTABLE_BASE
+      if (!config[organizer] || password !== config[organizer].password)
+        return (res.statusCode=401,res.end('Auth failed!'));
+
+      const base = new Airtable({ apiKey: config.airtable }).base(
+        config[organizer].base
       );
 
       await new Promise((resolve, reject) => {

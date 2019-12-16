@@ -6,3 +6,4 @@ yarn-error.log
 static/global.css
 .pnp*
 .env
+src/config.js

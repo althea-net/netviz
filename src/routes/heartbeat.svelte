@@ -1,17 +1,20 @@
 <script>
   import { onMount, tick } from "svelte";
   let keys = [];
-  let names;
+  let names = {};
   let nodes;
   let nodeList;
   let minutes = Array.from(Array(60).keys());
   let initialized = false;
+  let organizer;
+  let password;
+
+  const headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json"
+  };
 
   const getData = async () => {
-    let headers = {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    };
 
     let res = await fetch("/network/nodes", {
       method: "POST",
@@ -38,9 +41,6 @@
         });
 
         if (!initialized) {
-          res = await fetch("/network/names");
-          names = await res.json();
-
           tick().then(() => {
             nodes = curr;
             nodes[id].ndx = crossfilter(data);
@@ -89,18 +89,30 @@ const delNode = id => {
   window.localStorage.setItem("heartbeatNodes", JSON.stringify(nodeList));
   initialized = false;
 } 
+
+const loadNodes = async () => {
+  let res = await fetch("/network/names", {
+    method: "POST",
+    body: JSON.stringify({ organizer, password }),
+    headers
+  });
+  names = await res.json();
+} 
 </script>
 
 <style>
   .card { min-width: 550px; } 
 </style>
 
-<div class="w-full">
+<div class="w-full p-4">
   <input bind:value={node} placeholder="WG Pubkey" />
   <button on:click={addNode}>Add Node</button>
+
+  <input bind:value={organizer} placeholder="Organizer Address" />
+  <input bind:value={password} placeholder="Password" type="password" />
+  <button on:click={loadNodes}>Load Nodes</button>
 </div>
 
-{#if names}
   <div class="flex flex-wrap">
     {#each keys as id (id)}
       <div class="card">
@@ -112,4 +124,3 @@ const delNode = id => {
       </div>
     {/each}
   </div>
-{/if}
