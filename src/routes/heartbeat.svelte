@@ -8,6 +8,7 @@
   let initialized = false;
   let organizer;
   let password;
+  let failed;
 
   const headers = {
     Accept: "application/json",
@@ -91,28 +92,39 @@ const delNode = id => {
 } 
 
 const loadNodes = async () => {
-  let res = await fetch("/network/nodes", {
-    method: "POST",
-    body: JSON.stringify({ organizer, password }),
-    headers
-  });
-  let list = await res.json();
-  Object.keys(list).map(n => nodeList.push(n));
-  nodeList = nodeList.filter((v, i, self) => self.indexOf(v) === i);
-  window.localStorage.setItem("heartbeatNodes", JSON.stringify(nodeList));
+  try {
+    let res = await fetch("/network/nodes", {
+      method: "POST",
+      body: JSON.stringify({ organizer, password }),
+      headers
+    });
+
+    if (res.status === 401) failed = true;
+
+    if (res.ok) {
+      failed = false;
+      let list = await res.json();
+      Object.keys(list).map(n => nodeList.push(n));
+      nodeList = nodeList.filter((v, i, self) => self.indexOf(v) === i);
+      window.localStorage.setItem("heartbeatNodes", JSON.stringify(nodeList));
+    }
+  } catch (e) {
+    console.log("err", e);
+  }
 } 
 </script>
 
 <style>
   .card { min-width: 550px; } 
+  .failed { border: 1px solid red; }
 </style>
 
 <div class="w-full p-4">
   <input bind:value={node} placeholder="WG Pubkey" />
   <button on:click={addNode}>Add Node</button>
 
-  <input bind:value={organizer} placeholder="Organizer Address" />
-  <input bind:value={password} placeholder="Password" type="password" />
+  <input bind:value={organizer} placeholder="Organizer Address" class:failed />
+  <input bind:value={password} placeholder="Password" type="password" class:failed />
   <button on:click={loadNodes}>Load Nodes</button>
 </div>
 
