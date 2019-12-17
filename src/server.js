@@ -16,16 +16,16 @@ const dev = NODE_ENV === "development";
 let nodes = {};
 
 const handler = async (req, res, next) => {
-  const { nodes: list, organizer, password } = req.body;
+  const { list, organizer, password } = req.body;
 
   switch (req.path) {
-    case "/nodes":
+    case "/heartbeats":
       const filter = {};
       if (list)
         list.map(n => (filter[n] = nodes[n]))
       res.end(JSON.stringify(filter));
       break;
-    case "/names":
+    case "/nodes":
       if (!config[organizer] || password !== config[organizer].password)
         return (res.statusCode=401,res.end('Auth failed!'));
 
@@ -37,9 +37,9 @@ const handler = async (req, res, next) => {
         base("Nodes")
           .select()
           .all((err, rows) => {
-            let names = {};
-            rows.map(r => (names[r.fields["WG Key"]] = r.fields["Name"]));
-            resolve(res.end(JSON.stringify(names)));
+            let nodes = {};
+            rows.map(r => (nodes[r.fields["WG Key"]] = r.fields["Name"]));
+            resolve(res.end(JSON.stringify(nodes)));
           });
       });
       break;

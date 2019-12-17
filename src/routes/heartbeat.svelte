@@ -16,9 +16,9 @@
 
   const getData = async () => {
 
-    let res = await fetch("/network/nodes", {
+    let res = await fetch("/network/heartbeats", {
       method: "POST",
-      body: JSON.stringify({ nodes: nodeList }),
+      body: JSON.stringify({ list: nodeList }),
       headers
     });
 
@@ -91,12 +91,15 @@ const delNode = id => {
 } 
 
 const loadNodes = async () => {
-  let res = await fetch("/network/names", {
+  let res = await fetch("/network/nodes", {
     method: "POST",
     body: JSON.stringify({ organizer, password }),
     headers
   });
-  names = await res.json();
+  let list = await res.json();
+  Object.keys(list).map(n => nodeList.push(n));
+  nodeList = nodeList.filter((v, i, self) => self.indexOf(v) === i);
+  window.localStorage.setItem("heartbeatNodes", JSON.stringify(nodeList));
 } 
 </script>
 
